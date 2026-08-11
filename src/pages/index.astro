@@ -190,24 +190,103 @@ import '../styles/global.css';
 </section>
 
 <section class="py-stack-lg px-gutter max-w-container-max mx-auto" id="galerie">
-<div class="text-center mb-16 reveal active">
-<span class="text-primary font-Inter uppercase tracking-[0.2em] mb-4 block">Moje práce</span>
-<h2 class="font-Inter text-2xl text-on-surface">Inspirujte se</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-  <div class="reveal group relative overflow-hidden rounded-xl active">
-    <img alt="Hair styling example 1" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVrUypYXNOcXD19NdhKRM2YPCftq5m5q0fKlTNzllmFAbZHAJtCaYehT8b6i62hmNBurgnDu4u0cqmsEqYFObUU2Tr2anWsJmbKDsHWAc-0d7yqiOUP00jQGpjbeohO2QMod4pkYpJZaf-bpIqmKVAXAgNQzy_-cxLPCggR7ychdvdjDIf-ujk7j8We7gpJFEvN5D1q6acBc6CbBlVSu6uTPUo6JYFC8T21lcwjt-kieNIBveSUsl5yyl8rk4BwnY-aPE">
+  <div class="text-center mb-16 reveal active">
+    <span class="text-primary font-Inter uppercase tracking-[0.2em] mb-4 block">
+      Moje práce
+    </span>
+    <h2 class="font-Inter text-2xl text-on-surface">
+      Inspirujte se
+    </h2>
   </div>
-  <div class="reveal group relative overflow-hidden rounded-xl active">
-    <img alt="Hair styling example 2" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRwAiCaim7lXHsTzVeDrDttssC0NlONFVCIR5Vp6xLbpUCIQEBueW9GcVPEaT1Tmr-bEon4nj9KJoZJOXc22zdRQzD2Qe9dlqZeZ-tbZKxnvXWi1GI5Dzm2-IIZadXbN1dmNfrTi8O5ihDtMQUC4hbhJjlgSLNpWsGncbNN_eDeBLKcP5UQmeudYXv4mTvQJiyTeYOp9m_cLyeRYZtk64klpcVM4NRIK0wBFbfMmOBDeppaQnNeZoKT8CYzqAYya-eMy8">
+
+  <!-- Carousel -->
+  <div class="relative">
+
+    <!-- Left arrow -->
+    <button
+      id="gallery-prev"
+      type="button"
+      aria-label="Předchozí fotografie"
+      class="absolute left-0 top-1/2 -translate-y-1/2 z-10
+             w-12 h-12 rounded-full bg-white/90 shadow-md
+             flex items-center justify-center
+             text-on-surface hover:bg-primary hover:text-white
+             transition-all duration-300
+             -translate-x-1/2"
+    >
+      ←
+    </button>
+
+    <!-- Viewport -->
+    <div class="overflow-hidden px-1">
+      <div
+        id="gallery-track"
+        class="flex gap-6 transition-transform duration-500 ease-in-out"
+      >
+
+        <!-- FOTO 1 -->
+        <div class="gallery-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+          <div class="group relative overflow-hidden rounded-xl">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVrUypYXNOcXD19NdhKRM2YPCftq5m5q0fKlTNzllmFAbZHAJtCaYehT8b6i62hmNBurgnDu4u0cqmsEqYFObUU2Tr2anWsJmbKDsHWAc-0d7yqiOUP00jQGpjbeohO2QMod4pkYpJZaf-bpIqmKVAXAgNQzy_-cxLPCggR7ychdvdjDIf-ujk7j8We7gpJFEvN5D1q6acBc6CbBlVSu6uTPUo6JYFC8T21lcwjt-kieNIBveSUsl5yyl8rk4BwnY-aPE"
+              alt="Ukázka účesu 1"
+              class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
+            >
+          </div>
+        </div>
+
+        <!-- FOTO 2 -->
+        <div class="gallery-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+          <div class="group relative overflow-hidden rounded-xl">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRwAiCaim7lXHsTzVeDrDttssC0NlONFVCIR5Vp6xLbpUCIQEBueW9GcVPEaT1Tmr-bEon4nj9KJoZJOXc22zdRQzD2Qe9dlqZeZ-tbZKxnvXWi1GI5Dzm2-IIZadXbN1dmNfrTi8O5ihDtMQUC4hbhJjlgSLNpWsGncbNN_eDeBLKcP5UQmeudYXv4mTvQJiyTeYOp9m_cLyeRYZtk64klpcVM4NRIK0wBFbfMmOBDeppaQnNeZoKT8CYzqAYya-eMy8"
+              alt="Ukázka účesu 2"
+              class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
+            >
+          </div>
+        </div>
+
+        <!-- FOTO 3 -->
+        <div class="gallery-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+          <div class="group relative overflow-hidden rounded-xl">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWsvhcPI2a3DydZ0t2-l_tREwYFHpt4NFSzd5ELUBOvJrvsrWQSmCFCptNqe32AOw8tr1HIip3tyAWhc11s8Nq8IFU-bwVVna5MYOYoYj2tTkPfD4TsdRL2VhDkqEOyMH2aZ2e_sKjVOWlKqwEg5_zcRKM77gl2y7hxeYX9fc092HmKWqgAfDeXeKOQSuFskPL5RrTafFm58uWTlYWusyRuopWbILtzsB4b3SuDzV4lDym2CsKUmyv8Oc3znG3UCZEel0"
+              alt="Ukázka účesu 3"
+              class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
+            >
+          </div>
+        </div>
+
+        <!-- FOTO 4 -->
+        <div class="gallery-slide flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+          <div class="group relative overflow-hidden rounded-xl">
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWBw4PxsFHgp8_ruenvL7_lsyXaLIMXN9fQpieda3P6n_Fd74tKcKgYed-CrAm2SzmT8iCaI2RxQjTK4qf82tDT1keN3TjXw82LwG8cg_NlunwFNiXFPCAtlq1AYkmstICdbhWBlmXtY7-E40pBzOS2RAkNZm09NpD6KFG4Kij4NrDfwBIilagEd5br2jEsv6yoaEEXwPyJYhkYYvAUzq4vBX5OPkm-slu1_v2AwOJCDrAWC1nn0_-W2XYI2WkXtmyGjw"
+              alt="Ukázka účesu 4"
+              class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-105"
+            >
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right arrow -->
+    <button
+      id="gallery-next"
+      type="button"
+      aria-label="Další fotografie"
+      class="absolute right-0 top-1/2 -translate-y-1/2 z-10
+             w-12 h-12 rounded-full bg-white/90 shadow-md
+             flex items-center justify-center
+             text-on-surface hover:bg-primary hover:text-white
+             transition-all duration-300
+             translate-x-1/2"
+    >
+      →
+    </button>
+
   </div>
-  <div class="reveal group relative overflow-hidden rounded-xl active">
-    <img alt="Hair styling example 3" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWsvhcPI2a3DydZ0t2-l_tREwYFHpt4NFSzd5ELUBOvJrvsrWQSmCFCptNqe32AOw8tr1HIip3tyAWhc11s8Nq8IFU-bwVVna5MYOYoYj2tTkPfD4TsdRL2VhDkqEOyMH2aZ2e_sKjVOWlKqwEg5_zcRKM77gl2y7hxeYX9fc092HmKWqgAfDeXeKOQSuFskPL5RrTafFm58uWTlYWusyRuopWbILtzsB4b3SuDzV4lDym2CsKUmyv8Oc3znG3UCZEel0">
-  </div>
-  <div class="reveal group relative overflow-hidden rounded-xl active">
-    <img alt="Hair styling example 4" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWBw4PxsFHgp8_ruenvL7_lsyXaLIMXN9fQpieda3P6n_Fd74tKcKgYed-CrAm2SzmT8iCaI2RxQjTK4qf82tDT1keN3TjXw82LwG8cg_NlunwFNiXFPCAtlq1AYkmstICdbhWBlmXtY7-E40pBzOS2RAkNZm09NpD6KFG4Kij4NrDfwBIilagEd5br2jEsv6yoaEEXwPyJYhkYYvAUzq4vBX5OPkm-slu1_v2AwOJCDrAWC1nn0_-W2XYI2WkXtmyGjw">
-  </div>
-</div>
 </section>
 
 <section class="py-stack-lg bg-primary/5" id="recenze">
@@ -321,6 +400,115 @@ import '../styles/global.css';
           if(gradient) gradient.style.opacity = '0';
       }
   }
+</script>
+
+<script>
+  const track = document.getElementById("gallery-track");
+  const originalSlides = Array.from(
+    document.querySelectorAll(".gallery-slide")
+  );
+
+  const prevButton = document.getElementById("gallery-prev");
+  const nextButton = document.getElementById("gallery-next");
+
+  let currentIndex = 3;
+  let isAnimating = false;
+
+  // Duplikujeme první 3 a poslední 3 fotky
+  const slidesPerView = 3;
+
+  const firstClones = originalSlides
+    .slice(0, slidesPerView)
+    .map(slide => slide.cloneNode(true));
+
+  const lastClones = originalSlides
+    .slice(-slidesPerView)
+    .map(slide => slide.cloneNode(true));
+
+  // Přidáme kopie na začátek
+  lastClones.reverse().forEach(slide => {
+    track.insertBefore(slide, track.firstChild);
+  });
+
+  // Přidáme kopie na konec
+  firstClones.forEach(slide => {
+    track.appendChild(slide);
+  });
+
+  const slides = Array.from(
+    track.querySelectorAll(".gallery-slide")
+  );
+
+  function getSlidesPerView() {
+    if (window.innerWidth >= 1024) {
+      return 3;
+    }
+
+    if (window.innerWidth >= 768) {
+      return 2;
+    }
+
+    return 1;
+  }
+
+  function updateCarousel(animate = true) {
+    const visibleSlides = getSlidesPerView();
+
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = 24;
+
+    track.style.transition = animate
+      ? "transform 500ms ease-in-out"
+      : "none";
+
+    track.style.transform =
+      `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+  }
+
+  nextButton.addEventListener("click", () => {
+    if (isAnimating) return;
+
+    isAnimating = true;
+    currentIndex++;
+
+    updateCarousel(true);
+  });
+
+  prevButton.addEventListener("click", () => {
+    if (isAnimating) return;
+
+    isAnimating = true;
+    currentIndex--;
+
+    updateCarousel(true);
+  });
+
+  track.addEventListener("transitionend", () => {
+    const originalLength = originalSlides.length;
+
+    // Jsme za poslední skutečnou fotkou
+    if (currentIndex >= originalLength + slidesPerView) {
+      currentIndex = slidesPerView;
+
+      updateCarousel(false);
+    }
+
+    // Jsme před první skutečnou fotkou
+    if (currentIndex < slidesPerView) {
+      currentIndex = originalLength + slidesPerView - 1;
+
+      updateCarousel(false);
+    }
+
+    isAnimating = false;
+  });
+
+  window.addEventListener("resize", () => {
+    updateCarousel(false);
+  });
+
+  // Začínáme na první skutečné fotce
+  updateCarousel(false);
 </script>
 
 </body>
