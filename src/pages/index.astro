@@ -1,11 +1,327 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import '../styles/global.css';
 ---
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="cs">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Kadeřnictví Petra</title>
 
-<Layout>
-	<Welcome />
-</Layout>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/20">
+
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-outline-variant/20 transition-all duration-300 px-gutter py-1" id="main-nav">
+<div class="max-w-container-max mx-auto flex justify-between items-center">
+<a class="font-headline-sm text-primary flex items-center gap-2 group" href="#">
+<img alt="KP Logo" class="w-17 h-17 object-contain scale-115 group-hover:scale-135 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1pYNkVrumGXcnG3Kms4rFIhsT5kG6saj7xoUtZ63DrJjAv5G4hMklzhM-FdvH-nPSCr6hnLcUsIUtqe379i5Q_mJbewCsJPswSdtFvLt1WXZ068eVZLqM0gDgwz94XGCoAwM-y8OXiUwrR28V2YmInJlJGL5xNHZr6BwYttHBjTfipW8egmPyLLQUsGlndOvGaNtKPnImzoKALFtVtLIENmcDjin1TTgCyyYtXSL4oO9M7ikSELh5bWQd_zEwFvg2VQ">
+<span class="font-Inter tracking-tight text-xl md:text-3xl">Kadeřnictví Petra</span>
+</a>
+<div class="hidden md:flex items-center gap-8 font-Inter uppercase tracking-wider">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#o-nas">O nás</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#sluzby">Služby & Ceník</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#galerie">Galerie</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#recenze">Recenze</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#kontakt">Kontakt</a>
+</div>
+<a class="bg-primary text-on-primary px-6 py-2 rounded-full font-Inter hover:bg-primary/90 transition-all shadow-md" href="#kontakt">
+  REZERVACE
+</a>
+</div>
+</nav>
+
+<header class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Interiér salónu" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-qKPR5pemmwZ8P3YTpNC5IjlXToAPAS17t7sYr53D_SRR3rH3jwvOBDYdwDfylTQ9s6ZmOtXYY5LxpTlpfNkpgAOogei9M3hYEjfvUErWOYHrtIonFu89AARFD5ZEMjbEVKpeifkkv6fFByqi31oYyKUveKwjiY5bezN78t5nLRBjeczTHKDy5i0yWd6TnyxkvwQb3T77bAHoRPii5k-BIMcSf8_3tqhk1iJlPc6_EidVHn50kUmWQQ">
+<div class="absolute inset-0 bg-black/20"></div>
+</div>
+<div class="relative z-10 text-center px-gutter flex flex-col items-center">
+<p class="font-Inter text-white text-2xl drop-shadow-md mb-12 italic reveal active" style="transition-delay: 400ms;">
+  Vaše krása, má vášeň
+</p>
+<div class="flex flex-col sm:flex-row gap-6 reveal active" style="transition-delay: 600ms;">
+<a class="bg-primary text-on-primary px-10 py-4 rounded-full font-Inter tracking-widest hover:scale-105 transition-transform shadow-xl" href="#kontakt">
+  REZERVOVAT TERMÍN
+</a>
+<a class="bg-white/90 backdrop-blur-sm text-primary border border-primary/20 px-10 py-4 rounded-full font-Inter tracking-widest hover:bg-white transition-all shadow-lg" href="#sluzby">
+  PROHLÉDNOUT CENÍK
+</a>
+</div>
+</div>
+</header>
+
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto" id="o-nas">
+<div class="grid md:grid-cols-2 gap-stack-md items-center">
+<div class="relative reveal active">
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl relative z-10"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRBg3XIWUoLvXjOcWo4Qk3ZjoYxcAfZeD9aoH4pq84X52FbCKdIRQxT_EZvQ8qBPZYVRanXmWWl93Zz87BBOULcYg3qdAnEanN1Z8WQnAOdIKktCEqpe-j6XMuBvE7Yeu20y7W6KLItNX5kCeIZRYn7QOjqjlE7xNp7Lz3jDalyFaWK4GTYj5NTaW0RLcl0cBbUEum7SlauFB6StG4GMre_YGLG3CvUCkd75m_ChK0zkcOXL86R6xtrQ" alt="Petra Kavková - majitelka salónu" class="w-full h-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"></div>
+<div class="absolute -bottom-6 -left-6 w-48 h-48 bg-primary-fixed-dim/30 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -top-6 -right-6 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl -z-10"></div>
+</div>
+<div class="reveal active">
+<span class="text-primary font-Inter uppercase tracking-[0.2em] mb-4 block">Příběh elegance</span>
+<h2 class="font-Inter text-3xl text-on-surface mb-6">O mně a mém salónu</h2>
+<div class="space-y-6 font-Inter text-on-surface-variant leading-relaxed">
+<div class="">Lorem ipsum dolor sit amet. At ipsum accusantium sed ipsam nesciunt At molestiae quod. Est possimus molestiae est voluptatum eveniet vel rerum omnis sit optio assumenda et ipsam maiores ad accusantium nihil qui consequatur quis.</div>
+<div class="">Sit nostrum eveniet qui impedit magnam est officia voluptas ut quia internos est inventore molestiae est fuga minus! Ut neque reiciendis eum ducimus quae est dolor iste sed dolorum pariatur.</div>
+<div class="">Ut error quaerat in iusto possimus a inventore molestias. Est saepe quas cum minus sequi ab placeat temporibus aut totam nihil sed iusto deleniti.</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="py-stack-lg bg-surface-container-low" id="sluzby">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16 reveal active">
+<span class="text-primary font-Inter uppercase tracking-[0.2em] mb-4 block">Služby & Ceník</span>
+<h2 class="font-Inter text-3xl text-on-surface">Péče, kterou si zasloužíte</h2>
+</div>
+
+<div class="w-full rounded-3xl shadow-sm open-reveal mb-12 relative flex flex-col items-center active">
+<div class="w-full overflow-hidden image-wrapper relative" id="stylImageWrapper">
+<img alt="Typy účesů" class="w-full h-auto object-contain object-top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR5G8awWpRAmoa-AvVPU7tm_42KFnbp_VllxNrCKgzujCuv1b8c1lVF-EFB6jW3cMw9YKj4sfOrss9iofL5XhfyrabyarTztGGyqUgQ8nhhmxluXzebFxQ_EZd6Bv-vvLuf3R_NN6-aiX2wwDfSh0l1DrdoKKTVcg1vubYltpr-fAd5dwa-bHS_KT94_CZUW_iNkzUH3TyHv2ci-91O9QojH-Nd9WupEbksXsUNyfbY9JhDFNQassvfA3Op5c7hJ9EKBg">
+<div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-surface-container-low to-transparent pointer-events-none transition-opacity duration-500" id="stylImageGradient"></div>
+</div>
+<button class="bg-primary text-on-primary px-7 py-3 rounded-full font-Inter tracking-widest hover:scale-105 transition-transform shadow-xl z-10 mt-[-20px]" id="toggleStylImageBtn" onclick="toggleStylImage()">ZOBRAZIT VÍCE</button>
+</div>
+
+<div class="flex justify-center mb-12 reveal active">
+<div class="inline-flex bg-white/50 p-1 rounded-full border border-outline-variant/30">
+<button class="tab-btn px-8 py-2 rounded-full font-Inter uppercase tracking-widest transition-all active" id="tab-damy" onclick="switchTab('damy')">Dámy</button>
+<button class="tab-btn px-8 py-2 rounded-full font-Inter uppercase tracking-widest transition-all" id="tab-pani" onclick="switchTab('pani')">Páni</button>
+<button class="tab-btn px-8 py-2 rounded-full font-Inter uppercase tracking-widest transition-all" id="tab-deti" onclick="switchTab('deti')">Děti</button>
+</div>
+</div>
+
+<div class="max-w-5xl mx-auto">
+<div class="tab-content flex flex-col gap-12" id="content-damy">
+<div class="reveal active">
+<h3 class="font-Inter text-2xl text-primary border-b border-primary/20 pb-2 mb-6">Střihy a Mytí</h3>
+<div class="space-y-4">
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Mytí (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">110 / 120 / 130 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Stříhání (klasické / módní)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">140 / 240-300 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Stříhání konečků</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">110 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Efilace<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Speciální technika prostříhávání vlasů pro odlehčení účesu a dodání textury.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">90 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Společenský účes</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">400 - 1500 Kč</span></div>
+</div>
+</div>
+<div class="reveal active">
+<h3 class="font-Inter text-2xl text-primary border-b border-primary/20 pb-2 mb-6">Foukaná a Vodová</h3>
+<div class="space-y-4">
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Foukaná (krátké / střední / dlouhé)<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Styling účesu přes kulatý kartáč pro dokonalý tvar a lesk.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">160 / 180 / 220 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Vodová (krátké / střední / dlouhé)<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Klasická technika tvarování účesu pomocí natáček pro dlouhotrvající efekt.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">290 / 310 / 410 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Sušení</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">220 - 300 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Žehlení (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">150 / 170 / 260 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Loknování (krátké - střední / dlouhé)<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Profesionální tvorba vln a loken pro přirozený objem.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">260 / 380 Kč</span></div>
+</div>
+</div>
+<div class="reveal active">
+<h3 class="font-Inter text-2xl text-primary border-b border-primary/20 pb-2 mb-6">Barvení a Melíry</h3>
+<div class="space-y-4">
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Barvení (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">450 / 500 / 670 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Melír (krátké / střední / dlouhé)<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Zesvětlení nebo ztmavení vybraných pramenů vlasů pro dosažení plastického vzhledu.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">480 / 530 / 760 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Melír barvou (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">400 / 480 / 610 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Tónování / Přeliv (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">390 / 440 / 590 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Dobarvení (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">390 / 420 / 480 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Odbarvovací lázeň (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">450 / 550 / 750 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Ombré<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Technika barvení, která vytváří plynulý přechod z tmavších kořínků do světlých konečků.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">400 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Balayage<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Moderní metoda barvení 'volnou rukou', která vytváří přirozený efekt prosluněných vlasů bez ostrých přechodů.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">700 Kč</span></div>
+</div>
+</div>
+<div class="reveal active">
+<h3 class="font-Inter text-2xl text-primary border-b border-primary/20 pb-2 mb-6">Preparace a Péče</h3>
+<div class="space-y-4">
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold relative group cursor-help">Preparace (krátké / střední / dlouhé)<span class="ml-1 text-primary/50 material-symbols-outlined text-[16px] align-middle">info</span><span class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 p-3 bg-surface-container-highest text-on-surface text-xs font-normal rounded-xl shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 border border-outline-variant/30">Trvalá preparace vlasů pro dosažení vlnitého nebo kudrnatého efektu.</span></p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">420 / 520 / 770 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Regenerační maska (5 min) (krátké / střední / dlouhé)</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">110 / 120 / 150 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Zábal</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">280 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Masáž hlavy</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">150 Kč</span></div>
+<div class="price-row hover:scale-[1.02] transition-transform duration-300 cursor-default ease-in-out"><p class="font-bold">Péče o pokožku</p><span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">110 Kč</span></div>
+</div>
+</div>
+</div>
+
+<div class="tab-content space-y-8 hidden" id="content-pani">
+<div class="reveal active">
+<h3 class="font-Inter text-2xl text-primary border-b border-primary/20 pb-2 mb-6">Pánské služby</h3>
+<div class="space-y-4">
+<div class="price-row transition-transform duration-300 cursor-default ease-in-out hover:scale-[1.02]">
+<p class="font-bold">Stříhání</p>
+<span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">160 Kč</span>
+</div>
+<div class="price-row transition-transform duration-300 cursor-default ease-in-out hover:scale-[1.02]">
+<p class="font-bold">Stříhání dohola</p>
+<span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">170 Kč</span>
+</div>
+<div class="price-row transition-transform duration-300 cursor-default ease-in-out hover:scale-[1.02]">
+<p class="font-bold">Módní střih</p>
+<span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">220 - 300 Kč</span>
+</div>
+<div class="price-row transition-transform duration-300 cursor-default ease-in-out hover:scale-[1.02]">
+<p class="font-bold">Úprava vousů</p>
+<span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">160 Kč</span>
+</div>
+<div class="price-row transition-transform duration-300 cursor-default ease-in-out hover:scale-[1.02]">
+<p class="font-bold">Masáž hlavy</p>
+<span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">150 Kč</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="tab-content space-y-8 hidden" id="content-deti">
+<div class="reveal active">
+<h3 class="font-Inter text-2xl text-primary border-b border-primary/20 pb-2 mb-6">Dětské střihy</h3>
+<div class="space-y-4">
+<div class="price-row transition-transform duration-300 cursor-default ease-in-out hover:scale-[1.02]">
+<p class="font-bold">Stříhání dětí</p>
+<span class="price-leader" aria-hidden="true"></span><span class="text-primary font-bold whitespace-nowrap shrink-0">100 Kč</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-16 text-center reveal active">
+<p class="text-on-surface-variant italic mb-6 font-Inter">Ceny jsou orientační a odvíjejí se od délky, hustoty vlasů a spotřeby materiálu.</p>
+</div>
+</div>
+</section>
+
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto" id="galerie">
+<div class="text-center mb-16 reveal active">
+<span class="text-primary font-Inter uppercase tracking-[0.2em] mb-4 block">Moje práce</span>
+<h2 class="font-Inter text-2xl text-on-surface">Inspirujte se</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div class="reveal group relative overflow-hidden rounded-xl active">
+    <img alt="Hair styling example 1" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVrUypYXNOcXD19NdhKRM2YPCftq5m5q0fKlTNzllmFAbZHAJtCaYehT8b6i62hmNBurgnDu4u0cqmsEqYFObUU2Tr2anWsJmbKDsHWAc-0d7yqiOUP00jQGpjbeohO2QMod4pkYpJZaf-bpIqmKVAXAgNQzy_-cxLPCggR7ychdvdjDIf-ujk7j8We7gpJFEvN5D1q6acBc6CbBlVSu6uTPUo6JYFC8T21lcwjt-kieNIBveSUsl5yyl8rk4BwnY-aPE">
+  </div>
+  <div class="reveal group relative overflow-hidden rounded-xl active">
+    <img alt="Hair styling example 2" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRwAiCaim7lXHsTzVeDrDttssC0NlONFVCIR5Vp6xLbpUCIQEBueW9GcVPEaT1Tmr-bEon4nj9KJoZJOXc22zdRQzD2Qe9dlqZeZ-tbZKxnvXWi1GI5Dzm2-IIZadXbN1dmNfrTi8O5ihDtMQUC4hbhJjlgSLNpWsGncbNN_eDeBLKcP5UQmeudYXv4mTvQJiyTeYOp9m_cLyeRYZtk64klpcVM4NRIK0wBFbfMmOBDeppaQnNeZoKT8CYzqAYya-eMy8">
+  </div>
+  <div class="reveal group relative overflow-hidden rounded-xl active">
+    <img alt="Hair styling example 3" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWsvhcPI2a3DydZ0t2-l_tREwYFHpt4NFSzd5ELUBOvJrvsrWQSmCFCptNqe32AOw8tr1HIip3tyAWhc11s8Nq8IFU-bwVVna5MYOYoYj2tTkPfD4TsdRL2VhDkqEOyMH2aZ2e_sKjVOWlKqwEg5_zcRKM77gl2y7hxeYX9fc092HmKWqgAfDeXeKOQSuFskPL5RrTafFm58uWTlYWusyRuopWbILtzsB4b3SuDzV4lDym2CsKUmyv8Oc3znG3UCZEel0">
+  </div>
+  <div class="reveal group relative overflow-hidden rounded-xl active">
+    <img alt="Hair styling example 4" class="w-full aspect-[3/4] object-cover transition-transform duration-500 group-hover:scale-110 hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWBw4PxsFHgp8_ruenvL7_lsyXaLIMXN9fQpieda3P6n_Fd74tKcKgYed-CrAm2SzmT8iCaI2RxQjTK4qf82tDT1keN3TjXw82LwG8cg_NlunwFNiXFPCAtlq1AYkmstICdbhWBlmXtY7-E40pBzOS2RAkNZm09NpD6KFG4Kij4NrDfwBIilagEd5br2jEsv6yoaEEXwPyJYhkYYvAUzq4vBX5OPkm-slu1_v2AwOJCDrAWC1nn0_-W2XYI2WkXtmyGjw">
+  </div>
+</div>
+</section>
+
+<section class="py-stack-lg bg-primary/5" id="recenze">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16 reveal active">
+<h2 class="font-Inter text-2xl text-on-surface">Recenze</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-gutter">
+</div>
+</div>
+</section>
+
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto" id="kontakt">
+<div class="grid lg:grid-cols-2 gap-stack-md">
+<div class="reveal active">
+<h2 class="font-Inter text-2xl text-on-surface mb-8">Spojme se</h2>
+<div class="space-y-8 mb-12">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-xl">person</span>
+<div>
+<p class="font-bold text-on-surface">Petra Kavková</p>
+<p class="text-on-surface-variant">Majitelka & Kadeřnice</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-xl">phone</span>
+<div>
+<p class="font-bold text-on-surface">604 172 884</p>
+<p class="text-on-surface-variant">Zavolejte pro rezervaci</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-xl">location_on</span>
+<div>
+<p class="font-bold text-on-surface">Hliník 34, Bochoř</p>
+<p class="text-on-surface-variant">Pohodlné parkování přímo u salónu</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="rounded-2xl overflow-hidden shadow-lg h-72 border border-outline-variant/30 group reveal active">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLc9aozjVUkVHPpS7cURAO1lfIl8wdoocWKWuhgF5w_HXg56nF3gp58184gCAS4pk1m6cap2gLPOn9NiQtsa0M_GTVPkjxSCyow57dFIIdr0Tn-pGFFhqYWsSVIcT5CN8HO1F44w44CFXHDvLjr_IUpY6uFzNoLzuLw3gZSjrefbyAu4gGczWGmCahA3RYIYHDQWZx_DV_7NzBQxoQU1VLQsrsxKJeG1Gog5GpgEpRenIzFeYCAWXI">
+</div>
+</div>
+</section>
+
+<footer class="bg-surface-container-highest py-stack-md">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
+<div class="text-center md:text-left">
+<a class="font-Inter text-primary flex items-center gap-2 justify-center md:justify-start" href="#">
+<img alt="Logo" class="w-[47px] h-[47px] opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2K4PTAle38bQxN0nfRkLRercp1fNcxnoweNUsx-j_TDtMRDWfTndNEr8BRzlNKfmvp2GowV1w7a-u1CmMo_N0bnnpLoXQtOzX-zehodP0abeCnXJdN4if5yXcLidxE2mwcYnI6FfkP4-LXBkK3qeNrshSYWtHjkbIm10UV7Uc0kLg36-Zy9jdz3arhpSkmevv31qaNT8WmtYzloOBci12pGlKI1MXGBmgBZBRVFdqWhGxh15LvJaSYILA3tVYI5xEyw">
+<span class="font-Inter text-xl tracking-tight">Kadeřnictví Petra</span>
+</a>
+<p class="font-Inter mt-2 opacity-60">Prémiová péče o vaše vlasy v srdci Bochoře</p>
+</div>
+<div class="flex gap-12 font-Inter uppercase tracking-widest opacity-70">
+<a class="hover:text-primary transition-colors" href="#">Ochrana dat</a>
+<a class="hover:text-primary transition-colors" href="#">Podmínky</a>
+<div class="flex gap-4 items-center ml-4 border-l border-outline-variant/30 pl-8">
+<a aria-label="Instagram" class="text-primary hover:scale-110 transition-transform" href="#"><svg fill="none" height="30" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg></a>
+<a aria-label="Facebook" class="text-primary hover:scale-110 transition-transform" href="#"><svg fill="none" height="30" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="30" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+</div>
+</div>
+</div>
+<div class="border-t border-outline-variant/20 pt-1 text-center opacity-40 text-Inter">
+© 2026 Kadeřnictví Petra. Všechna práva vyhrazena.
+</div>
+</div>
+</footer>
+
+<script is:inline>
+  // Scroll reveal
+  const reveal = () => {
+      const reveals = document.querySelectorAll(".reveal, .open-reveal");
+      reveals.forEach(el => {
+          const windowHeight = window.innerHeight;
+          const elementTop = el.getBoundingClientRect().top;
+          const elementVisible = 100;
+          if (elementTop < windowHeight - elementVisible) {
+              el.classList.add("active");
+          }
+      });
+  }
+  window.addEventListener("scroll", reveal);
+  window.addEventListener("load", reveal);
+
+  // Přepínání záložek ceníku (Dámy, Páni, Děti)
+  window.switchTab = function(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+
+      document.getElementById('tab-' + tabName).classList.add('active');
+      document.getElementById('content-' + tabName).classList.remove('hidden');
+  }
+
+  // Rozbalení / sbalení ukázkového obrázku
+  window.toggleStylImage = function() {
+      const wrapper = document.getElementById('stylImageWrapper');
+      const btn = document.getElementById('toggleStylImageBtn');
+      const gradient = document.getElementById('stylImageGradient');
+
+      if (wrapper.classList.contains('expanded')) {
+          wrapper.classList.remove('expanded');
+          btn.innerText = 'ZOBRAZIT VÍCE';
+          if(gradient) gradient.style.opacity = '1';
+      } else {
+          wrapper.classList.add('expanded');
+          btn.innerText = 'ZOBRAZIT MÉNĚ';
+          if(gradient) gradient.style.opacity = '0';
+      }
+  }
+</script>
+
+</body>
+</html>
