@@ -311,12 +311,24 @@ import '../styles/global.css';
 <p class="text-on-surface-variant">Majitelka & Kadeřnice</p>
 </div>
 </div>
-<div class="flex items-start gap-4">
-<span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-xl">phone</span>
-<div>
-<p class="font-bold text-on-surface">604 172 884</p>
-<p class="text-on-surface-variant">Zavolejte pro rezervaci</p>
-</div>
+<div
+  id="copy-phone"
+  class="flex items-start gap-4 cursor-pointer group"
+  title="Kliknutím zkopírujete číslo"
+>
+  <span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-xl transition-colors duration-300 group-hover:bg-primary group-hover:text-white">
+    phone
+  </span>
+
+  <div>
+    <p class="font-bold text-on-surface">604 172 884</p>
+    <p
+      id="phone-copy-text"
+      class="text-on-surface-variant transition-colors duration-300 group-hover:text-primary"
+    >
+      Kliknutím zkopírujete číslo
+    </p>
+  </div>
 </div>
 <div class="flex items-start gap-4">
 <span class="material-symbols-outlined text-primary bg-primary/10 p-3 rounded-xl">location_on</span>
@@ -509,6 +521,26 @@ import '../styles/global.css';
 
   // Začínáme na první skutečné fotce
   updateCarousel(false);
+</script>
+
+<script>
+  const copyPhone = document.getElementById("copy-phone");
+  const phoneCopyText = document.getElementById("phone-copy-text");
+
+  copyPhone.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("604 172 884");
+
+      phoneCopyText.textContent = "✓ Číslo zkopírováno";
+
+      setTimeout(() => {
+        phoneCopyText.textContent = "Kliknutím zkopírujete číslo";
+      }, 2000);
+
+    } catch (error) {
+      console.error("Nepodařilo se zkopírovat číslo:", error);
+    }
+  });
 </script>
 
 </body>
