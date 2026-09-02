@@ -127,7 +127,11 @@
 }
 
 .material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
 }
 
 .reveal {
@@ -198,7 +202,8 @@
   align-items: baseline;
   gap: 1rem;
   padding-block: 0.5rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
 }
 
 .price-row:last-child {
