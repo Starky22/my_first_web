@@ -3,67 +3,25 @@
 @source "../**/*.{astro,html,js,ts,jsx,tsx}";
 
 @theme {
-  --color-surface-container-low: #fbf0fb;
-  --color-on-primary-fixed: #2f004b;
-  --color-inverse-primary: #e4b5ff;
-  --color-error: #ba1a1a;
-  --color-on-primary: #ffffff;
-  --color-surface-container-high: #f0e5f0;
-  --color-on-tertiary-fixed: #291800;
-  --color-surface: #fff7fc;
-  --color-primary-fixed: #f4d9ff;
-  --color-surface-bright: #fff7fc;
-  --color-secondary-container: #f8d4fe;
-  --color-secondary: #715478;
-  --color-surface-container-lowest: #ffffff;
-  --color-outline-variant: #d0c2d3;
-  --color-error-container: #ffdad6;
   --color-background: #fff7fc;
-  --color-on-secondary-fixed-variant: #583d5f;
-  --color-primary-fixed-dim: #e4b5ff;
-  --color-secondary-fixed-dim: #debbe4;
-  --color-on-tertiary-fixed-variant: #633f00;
-  --color-tertiary-container: #623f00;
   --color-on-surface: #1f1a21;
-  --color-on-primary-container: #da9cff;
-  --color-outline: #7f7383;
-  --color-surface-variant: #eadfea;
-  --color-on-background: #1f1a21;
-  --color-inverse-on-surface: #f9edf9;
-  --color-surface-dim: #e1d7e2;
   --color-on-surface-variant: #4d4351;
-  --color-on-secondary-container: #75597c;
-  --color-on-error: #ffffff;
-  --color-primary-container: #6a1b9a;
-  --color-secondary-fixed: #fad7ff;
-  --color-on-secondary: #ffffff;
-  --color-surface-container: #f6eaf6;
-  --color-surface-tint: #843ab4;
-  --color-on-error-container: #93000a;
-  --color-on-tertiary-container: #deac66;
-  --color-tertiary-fixed: #ffddb3;
-  --color-on-tertiary: #ffffff;
-  --color-on-primary-fixed-variant: #6a1b9a;
-  --color-tertiary-fixed-dim: #f2bd76;
-  --color-tertiary: #442b00;
+  --color-on-primary: #ffffff;
+  --color-outline-variant: #d0c2d3;
   --color-primary: #4e0078;
+  --color-primary-fixed-dim: #e4b5ff;
+  --color-secondary-container: #f8d4fe;
+  --color-surface-container-low: #fbf0fb;
   --color-surface-container-highest: #eadfea;
-  --color-on-secondary-fixed: #291231;
-  --color-inverse-surface: #342e37;
 
-  --spacing-stack-sm: 16px;
-  --spacing-margin-mobile: 20px;
   --spacing-stack-md: 32px;
-  --spacing-container-max: 1200px;
   --spacing-stack-lg: 64px;
   --spacing-gutter: 24px;
-  --spacing-base: 8px;
 
   --container-container-max: 1200px;
 
   --font-display: "Playfair Display", serif;
   --font-body: "Montserrat", sans-serif;
-  --font-headline: "Inter", sans-serif;
 }
 
 @utility font-headline-md {
@@ -183,8 +141,8 @@
 }
 
 .tab-btn.active {
-  color: #4e0078;
-  border-bottom: 2px solid #4e0078;
+  color: white;
+  background-color: #4e0078;
 }
 
 .image-wrapper {
@@ -208,4 +166,11 @@
 
 .price-row:last-child {
   border-bottom: none;
+}
+
+.price-leader {
+  flex: 1;
+  border-bottom: 1px dotted currentColor;
+  margin: 0 0.75rem;
+  opacity: 0.4;
 }
