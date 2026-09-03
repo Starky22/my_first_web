@@ -8,6 +8,18 @@ import "../styles/global.css";
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Kadeřnictví Petra</title>
+    <noscript>
+      <style>
+        .reveal,
+        .open-reveal,
+        .custom-reveal {
+          opacity: 1;
+          transform: none;
+          clip-path: none;
+          animation: none;
+        }
+      </style>
+    </noscript>
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap"
@@ -201,6 +213,7 @@ import "../styles/global.css";
             </div>
           </div>
           <button
+            type="button"
             class="bg-primary text-on-primary font-Inter z-10 mt-[-20px] rounded-full px-7 py-3 tracking-widest shadow-xl transition-transform hover:scale-105"
             id="toggleStylImageBtn"
             onclick="toggleStylImage()">ZOBRAZIT VÍCE</button
@@ -210,18 +223,35 @@ import "../styles/global.css";
         <div class="reveal active mb-12 flex justify-center">
           <div
             class="border-outline-variant/30 inline-flex rounded-full border bg-white/50 p-1"
+            role="tablist"
+            aria-label="Kategorie ceníku"
           >
             <button
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="content-damy"
+              tabindex="0"
               class="tab-btn font-Inter active rounded-full px-8 py-2 tracking-widest uppercase transition-all"
               id="tab-damy"
               onclick="switchTab('damy')">Dámy</button
             >
             <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="content-pani"
+              tabindex="-1"
               class="tab-btn font-Inter rounded-full px-8 py-2 tracking-widest uppercase transition-all"
               id="tab-pani"
               onclick="switchTab('pani')">Páni</button
             >
             <button
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="content-deti"
+              tabindex="-1"
               class="tab-btn font-Inter rounded-full px-8 py-2 tracking-widest uppercase transition-all"
               id="tab-deti"
               onclick="switchTab('deti')">Děti</button
@@ -230,7 +260,12 @@ import "../styles/global.css";
         </div>
 
         <div class="mx-auto max-w-5xl">
-          <div class="tab-content flex flex-col gap-12" id="content-damy">
+          <div
+            class="tab-content flex flex-col gap-12"
+            id="content-damy"
+            role="tabpanel"
+            aria-labelledby="tab-damy"
+          >
             <div class="reveal active">
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
@@ -268,15 +303,18 @@ import "../styles/global.css";
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Efilace<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Speciální technika prostříhávání vlasů pro odlehčení
                       účesu a dodání textury.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >90 Kč</span>
                 </div>
@@ -301,30 +339,36 @@ import "../styles/global.css";
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Foukaná (krátké / střední / dlouhé)<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Styling účesu přes kulatý kartáč pro dokonalý tvar a
                       lesk.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >160 / 180 / 220 Kč</span>
                 </div>
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Vodová (krátké / střední / dlouhé)<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Klasická technika tvarování účesu pomocí natáček pro
                       dlouhotrvající efekt.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >290 / 310 / 410 Kč</span>
                 </div>
@@ -349,14 +393,17 @@ import "../styles/global.css";
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Loknování (krátké - střední / dlouhé)<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Profesionální tvorba vln a loken pro přirozený objem.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >260 / 380 Kč</span>
                 </div>
@@ -381,15 +428,18 @@ import "../styles/global.css";
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Melír (krátké / střední / dlouhé)<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Zesvětlení nebo ztmavení vybraných pramenů vlasů pro
                       dosažení plastického vzhledu.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >480 / 530 / 760 Kč</span>
                 </div>
@@ -432,30 +482,36 @@ import "../styles/global.css";
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Ombré<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Technika barvení, která vytváří plynulý přechod z
                       tmavších kořínků do světlých konečků.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >400 Kč</span>
                 </div>
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Balayage<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Moderní metoda barvení 'volnou rukou', která vytváří
                       přirozený efekt prosluněných vlasů bez ostrých přechodů.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >700 Kč</span>
                 </div>
@@ -471,15 +527,18 @@ import "../styles/global.css";
                 <div
                   class="price-row cursor-default transition-transform duration-300 ease-in-out hover:scale-[1.02]"
                 >
-                  <p class="group relative cursor-help font-bold">
+                  <button
+                    type="button"
+                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                  >
                     Preparace (krátké / střední / dlouhé)<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl transition-opacity group-hover:opacity-100"
+                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
                       >Trvalá preparace vlasů pro dosažení vlnitého nebo
                       kudrnatého efektu.</span>
-                  </p><span class="price-leader" aria-hidden="true"></span><span
+                  </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
                     >420 / 520 / 770 Kč</span>
                 </div>
@@ -523,7 +582,12 @@ import "../styles/global.css";
             </div>
           </div>
 
-          <div class="tab-content hidden space-y-8" id="content-pani">
+          <div
+            class="tab-content hidden space-y-8"
+            id="content-pani"
+            role="tabpanel"
+            aria-labelledby="tab-pani"
+          >
             <div class="reveal active">
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
@@ -580,7 +644,12 @@ import "../styles/global.css";
             </div>
           </div>
 
-          <div class="tab-content hidden space-y-8" id="content-deti">
+          <div
+            class="tab-content hidden space-y-8"
+            id="content-deti"
+            role="tabpanel"
+            aria-labelledby="tab-deti"
+          >
             <div class="reveal active">
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
@@ -735,26 +804,26 @@ import "../styles/global.css";
                 <p class="text-on-surface-variant">Majitelka & Kadeřnice</p>
               </div>
             </div>
-            <div
-              id="copy-phone"
-              class="group flex cursor-pointer items-start gap-4"
-              title="Kliknutím zkopírujete číslo"
-            >
-              <span
-                class="material-symbols-outlined text-primary bg-primary/10 group-hover:bg-primary rounded-xl p-3 transition-colors duration-300 group-hover:text-white"
+            <div class="flex items-center gap-4">
+              <a
+                href="tel:+420604172884"
+                class="group flex items-center gap-4"
               >
-                phone
-              </span>
-
-              <div>
-                <p class="text-on-surface font-bold">604 172 884</p>
-                <p
-                  id="phone-copy-text"
-                  class="text-on-surface-variant group-hover:text-primary transition-colors duration-300"
+                <span
+                  class="material-symbols-outlined text-primary bg-primary/10 group-hover:bg-primary rounded-xl p-3 transition-colors duration-300 group-hover:text-white"
                 >
-                  Kliknutím zkopírujete číslo
-                </p>
-              </div>
+                  phone
+                </span>
+                <span class="text-on-surface font-bold">604 172 884</span>
+              </a>
+              <button
+                type="button"
+                id="copy-phone"
+                aria-label="Zkopírovat telefonní číslo"
+                class="text-on-surface-variant hover:text-primary self-center text-sm transition-colors duration-300"
+              >
+                <span id="phone-copy-text">Zkopírovat číslo</span>
+              </button>
             </div>
             <div class="flex items-start gap-4">
               <span
@@ -871,7 +940,16 @@ import "../styles/global.css";
       // Scroll reveal
       const reveal = () => {
         const reveals = document.querySelectorAll(".reveal, .open-reveal");
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
         reveals.forEach((el) => {
+          if (reduceMotion) {
+            el.classList.add("active");
+            return;
+          }
+
           const windowHeight = window.innerHeight;
           const elementTop = el.getBoundingClientRect().top;
           const elementVisible = 100;
@@ -885,18 +963,38 @@ import "../styles/global.css";
 
       // Přepínání záložek ceníku (Dámy, Páni, Děti)
       window.switchTab = function (tabName) {
-        document
-          .querySelectorAll(".tab-btn")
-          .forEach((btn) => btn.classList.remove("active"));
-        document
-          .querySelectorAll(".tab-content")
-          .forEach((content) => content.classList.add("hidden"));
-
-        document.getElementById("tab-" + tabName).classList.add("active");
-        document
-          .getElementById("content-" + tabName)
-          .classList.remove("hidden");
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          const isActive = btn.id === "tab-" + tabName;
+          btn.classList.toggle("active", isActive);
+          btn.setAttribute("aria-selected", isActive ? "true" : "false");
+          btn.tabIndex = isActive ? 0 : -1;
+        });
+        document.querySelectorAll(".tab-content").forEach((content) => {
+          content.classList.toggle("hidden", content.id !== "content-" + tabName);
+        });
       };
+
+      const tabList = document.querySelector('[role="tablist"]');
+      if (tabList) {
+        tabList.addEventListener("keydown", (event) => {
+          const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+          const currentIndex = tabs.indexOf(document.activeElement);
+          if (currentIndex === -1) return;
+
+          let nextIndex = null;
+          if (event.key === "ArrowRight") {
+            nextIndex = (currentIndex + 1) % tabs.length;
+          } else if (event.key === "ArrowLeft") {
+            nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+          }
+          if (nextIndex === null) return;
+
+          event.preventDefault();
+          const tabName = tabs[nextIndex].id.replace(/^tab-/, "");
+          window.switchTab(tabName);
+          tabs[nextIndex].focus();
+        });
+      }
 
       // Rozbalení / sbalení ukázkového obrázku
       window.toggleStylImage = function () {
@@ -1019,7 +1117,7 @@ import "../styles/global.css";
           phoneCopyText.textContent = "✓ Číslo zkopírováno";
 
           setTimeout(() => {
-            phoneCopyText.textContent = "Kliknutím zkopírujete číslo";
+            phoneCopyText.textContent = "Zkopírovat číslo";
           }, 2000);
         } catch (error) {
           console.error("Nepodařilo se zkopírovat číslo:", error);

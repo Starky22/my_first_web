@@ -103,6 +103,14 @@
   transform: translateY(0);
 }
 
+#o-nas,
+#sluzby,
+#galerie,
+#recenze,
+#kontakt {
+  scroll-margin-top: max(5.75rem, 18vh);
+}
+
 @keyframes customReveal {
   from {
     opacity: 0;
@@ -173,4 +181,25 @@
   border-bottom: 1px dotted currentColor;
   margin: 0 0.75rem;
   opacity: 0.4;
+}
+
+.group:is(:hover, :focus-within) .price-tooltip {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.active,
+  .open-reveal,
+  .custom-reveal {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    animation: none;
+    transition: none;
+  }
+
+  .image-wrapper {
+    transition: none;
+  }
 }
