@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import salonHero from "../assets/salon.jpg?url";
 ---
 
 <!doctype html>
@@ -93,7 +94,7 @@ import "../styles/global.css";
         <img
           alt="Interiér salónu"
           class="h-full w-full object-cover"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-qKPR5pemmwZ8P3YTpNC5IjlXToAPAS17t7sYr53D_SRR3rH3jwvOBDYdwDfylTQ9s6ZmOtXYY5LxpTlpfNkpgAOogei9M3hYEjfvUErWOYHrtIonFu89AARFD5ZEMjbEVKpeifkkv6fFByqi31oYyKUveKwjiY5bezN78t5nLRBjeczTHKDy5i0yWd6TnyxkvwQb3T77bAHoRPii5k-BIMcSf8_3tqhk1iJlPc6_EidVHn50kUmWQQ"
+          src={salonHero}
         />
         <div class="absolute inset-0 bg-black/20"></div>
       </div>
@@ -104,7 +105,7 @@ import "../styles/global.css";
           class="font-Inter reveal active mb-12 text-2xl text-white italic drop-shadow-md"
           style="transition-delay: 400ms;"
         >
-          Vaše krása, má vášeň
+          Vaše vlasy, moje péče
         </p>
         <div
           class="reveal active flex flex-col gap-6 sm:flex-row"
@@ -194,30 +195,62 @@ import "../styles/global.css";
           </h2>
         </div>
 
-        <div
-          class="open-reveal active relative mb-12 flex w-full flex-col items-center rounded-3xl shadow-sm"
-        >
+        <div class="mb-12" role="radiogroup" aria-label="Délka vlasů">
           <div
-            class="image-wrapper relative w-full overflow-hidden"
-            id="stylImageWrapper"
+            class="mx-auto grid w-full max-w-md grid-cols-3 gap-2 sm:max-w-lg sm:gap-3 md:max-w-xl"
           >
-            <img
-              alt="Typy účesů"
-              class="h-auto w-full object-contain object-top"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR5G8awWpRAmoa-AvVPU7tm_42KFnbp_VllxNrCKgzujCuv1b8c1lVF-EFB6jW3cMw9YKj4sfOrss9iofL5XhfyrabyarTztGGyqUgQ8nhhmxluXzebFxQ_EZd6Bv-vvLuf3R_NN6-aiX2wwDfSh0l1DrdoKKTVcg1vubYltpr-fAd5dwa-bHS_KT94_CZUW_iNkzUH3TyHv2ci-91O9QojH-Nd9WupEbksXsUNyfbY9JhDFNQassvfA3Op5c7hJ9EKBg"
-            />
-            <div
-              class="from-surface-container-low pointer-events-none absolute bottom-0 left-0 h-24 w-full bg-gradient-to-t to-transparent transition-opacity duration-500"
-              id="stylImageGradient"
+            <button
+              type="button"
+              role="radio"
+              aria-checked="false"
+              aria-label="Krátké vlasy"
+              data-hair="kratek"
+              class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
+              onclick="selectHairLength('kratek')"
             >
-            </div>
+              <span class="relative block aspect-[3/4] overflow-hidden">
+                <img
+                  alt=""
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR5G8awWpRAmoa-AvVPU7tm_42KFnbp_VllxNrCKgzujCuv1b8c1lVF-EFB6jW3cMw9YKj4sfOrss9iofL5XhfyrabyarTztGGyqUgQ8nhhmxluXzebFxQ_EZd6Bv-vvLuf3R_NN6-aiX2wwDfSh0l1DrdoKKTVcg1vubYltpr-fAd5dwa-bHS_KT94_CZUW_iNkzUH3TyHv2ci-91O9QojH-Nd9WupEbksXsUNyfbY9JhDFNQassvfA3Op5c7hJ9EKBg"
+                  class="absolute inset-y-0 left-0 h-full w-[300%] max-w-none object-cover"
+                />
+              </span>
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked="false"
+              aria-label="Střední vlasy"
+              data-hair="stredni"
+              class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
+              onclick="selectHairLength('stredni')"
+            >
+              <span class="relative block aspect-[3/4] overflow-hidden">
+                <img
+                  alt=""
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR5G8awWpRAmoa-AvVPU7tm_42KFnbp_VllxNrCKgzujCuv1b8c1lVF-EFB6jW3cMw9YKj4sfOrss9iofL5XhfyrabyarTztGGyqUgQ8nhhmxluXzebFxQ_EZd6Bv-vvLuf3R_NN6-aiX2wwDfSh0l1DrdoKKTVcg1vubYltpr-fAd5dwa-bHS_KT94_CZUW_iNkzUH3TyHv2ci-91O9QojH-Nd9WupEbksXsUNyfbY9JhDFNQassvfA3Op5c7hJ9EKBg"
+                  class="absolute inset-y-0 left-[-100%] h-full w-[300%] max-w-none object-cover"
+                />
+              </span>
+            </button>
+            <button
+              type="button"
+              role="radio"
+              aria-checked="false"
+              aria-label="Dlouhé vlasy"
+              data-hair="dlouhe"
+              class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
+              onclick="selectHairLength('dlouhe')"
+            >
+              <span class="relative block aspect-[3/4] overflow-hidden">
+                <img
+                  alt=""
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR5G8awWpRAmoa-AvVPU7tm_42KFnbp_VllxNrCKgzujCuv1b8c1lVF-EFB6jW3cMw9YKj4sfOrss9iofL5XhfyrabyarTztGGyqUgQ8nhhmxluXzebFxQ_EZd6Bv-vvLuf3R_NN6-aiX2wwDfSh0l1DrdoKKTVcg1vubYltpr-fAd5dwa-bHS_KT94_CZUW_iNkzUH3TyHv2ci-91O9QojH-Nd9WupEbksXsUNyfbY9JhDFNQassvfA3Op5c7hJ9EKBg"
+                  class="absolute inset-y-0 left-[-200%] h-full w-[300%] max-w-none object-cover"
+                />
+              </span>
+            </button>
           </div>
-          <button
-            type="button"
-            class="bg-primary text-on-primary font-Inter z-10 mt-[-20px] rounded-full px-7 py-3 tracking-widest shadow-xl transition-transform hover:scale-105"
-            id="toggleStylImageBtn"
-            onclick="toggleStylImage()">ZOBRAZIT VÍCE</button
-          >
         </div>
 
         <div class="reveal active mb-12 flex justify-center">
@@ -996,22 +1029,33 @@ import "../styles/global.css";
         });
       }
 
-      // Rozbalení / sbalení ukázkového obrázku
-      window.toggleStylImage = function () {
-        const wrapper = document.getElementById("stylImageWrapper");
-        const btn = document.getElementById("toggleStylImageBtn");
-        const gradient = document.getElementById("stylImageGradient");
-
-        if (wrapper.classList.contains("expanded")) {
-          wrapper.classList.remove("expanded");
-          btn.innerText = "ZOBRAZIT VÍCE";
-          if (gradient) gradient.style.opacity = "1";
-        } else {
-          wrapper.classList.add("expanded");
-          btn.innerText = "ZOBRAZIT MÉNĚ";
-          if (gradient) gradient.style.opacity = "0";
-        }
+      const hairGroup = document.querySelector('[aria-label="Délka vlasů"]');
+      window.selectHairLength = function (length) {
+        document.querySelectorAll(".hair-option").forEach((btn) => {
+          const isSelected = btn.dataset.hair === length;
+          btn.setAttribute("aria-checked", isSelected ? "true" : "false");
+        });
       };
+      if (hairGroup) {
+        hairGroup.addEventListener("keydown", (event) => {
+          const options = Array.from(hairGroup.querySelectorAll(".hair-option"));
+          const currentIndex = options.indexOf(document.activeElement);
+          if (currentIndex === -1) return;
+
+          let nextIndex = null;
+          if (event.key === "ArrowRight") {
+            nextIndex = (currentIndex + 1) % options.length;
+          } else if (event.key === "ArrowLeft") {
+            nextIndex = (currentIndex - 1 + options.length) % options.length;
+          }
+          if (nextIndex === null) return;
+
+          event.preventDefault();
+          const length = options[nextIndex].dataset.hair;
+          window.selectHairLength(length);
+          options[nextIndex].focus();
+        });
+      }
     </script>
 
     <script>

@@ -153,13 +153,31 @@
   background-color: #4e0078;
 }
 
-.image-wrapper {
-  transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 250px;
+.hair-option {
+  cursor: pointer;
+  padding: 0;
+  border: 3px solid transparent;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-.image-wrapper.expanded {
-  max-height: 1000px;
+.hair-option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgb(78 0 120 / 0.12);
+}
+
+.hair-option:focus-visible {
+  outline: 2px solid #4e0078;
+  outline-offset: 3px;
+}
+
+.hair-option[aria-checked="true"] {
+  border-color: #4e0078;
+  box-shadow:
+    0 0 0 2px #4e0078,
+    0 8px 24px rgb(78 0 120 / 0.22);
 }
 
 .price-row {
@@ -198,8 +216,10 @@
     animation: none;
     transition: none;
   }
-
-  .image-wrapper {
-    transition: none;
-  }
+}
+.hero {
+  background-image: url('./public/salon-web.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
