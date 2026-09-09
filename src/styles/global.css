@@ -184,7 +184,10 @@
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 1rem;
+  gap: 1.5rem;
+  max-width: 36rem;
+  width: 100%;
+  margin-inline: auto;
   padding-block: 0.5rem;
   border-bottom: 1px solid
     color-mix(in srgb, var(--color-outline-variant) 30%, transparent);
@@ -195,10 +198,14 @@
 }
 
 .price-leader {
-  flex: 1;
-  border-bottom: 1px dotted currentColor;
-  margin: 0 0.75rem;
-  opacity: 0.4;
+  display: none;
+}
+
+#content-damy h3,
+#content-pani h3,
+#content-deti h3 {
+  max-width: 36rem;
+  margin-inline: auto;
 }
 
 .group:is(:hover, :focus-within) .price-tooltip {
