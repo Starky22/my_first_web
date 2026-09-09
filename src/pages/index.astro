@@ -910,17 +910,26 @@ import salonHero from "../assets/salon.jpg?url";
                 <span id="phone-copy-text">Zkopírovat číslo</span>
               </button>
             </div>
-            <div class="flex items-start gap-4">
-              <span
-                class="material-symbols-outlined text-primary bg-primary/10 rounded-xl p-3"
-                >location_on</span
+            <div>
+              <button
+                type="button"
+                id="copy-address"
+                aria-label="Zkopírovat adresu Hliník 34, Bochoř"
+                class="group flex cursor-pointer items-start gap-4 border-0 bg-transparent p-0 text-left"
               >
-              <div>
-                <p class="text-on-surface font-bold">Hliník 34, Bochoř</p>
-                <p class="text-on-surface-variant">
-                  Pohodlné parkování přímo u salónu
-                </p>
-              </div>
+                <span
+                  class="material-symbols-outlined text-primary bg-primary/10 group-hover:bg-primary rounded-xl p-3 transition-colors duration-300 group-hover:text-white"
+                  >location_on</span
+                >
+                <span>
+                  <span class="text-on-surface group-hover:text-primary font-bold transition-colors duration-300"
+                    >Hliník 34, Bochoř</span
+                  >
+                  <span class="text-on-surface-variant mt-0.5 block">
+                    Pohodlné parkování přímo u salónu
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -1222,22 +1231,55 @@ import salonHero from "../assets/salon.jpg?url";
     </script>
 
     <script>
-      const copyPhone = document.getElementById("copy-phone");
-      const phoneCopyText = document.getElementById("phone-copy-text");
+      function setupCopyButton(buttonId, textId, value, idleLabel, copiedLabel) {
+        const button = document.getElementById(buttonId);
+        const label = document.getElementById(textId);
+        if (!button || !label) return;
 
-      copyPhone.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText("604 172 884");
+        button.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(value);
+            label.textContent = copiedLabel;
+            setTimeout(() => {
+              label.textContent = idleLabel;
+            }, 2000);
+          } catch (error) {
+            console.error("Nepodařilo se zkopírovat text:", error);
+          }
+        });
+      }
 
-          phoneCopyText.textContent = "✓ Číslo zkopírováno";
+      setupCopyButton(
+        "copy-phone",
+        "phone-copy-text",
+        "604 172 884",
+        "Zkopírovat číslo",
+        "✓ Číslo zkopírováno",
+      );
 
-          setTimeout(() => {
-            phoneCopyText.textContent = "Zkopírovat číslo";
-          }, 2000);
-        } catch (error) {
-          console.error("Nepodařilo se zkopírovat číslo:", error);
-        }
-      });
+      const copyAddress = document.getElementById("copy-address");
+      if (copyAddress) {
+        const addressIcon = copyAddress.querySelector(".material-symbols-outlined");
+        copyAddress.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText("Hliník 34, Bochoř");
+            if (addressIcon) addressIcon.textContent = "check";
+            copyAddress.setAttribute(
+              "aria-label",
+              "Adresa zkopírována: Hliník 34, Bochoř",
+            );
+            setTimeout(() => {
+              if (addressIcon) addressIcon.textContent = "location_on";
+              copyAddress.setAttribute(
+                "aria-label",
+                "Zkopírovat adresu Hliník 34, Bochoř",
+              );
+            }, 2000);
+          } catch (error) {
+            console.error("Nepodařilo se zkopírovat adresu:", error);
+          }
+        });
+      }
     </script>
   </body>
 </html>
