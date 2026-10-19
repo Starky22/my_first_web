@@ -251,7 +251,7 @@ import salonHero from "../assets/salon.jpg?url";
 
         <div class="reveal active mb-12 flex justify-center">
           <div
-            class="border-outline-variant/30 inline-flex rounded-full border bg-white/50 p-1"
+            class="border-outline-variant/30 inline-flex max-w-full rounded-full border bg-white/50 p-1"
             role="tablist"
             aria-label="Kategorie ceníku"
           >
@@ -261,7 +261,7 @@ import salonHero from "../assets/salon.jpg?url";
               aria-selected="true"
               aria-controls="content-damy"
               tabindex="0"
-              class="tab-btn font-Inter active rounded-full px-8 py-2 tracking-widest uppercase transition-all"
+              class="tab-btn font-Inter active rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-damy"
               onclick="switchTab('damy')">Dámy</button
             >
@@ -271,7 +271,7 @@ import salonHero from "../assets/salon.jpg?url";
               aria-selected="false"
               aria-controls="content-pani"
               tabindex="-1"
-              class="tab-btn font-Inter rounded-full px-8 py-2 tracking-widest uppercase transition-all"
+              class="tab-btn font-Inter rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-pani"
               onclick="switchTab('pani')">Páni</button
             >
@@ -281,7 +281,7 @@ import salonHero from "../assets/salon.jpg?url";
               aria-selected="false"
               aria-controls="content-deti"
               tabindex="-1"
-              class="tab-btn font-Inter rounded-full px-8 py-2 tracking-widest uppercase transition-all"
+              class="tab-btn font-Inter rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-deti"
               onclick="switchTab('deti')">Děti</button
             >
@@ -1009,12 +1009,12 @@ import salonHero from "../assets/salon.jpg?url";
         </div>
 
         <div
-          class="border-outline-variant/30 group reveal active h-72 overflow-hidden rounded-2xl border shadow-lg"
+          class="border-outline-variant/30 group reveal active h-72 max-w-full overflow-hidden rounded-2xl border shadow-lg"
         >
           <iframe
+            class="h-full w-full max-w-full"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d510.0010438251734!2d17.422878709678113!3d49.425772104364945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713a9aa351cedc5%3A0x19d5e3b032166531!2zS2FkZcWZbmljdHbDrSBQZXRyYQ!5e0!3m2!1scs!2scz!4v1788967789651!5m2!1scs!2scz"
-            width="600"
-            height="450"
+            title="Kadeřnictví Petra na mapě"
             style="border:0;"
             allowfullscreen=""
             loading="lazy"
