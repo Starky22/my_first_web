@@ -128,10 +128,10 @@ import salonHero from "../assets/salon.jpg?url";
     </header>
 
     <section
-      class="py-stack-lg px-gutter max-w-container-max mx-auto"
+      class="px-gutter max-w-container-max mx-auto py-20 md:py-28"
       id="o-nas"
     >
-      <div class="gap-stack-md grid items-center md:grid-cols-2">
+      <div class="grid items-center gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16">
         <div class="reveal active relative">
           <div
             class="relative z-10 aspect-[4/5] overflow-hidden rounded-xl shadow-2xl"
@@ -153,14 +153,14 @@ import salonHero from "../assets/salon.jpg?url";
         </div>
         <div class="reveal active">
           <span
-            class="text-primary font-Inter mb-4 block tracking-[0.2em] uppercase"
+            class="text-primary font-Inter mb-5 block tracking-[0.2em] uppercase"
             >Příběh elegance</span
           >
-          <h2 class="font-Inter text-on-surface mb-6 text-3xl">
+          <h2 class="font-Inter text-on-surface mb-8 text-3xl">
             O mně a mém salónu
           </h2>
           <div
-            class="font-Inter text-on-surface-variant space-y-6 leading-relaxed"
+            class="font-Inter text-on-surface-variant space-y-7 leading-relaxed"
           >
             <div class="">
               Lorem ipsum dolor sit amet. At ipsum accusantium sed ipsam
@@ -787,7 +787,19 @@ import salonHero from "../assets/salon.jpg?url";
           aria-label="Předchozí fotografie"
           class="text-on-surface hover:bg-primary absolute top-1/2 left-0 z-10 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white"
         >
-          ←
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><line x1="19" x2="5" y1="12" y2="12"></line><polyline
+              points="12 19 5 12 12 5"></polyline></svg
+          >
         </button>
 
         <!-- Viewport -->
@@ -881,7 +893,19 @@ import salonHero from "../assets/salon.jpg?url";
           aria-label="Další fotografie"
           class="text-on-surface hover:bg-primary absolute top-1/2 right-0 z-10 flex h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white"
         >
-          →
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><line x1="5" x2="19" y1="12" y2="12"></line><polyline
+              points="12 5 19 12 12 19"></polyline></svg
+          >
         </button>
       </div>
 
@@ -1015,7 +1039,7 @@ import salonHero from "../assets/salon.jpg?url";
             >
               <img
                 alt="Logo"
-                class="h-[47px] w-[47px] opacity-70"
+                class="h-17 w-17 scale-110 object-contain opacity-70"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1pYNkVrumGXcnG3Kms4rFIhsT5kG6saj7xoUtZ63DrJjAv5G4hMklzhM-FdvH-nPSCr6hnLcUsIUtqe379i5Q_mJbewCsJPswSdtFvLt1WXZ068eVZLqM0gDgwz94XGCoAwM-y8OXiUwrR28V2YmInJlJGL5xNHZr6BwYttHBjTfipW8egmPyLLQUsGlndOvGaNtKPnImzoKALFtVtLIENmcDjin1TTgCyyYtXSL4oO9M7ikSELh5bWQd_zEwFvg2VQ"
               />
               <span class="font-Inter text-xl tracking-tight"
@@ -1026,58 +1050,51 @@ import salonHero from "../assets/salon.jpg?url";
               Prémiová péče o vaše vlasy v srdci Bochoře
             </p>
           </div>
-          <div
-            class="font-Inter flex gap-12 tracking-widest uppercase opacity-70"
-          >
-            <a class="hover:text-primary transition-colors" href="#"
-              >Ochrana dat</a
+          <div class="flex items-center gap-4 opacity-70">
+            <a
+              aria-label="Instagram – otevře se v nové kartě"
+              class="text-primary transition-transform hover:scale-110"
+              href="https://www.instagram.com/pe_tra2514?dlrf=dmV5a3lrazZrczg2"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><svg
+                fill="none"
+                height="30"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                ><rect height="20" rx="5" ry="5" width="20" x="2" y="2"
+                ></rect><path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"
+                ></line></svg
+              ></a
             >
-            <a class="hover:text-primary transition-colors" href="#">Podmínky</a
+            <a
+              aria-label="Facebook – otevře se v nové kartě"
+              class="text-primary transition-transform hover:scale-110"
+              href="https://www.facebook.com/petra.kavkova.3?locale=cs_CZ"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><svg
+                fill="none"
+                height="30"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path></svg
+              ></a
             >
-            <div
-              class="border-outline-variant/30 ml-4 flex items-center gap-4 border-l pl-8"
-            >
-              <a
-                aria-label="Instagram"
-                class="text-primary transition-transform hover:scale-110"
-                href="#"
-                ><svg
-                  fill="none"
-                  height="30"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="30"
-                  xmlns="http://www.w3.org/2000/svg"
-                  ><rect height="20" rx="5" ry="5" width="20" x="2" y="2"
-                  ></rect><path
-                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                  ></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"
-                  ></line></svg
-                ></a
-              >
-              <a
-                aria-label="Facebook"
-                class="text-primary transition-transform hover:scale-110"
-                href="#"
-                ><svg
-                  fill="none"
-                  height="30"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  width="30"
-                  xmlns="http://www.w3.org/2000/svg"
-                  ><path
-                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-                  ></path></svg
-                ></a
-              >
-            </div>
           </div>
         </div>
         <div
