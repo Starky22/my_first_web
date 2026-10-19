@@ -36,21 +36,22 @@ import salonHero from "../assets/salon.jpg?url";
     class="bg-background text-on-surface font-body-md selection:bg-primary/20"
   >
     <nav
-      class="glass-nav border-outline-variant/20 px-gutter fixed top-0 z-50 w-full border-b py-1 transition-all duration-300"
+      class="glass-nav border-outline-variant/20 px-3 sm:px-gutter fixed top-0 z-50 w-full border-b py-1 transition-all duration-300"
     >
       <div
-        class="max-w-container-max mx-auto flex items-center justify-between"
+        class="max-w-container-max mx-auto flex items-center justify-between gap-2"
       >
         <a
-          class="font-headline-sm text-primary group flex items-center gap-2"
+          class="font-headline-sm text-primary group flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2 md:flex-none"
           href="#"
         >
           <img
             alt="KP Logo"
-            class="h-17 w-17 scale-110 object-contain transition-transform group-hover:scale-125"
+            class="h-14 w-14 shrink-0 scale-110 object-contain transition-transform group-hover:scale-125 sm:h-17 sm:w-17"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1pYNkVrumGXcnG3Kms4rFIhsT5kG6saj7xoUtZ63DrJjAv5G4hMklzhM-FdvH-nPSCr6hnLcUsIUtqe379i5Q_mJbewCsJPswSdtFvLt1WXZ068eVZLqM0gDgwz94XGCoAwM-y8OXiUwrR28V2YmInJlJGL5xNHZr6BwYttHBjTfipW8egmPyLLQUsGlndOvGaNtKPnImzoKALFtVtLIENmcDjin1TTgCyyYtXSL4oO9M7ikSELh5bWQd_zEwFvg2VQ"
           />
-          <span class="font-Inter text-xl tracking-tight md:text-3xl"
+          <span
+            class="font-Inter text-sm leading-tight tracking-tight sm:text-xl sm:whitespace-nowrap md:text-3xl"
             >Kadeřnictví Petra</span
           >
         </a>
@@ -59,7 +60,7 @@ import salonHero from "../assets/salon.jpg?url";
         >
           <a
             class="text-on-surface-variant hover:text-primary transition-colors"
-            href="#o-nas">O nás</a
+            href="#o-nas">O mně</a
           >
           <a
             class="text-on-surface-variant hover:text-primary transition-colors"
@@ -74,12 +75,48 @@ import salonHero from "../assets/salon.jpg?url";
             href="#kontakt">Kontakt</a
           >
         </div>
-        <a
-          class="bg-primary text-on-primary font-Inter hover:bg-primary/90 rounded-full px-6 py-2 shadow-md transition-all"
-          href="#kontakt"
+        <div class="flex shrink-0 items-center gap-1 sm:gap-2">
+          <a
+            class="bg-primary text-on-primary font-Inter hover:bg-primary/90 inline-flex min-h-11 items-center rounded-full px-3 py-2 text-xs shadow-md transition-all sm:px-4 sm:text-sm md:px-6 md:text-base"
+            href="#kontakt"
+          >
+            REZERVACE
+          </a>
+          <button
+            type="button"
+            id="nav-toggle"
+            class="text-primary hover:bg-primary/10 inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Otevřít menu"
+          >
+            <span class="material-symbols-outlined" id="nav-toggle-icon"
+              >menu</span
+            >
+          </button>
+        </div>
+      </div>
+      <div id="mobile-nav" class="border-outline-variant/20 hidden border-t md:hidden">
+        <div
+          class="font-Inter flex flex-col gap-1 py-3 tracking-wider uppercase"
         >
-          REZERVACE
-        </a>
+          <a
+            class="text-on-surface-variant hover:text-primary flex min-h-11 items-center transition-colors"
+            href="#o-nas">O mně</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary flex min-h-11 items-center transition-colors"
+            href="#sluzby">Služby & Ceník</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary flex min-h-11 items-center transition-colors"
+            href="#galerie">Galerie</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary flex min-h-11 items-center transition-colors"
+            href="#kontakt">Kontakt</a
+          >
+        </div>
       </div>
     </nav>
 
@@ -191,7 +228,26 @@ import salonHero from "../assets/salon.jpg?url";
           </h2>
         </div>
 
-        <div class="mb-12" role="radiogroup" aria-label="Délka vlasů">
+        <div
+          class="mb-12"
+          role="radiogroup"
+          aria-label="Délka vlasů"
+          aria-labelledby="hair-length-heading"
+        >
+          <div class="mb-6 text-center md:mb-8">
+            <h3
+              id="hair-length-heading"
+              class="font-Inter text-on-surface mb-3 text-xl md:text-2xl"
+            >
+              Jakou máte délku vlasů?
+            </h3>
+            <p
+              class="font-Inter text-on-surface-variant mx-auto max-w-xl text-sm leading-relaxed md:text-base"
+            >
+              Vyberte si délku svých vlasů a zobrazíme vám odpovídající ceny
+              služeb.
+            </p>
+          </div>
           <div
             class="mx-auto grid w-full max-w-md grid-cols-3 gap-2 sm:max-w-lg sm:gap-3 md:max-w-xl"
           >
@@ -211,12 +267,16 @@ import salonHero from "../assets/salon.jpg?url";
                   class="absolute inset-y-0 left-0 h-full w-[300%] max-w-none object-cover"
                 />
               </span>
+              <span
+                class="font-Inter text-on-surface block px-1 py-2 text-center text-xs leading-tight font-medium sm:text-sm"
+                >Krátké vlasy</span
+              >
             </button>
             <button
               type="button"
               role="radio"
               aria-checked="false"
-              aria-label="Střední vlasy"
+              aria-label="Středně dlouhé vlasy"
               data-hair="stredni"
               class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
               onclick="selectHairLength('stredni')"
@@ -228,6 +288,10 @@ import salonHero from "../assets/salon.jpg?url";
                   class="absolute inset-y-0 left-[-100%] h-full w-[300%] max-w-none object-cover"
                 />
               </span>
+              <span
+                class="font-Inter text-on-surface block px-1 py-2 text-center text-xs leading-tight font-medium sm:text-sm"
+                >Středně dlouhé vlasy</span
+              >
             </button>
             <button
               type="button"
@@ -245,6 +309,10 @@ import salonHero from "../assets/salon.jpg?url";
                   class="absolute inset-y-0 left-[-200%] h-full w-[300%] max-w-none object-cover"
                 />
               </span>
+              <span
+                class="font-Inter text-on-surface block px-1 py-2 text-center text-xs leading-tight font-medium sm:text-sm"
+                >Dlouhé vlasy</span
+              >
             </button>
           </div>
         </div>
@@ -261,7 +329,7 @@ import salonHero from "../assets/salon.jpg?url";
               aria-selected="true"
               aria-controls="content-damy"
               tabindex="0"
-              class="tab-btn font-Inter active rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
+              class="tab-btn font-Inter active min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-damy"
               onclick="switchTab('damy')">Dámy</button
             >
@@ -271,7 +339,7 @@ import salonHero from "../assets/salon.jpg?url";
               aria-selected="false"
               aria-controls="content-pani"
               tabindex="-1"
-              class="tab-btn font-Inter rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
+              class="tab-btn font-Inter min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-pani"
               onclick="switchTab('pani')">Páni</button
             >
@@ -281,7 +349,7 @@ import salonHero from "../assets/salon.jpg?url";
               aria-selected="false"
               aria-controls="content-deti"
               tabindex="-1"
-              class="tab-btn font-Inter rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
+              class="tab-btn font-Inter min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-deti"
               onclick="switchTab('deti')">Děti</button
             >
@@ -338,13 +406,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Efilace<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Speciální technika prostříhávání vlasů pro odlehčení
                       účesu a dodání textury.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
@@ -374,13 +442,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Foukaná <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Styling účesu přes kulatý kartáč pro dokonalý tvar a
                       lesk.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
@@ -396,13 +464,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Vodová <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Klasická technika tvarování účesu pomocí natáček pro
                       dlouhotrvající efekt.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
@@ -440,13 +508,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Loknování <span class="js-length-hint" data-full="(krátké - střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké - střední / dlouhé)</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Profesionální tvorba vln a loken pro přirozený objem.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
@@ -483,13 +551,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Melír <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Zesvětlení nebo ztmavení vybraných pramenů vlasů pro
                       dosažení plastického vzhledu.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
@@ -557,13 +625,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Ombré<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Technika barvení, která vytváří plynulý přechod z
                       tmavších kořínků do světlých konečků.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
@@ -575,13 +643,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Balayage<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Moderní metoda barvení 'volnou rukou', která vytváří
                       přirozený efekt prosluněných vlasů bez ostrých přechodů.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
@@ -602,13 +670,13 @@ import salonHero from "../assets/salon.jpg?url";
                 >
                   <button
                     type="button"
-                    class="group relative cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+                    class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
                     Preparace <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
-                      class="bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-xl border p-3 text-xs font-normal opacity-0 shadow-xl price-tooltip transition-opacity group-hover:opacity-100 group-focus-within:opacity-100"
+                      class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
                       >Trvalá preparace vlasů pro dosažení vlnitého nebo
                       kudrnatého efektu.</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
@@ -781,7 +849,7 @@ import salonHero from "../assets/salon.jpg?url";
           id="gallery-prev"
           type="button"
           aria-label="Předchozí fotografie"
-          class="text-on-surface hover:bg-primary absolute top-1/2 left-0 z-10 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white"
+          class="text-on-surface hover:bg-primary absolute top-1/2 left-2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white md:left-0 md:-translate-x-1/2"
         >
           <svg
             aria-hidden="true"
@@ -799,7 +867,7 @@ import salonHero from "../assets/salon.jpg?url";
         </button>
 
         <!-- Viewport -->
-        <div class="overflow-hidden px-1">
+        <div class="touch-pan-y overflow-hidden px-1">
           <div
             id="gallery-track"
             class="flex gap-6 transition-transform duration-500 ease-in-out"
@@ -887,7 +955,7 @@ import salonHero from "../assets/salon.jpg?url";
           id="gallery-next"
           type="button"
           aria-label="Další fotografie"
-          class="text-on-surface hover:bg-primary absolute top-1/2 right-0 z-10 flex h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white"
+          class="text-on-surface hover:bg-primary absolute top-1/2 right-2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white md:right-0 md:translate-x-1/2"
         >
           <svg
             aria-hidden="true"
@@ -975,7 +1043,7 @@ import salonHero from "../assets/salon.jpg?url";
                   type="button"
                   id="copy-phone"
                   aria-label="Zkopírovat telefonní číslo"
-                  class="text-on-surface-variant hover:text-primary self-center text-sm transition-colors duration-300"
+                  class="text-on-surface-variant hover:text-primary inline-flex min-h-11 items-center self-center px-2 text-sm transition-colors duration-300"
                 >
                   <span id="phone-copy-text">Zkopírovat číslo</span>
                 </button>
@@ -1050,7 +1118,7 @@ import salonHero from "../assets/salon.jpg?url";
           <div class="flex items-center gap-4 opacity-70">
             <a
               aria-label="Instagram – otevře se v nové kartě"
-              class="text-primary transition-transform hover:scale-110"
+              class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
               href="https://www.instagram.com/pe_tra2514?dlrf=dmV5a3lrazZrczg2"
               target="_blank"
               rel="noopener noreferrer"
@@ -1073,7 +1141,7 @@ import salonHero from "../assets/salon.jpg?url";
             >
             <a
               aria-label="Facebook – otevře se v nové kartě"
-              class="text-primary transition-transform hover:scale-110"
+              class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
               href="https://www.facebook.com/petra.kavkova.3?locale=cs_CZ"
               target="_blank"
               rel="noopener noreferrer"
@@ -1183,6 +1251,99 @@ import salonHero from "../assets/salon.jpg?url";
         });
         applyHairPrices();
       };
+      const tooltipTriggers = document.querySelectorAll(".tooltip-trigger");
+
+      function placeTooltip(trigger) {
+        const tip = trigger.querySelector(".price-tooltip");
+        if (!tip) return;
+        tip.style.transform = "translateX(-50%)";
+        const rect = tip.getBoundingClientRect();
+        const pad = 12;
+        let shift = 0;
+        if (rect.left < pad) shift += pad - rect.left;
+        if (rect.right + shift > window.innerWidth - pad) {
+          shift -= rect.right + shift - (window.innerWidth - pad);
+        }
+        tip.style.transform = `translateX(calc(-50% + ${shift}px))`;
+      }
+
+      function closeTooltips(except) {
+        tooltipTriggers.forEach((btn) => {
+          if (btn !== except) {
+            btn.setAttribute("aria-expanded", "false");
+            if (!except) btn.blur();
+          }
+        });
+      }
+
+      tooltipTriggers.forEach((btn) => {
+        btn.setAttribute("aria-expanded", "false");
+        const tip = btn.querySelector(".price-tooltip");
+        if (tip) tip.setAttribute("role", "tooltip");
+
+        btn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const isOpen = btn.getAttribute("aria-expanded") === "true";
+          closeTooltips();
+          if (!isOpen) {
+            btn.setAttribute("aria-expanded", "true");
+            placeTooltip(btn);
+          }
+        });
+      });
+
+      const navToggle = document.getElementById("nav-toggle");
+      const mobileNav = document.getElementById("mobile-nav");
+      const navToggleIcon = document.getElementById("nav-toggle-icon");
+      const siteNav = document.querySelector("nav");
+
+      function setMobileNav(open) {
+        if (!navToggle || !mobileNav) return;
+        mobileNav.classList.toggle("hidden", !open);
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        navToggle.setAttribute(
+          "aria-label",
+          open ? "Zavřít menu" : "Otevřít menu",
+        );
+        if (navToggleIcon) navToggleIcon.textContent = open ? "close" : "menu";
+      }
+
+      if (navToggle && mobileNav) {
+        navToggle.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+          setMobileNav(!isOpen);
+        });
+
+        mobileNav.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => setMobileNav(false));
+        });
+      }
+
+      document.addEventListener("click", (event) => {
+        if (siteNav && !siteNav.contains(event.target)) {
+          setMobileNav(false);
+        }
+        closeTooltips();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        closeTooltips();
+        const menuOpen = navToggle?.getAttribute("aria-expanded") === "true";
+        setMobileNav(false);
+        if (menuOpen) navToggle.focus();
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.matchMedia("(min-width: 768px)").matches) {
+          setMobileNav(false);
+        }
+        tooltipTriggers.forEach((btn) => {
+          if (btn.getAttribute("aria-expanded") === "true") placeTooltip(btn);
+        });
+      });
+
       if (hairGroup) {
         hairGroup.addEventListener("keydown", (event) => {
           const options = Array.from(hairGroup.querySelectorAll(".hair-option"));
@@ -1271,6 +1432,46 @@ import salonHero from "../assets/salon.jpg?url";
 
       nextButton.addEventListener("click", goToNext);
       prevButton.addEventListener("click", goToPrev);
+
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchMoved = false;
+
+      track.addEventListener(
+        "touchstart",
+        (event) => {
+          const touch = event.changedTouches[0];
+          touchStartX = touch.clientX;
+          touchStartY = touch.clientY;
+          touchMoved = false;
+          stopAutoplay();
+        },
+        { passive: true },
+      );
+
+      track.addEventListener(
+        "touchmove",
+        (event) => {
+          const dx = event.changedTouches[0].clientX - touchStartX;
+          if (Math.abs(dx) > 10) touchMoved = true;
+        },
+        { passive: true },
+      );
+
+      track.addEventListener(
+        "touchend",
+        (event) => {
+          const touch = event.changedTouches[0];
+          const dx = touch.clientX - touchStartX;
+          const dy = touch.clientY - touchStartY;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            if (dx < 0) goToNext();
+            else goToPrev();
+          }
+          startAutoplay();
+        },
+        { passive: true },
+      );
 
       track.addEventListener("transitionend", () => {
         const originalLength = originalSlides.length;
@@ -1382,6 +1583,11 @@ import salonHero from "../assets/salon.jpg?url";
 
       // Kliknutí na kteroukoli fotku v carouselu (včetně duplikovaných)
       track.addEventListener("click", (event) => {
+        if (touchMoved) {
+          touchMoved = false;
+          return;
+        }
+
         const trigger = event.target.closest(".gallery-trigger");
         if (!trigger) return;
 

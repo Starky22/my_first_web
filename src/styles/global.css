@@ -205,15 +205,22 @@
 }
 
 .price-row:hover,
-.price-row:focus-within {
-  z-index: 1;
+.price-row:focus-within,
+.price-row:has([aria-expanded="true"]) {
+  z-index: 2;
   color: var(--color-primary);
   background-color: var(--color-primary-fixed-dim);
   box-shadow:
     inset 4px 0 0 var(--color-primary),
     0 10px 28px rgb(78 0 120 / 0.22);
-  transform: scale(1.04);
   border-bottom-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .price-row:hover,
+  .price-row:focus-within {
+    transform: scale(1.04);
+  }
 }
 
 .price-leader {
@@ -227,8 +234,27 @@
   margin-inline: auto;
 }
 
-.group:is(:hover, :focus-within) .price-tooltip {
+.price-tooltip {
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.tooltip-trigger[aria-expanded="true"] .price-tooltip,
+.tooltip-trigger:focus-visible .price-tooltip {
   opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .tooltip-trigger:hover .price-tooltip,
+  .tooltip-trigger:focus-within .price-tooltip {
+    opacity: 1;
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
