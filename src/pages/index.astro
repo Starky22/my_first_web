@@ -1,82 +1,18 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Pricing from "../components/Pricing.astro";
 import Gallery from "../components/Gallery.astro";
 import Reviews from "../components/Reviews.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-import t from "../i18n/cs.json";
 ---
 
-<!doctype html>
-<html class="scroll-smooth" lang="cs">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>{t.site.title}</title>
-    <noscript>
-      <style>
-        .reveal,
-        .open-reveal,
-        .custom-reveal {
-          opacity: 1;
-          transform: none;
-          clip-path: none;
-          animation: none;
-        }
-      </style>
-    </noscript>
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-
-  <body
-    class="bg-background text-on-surface font-body-md selection:bg-primary/20"
-  >
-    <Navbar />
-    <Hero />
-    <About />
-    <Pricing />
-    <Gallery />
-    <Reviews />
-    <Contact />
-    <Footer />
-
-    <script>
-      function reveal() {
-        const reveals = document.querySelectorAll(".reveal, .open-reveal");
-        const reduceMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        ).matches;
-
-        reveals.forEach((el) => {
-          if (reduceMotion) {
-            el.classList.add("active");
-            return;
-          }
-
-          const windowHeight = window.innerHeight;
-          const elementTop = el.getBoundingClientRect().top;
-          const elementVisible = 100;
-          if (elementTop < windowHeight - elementVisible) {
-            el.classList.add("active");
-          }
-        });
-      }
-
-      window.addEventListener("scroll", reveal, { passive: true });
-      window.addEventListener("load", reveal);
-      reveal();
-    </script>
-  </body>
-</html>
+<Layout>
+  <Hero />
+  <About />
+  <Pricing />
+  <Gallery />
+  <Reviews />
+  <Contact />
+</Layout>

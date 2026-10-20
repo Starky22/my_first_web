@@ -1,0 +1,77 @@
+---
+import { getLengthHint, type PricingItem } from "../data/pricing";
+
+interface Props {
+  item: PricingItem;
+}
+
+const { item } = Astro.props;
+const hint = getLengthHint(item);
+---
+
+<div class="price-row">
+  {item.tooltip ? (
+    <button
+      type="button"
+      class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
+    >
+      {item.name}
+      {hint && (
+        <>
+          {" "}
+          <span
+            class="js-length-hint"
+            data-full={hint.full}
+            data-kratek={hint.short}
+            data-stredni={hint.medium}
+            data-dlouhe={hint.long}
+          >
+            {hint.full}
+          </span>
+        </>
+      )}
+      <span class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]">
+        info
+      </span>
+      <span
+        class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
+      >
+        {item.tooltip}
+      </span>
+    </button>
+  ) : (
+    <p class="font-bold">
+      {item.name}
+      {hint && (
+        <>
+          {" "}
+          <span
+            class="js-length-hint"
+            data-full={hint.full}
+            data-kratek={hint.short}
+            data-stredni={hint.medium}
+            data-dlouhe={hint.long}
+          >
+            {hint.full}
+          </span>
+        </>
+      )}
+    </p>
+  )}
+  <span class="price-leader" aria-hidden="true"></span>
+  {item.prices ? (
+    <span
+      class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
+      data-full={item.prices.full}
+      data-kratek={item.prices.short}
+      data-stredni={item.prices.medium}
+      data-dlouhe={item.prices.long}
+    >
+      {item.prices.full}
+    </span>
+  ) : (
+    <span class="text-primary shrink-0 font-bold whitespace-nowrap">
+      {item.price}
+    </span>
+  )}
+</div>

@@ -5,6 +5,13 @@ import gallery2 from "../assets/images/gallery-haircut-02.jpg";
 import gallery3 from "../assets/images/gallery-haircut-03.jpg";
 import gallery4 from "../assets/images/gallery-haircut-04.jpg";
 import t from "../i18n/cs.json";
+
+const photos = [
+  { src: gallery1, alt: t.gallery.photos[0] },
+  { src: gallery2, alt: t.gallery.photos[1] },
+  { src: gallery3, alt: t.gallery.photos[2] },
+  { src: gallery4, alt: t.gallery.photos[3] },
+];
 ---
 
     <section
@@ -50,81 +57,25 @@ import t from "../i18n/cs.json";
             id="gallery-track"
             class="flex gap-6 transition-transform duration-500 ease-in-out"
           >
-            <!-- Photo 1 -->
-            <div
-              class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
-            >
-              <button
-                type="button"
-                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[0]}`}
-                class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
+            {photos.map((photo) => (
+              <div
+                class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
               >
-                <Image
-                  src={gallery1}
-                  alt={t.gallery.photos[0]}
-                  loading="lazy"
-                  decoding="async"
-                  class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </button>
-            </div>
-
-            <!-- Photo 2 -->
-            <div
-              class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
-            >
-              <button
-                type="button"
-                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[1]}`}
-                class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
-              >
-                <Image
-                  src={gallery2}
-                  alt={t.gallery.photos[1]}
-                  loading="lazy"
-                  decoding="async"
-                  class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </button>
-            </div>
-
-            <!-- Photo 3 -->
-            <div
-              class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
-            >
-              <button
-                type="button"
-                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[2]}`}
-                class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
-              >
-                <Image
-                  src={gallery3}
-                  alt={t.gallery.photos[2]}
-                  loading="lazy"
-                  decoding="async"
-                  class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </button>
-            </div>
-
-            <!-- Photo 4 -->
-            <div
-              class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
-            >
-              <button
-                type="button"
-                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[3]}`}
-                class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
-              >
-                <Image
-                  src={gallery4}
-                  alt={t.gallery.photos[3]}
-                  loading="lazy"
-                  decoding="async"
-                  class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </button>
-            </div>
+                <button
+                  type="button"
+                  aria-label={`${t.gallery.zoomPhoto}: ${photo.alt}`}
+                  class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    loading="lazy"
+                    decoding="async"
+                    class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </button>
+              </div>
+            ))}
           </div>
         </div>
 

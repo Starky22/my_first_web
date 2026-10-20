@@ -26,7 +26,7 @@ const addressCopiedAria = `${t.contact.addressCopied} ${t.contact.address}`;
             <div>
               <div class="flex items-center gap-4">
                 <a
-                  href="tel:+420604172884"
+                  href={`tel:${t.contact.phoneTel}`}
                   class="group flex items-center gap-4"
                 >
                   <span
@@ -86,7 +86,7 @@ const addressCopiedAria = `${t.contact.addressCopied} ${t.contact.address}`;
         >
           <iframe
             class="h-full w-full max-w-full"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d510.0010438251734!2d17.422878709678113!3d49.425772104364945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713a9aa351cedc5%3A0x19d5e3b032166531!2zS2FkZcWZbmljdHbDrSBQZXRyYQ!5e0!3m2!1scs!2scz!4v1788967789651!5m2!1scs!2scz"
+            src={t.contact.mapEmbed}
             title={t.contact.mapTitle}
             style="border:0;"
             allowfullscreen=""
