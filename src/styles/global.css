@@ -22,6 +22,7 @@
 
   --font-display: "Playfair Display", serif;
   --font-body: "Montserrat", sans-serif;
+  --font-Inter: var(--font-body);
 }
 
 @utility font-headline-md {

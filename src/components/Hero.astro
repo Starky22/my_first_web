@@ -11,6 +11,9 @@ import t from "../i18n/cs.json";
         <Image
           src={heroImage}
           alt={t.hero.imageAlt}
+          priority
+          widths={[640, 960, 1280, 1717]}
+          sizes="100vw"
           class="h-full w-full object-cover"
         />
         <div class="absolute inset-0 bg-black/20"></div>

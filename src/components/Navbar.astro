@@ -17,10 +17,12 @@ import t from "../i18n/cs.json";
           <Image
             src={logo}
             alt={t.navbar.logoAlt}
+            loading="eager"
+            decoding="async"
             class="h-14 w-14 shrink-0 scale-110 object-contain transition-transform group-hover:scale-125 sm:h-17 sm:w-17"
           />
           <span
-            class="font-Inter text-sm leading-tight tracking-tight sm:text-xl sm:whitespace-nowrap md:text-3xl"
+            class="text-sm leading-tight tracking-tight sm:text-xl sm:whitespace-nowrap md:text-3xl"
             >{t.site.name}</span
           >
         </a>
