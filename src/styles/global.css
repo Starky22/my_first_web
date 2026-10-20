@@ -275,7 +275,7 @@ button:focus-visible {
   }
 }
 .hero {
-  background-image: url('./public/salon-web.png');
+  background-image: url('/salon-web.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

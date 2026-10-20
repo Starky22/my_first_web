@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import aboutPetra from "../assets/images/about-petra.jpg";
 import t from "../i18n/cs.json";
 ---
 
@@ -11,8 +13,8 @@ import t from "../i18n/cs.json";
           <div
             class="relative z-10 aspect-[4/5] overflow-hidden rounded-xl shadow-2xl"
           >
-            <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRBg3XIWUoLvXjOcWo4Qk3ZjoYxcAfZeD9aoH4pq84X52FbCKdIRQxT_EZvQ8qBPZYVRanXmWWl93Zz87BBOULcYg3qdAnEanN1Z8WQnAOdIKktCEqpe-j6XMuBvE7Yeu20y7W6KLItNX5kCeIZRYn7QOjqjlE7xNp7Lz3jDalyFaWK4GTYj5NTaW0RLcl0cBbUEum7SlauFB6StG4GMre_YGLG3CvUCkd75m_ChK0zkcOXL86R6xtrQ"
+            <Image
+              src={aboutPetra}
               alt={t.about.imageAlt}
               class="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"
             />

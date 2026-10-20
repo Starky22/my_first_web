@@ -1,4 +1,9 @@
 ---
+import { Image } from "astro:assets";
+import gallery1 from "../assets/images/gallery-haircut-01.jpg";
+import gallery2 from "../assets/images/gallery-haircut-02.jpg";
+import gallery3 from "../assets/images/gallery-haircut-03.jpg";
+import gallery4 from "../assets/images/gallery-haircut-04.jpg";
 import t from "../i18n/cs.json";
 ---
 
@@ -54,8 +59,8 @@ import t from "../i18n/cs.json";
                 aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[0]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVrUypYXNOcXD19NdhKRM2YPCftq5m5q0fKlTNzllmFAbZHAJtCaYehT8b6i62hmNBurgnDu4u0cqmsEqYFObUU2Tr2anWsJmbKDsHWAc-0d7yqiOUP00jQGpjbeohO2QMod4pkYpJZaf-bpIqmKVAXAgNQzy_-cxLPCggR7ychdvdjDIf-ujk7j8We7gpJFEvN5D1q6acBc6CbBlVSu6uTPUo6JYFC8T21lcwjt-kieNIBveSUsl5yyl8rk4BwnY-aPE=w945"
+                <Image
+                  src={gallery1}
                   alt={t.gallery.photos[0]}
                   loading="lazy"
                   decoding="async"
@@ -73,8 +78,8 @@ import t from "../i18n/cs.json";
                 aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[1]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRwAiCaim7lXHsTzVeDrDttssC0NlONFVCIR5Vp6xLbpUCIQEBueW9GcVPEaT1Tmr-bEon4nj9KJoZJOXc22zdRQzD2Qe9dlqZeZ-tbZKxnvXWi1GI5Dzm2-IIZadXbN1dmNfrTi8O5ihDtMQUC4hbhJjlgSLNpWsGncbNN_eDeBLKcP5UQmeudYXv4mTvQJiyTeYOp9m_cLyeRYZtk64klpcVM4NRIK0wBFbfMmOBDeppaQnNeZoKT8CYzqAYya-eMy8=w945"
+                <Image
+                  src={gallery2}
                   alt={t.gallery.photos[1]}
                   loading="lazy"
                   decoding="async"
@@ -92,8 +97,8 @@ import t from "../i18n/cs.json";
                 aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[2]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWsvhcPI2a3DydZ0t2-l_tREwYFHpt4NFSzd5ELUBOvJrvsrWQSmCFCptNqe32AOw8tr1HIip3tyAWhc11s8Nq8IFU-bwVVna5MYOYoYj2tTkPfD4TsdRL2VhDkqEOyMH2aZ2e_sKjVOWlKqwEg5_zcRKM77gl2y7hxeYX9fc092HmKWqgAfDeXeKOQSuFskPL5RrTafFm58uWTlYWusyRuopWbILtzsB4b3SuDzV4lDym2CsKUmyv8Oc3znG3UCZEel0=w945"
+                <Image
+                  src={gallery3}
                   alt={t.gallery.photos[2]}
                   loading="lazy"
                   decoding="async"
@@ -111,8 +116,8 @@ import t from "../i18n/cs.json";
                 aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[3]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWBw4PxsFHgp8_ruenvL7_lsyXaLIMXN9fQpieda3P6n_Fd74tKcKgYed-CrAm2SzmT8iCaI2RxQjTK4qf82tDT1keN3TjXw82LwG8cg_NlunwFNiXFPCAtlq1AYkmstICdbhWBlmXtY7-E40pBzOS2RAkNZm09NpD6KFG4Kij4NrDfwBIilagEd5br2jEsv6yoaEEXwPyJYhkYYvAUzq4vBX5OPkm-slu1_v2AwOJCDrAWC1nn0_-W2XYI2WkXtmyGjw=w945"
+                <Image
+                  src={gallery4}
                   alt={t.gallery.photos[3]}
                   loading="lazy"
                   decoding="async"

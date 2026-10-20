@@ -1,5 +1,6 @@
 ---
-import salonHero from "../assets/salon.jpg?url";
+import { Image } from "astro:assets";
+import heroImage from "../assets/images/hero.jpg";
 import t from "../i18n/cs.json";
 ---
 
@@ -7,10 +8,10 @@ import t from "../i18n/cs.json";
       class="relative flex h-screen items-center justify-center overflow-hidden"
     >
       <div class="absolute inset-0 z-0">
-        <img
+        <Image
+          src={heroImage}
           alt={t.hero.imageAlt}
           class="h-full w-full object-cover"
-          src={salonHero}
         />
         <div class="absolute inset-0 bg-black/20"></div>
       </div>
