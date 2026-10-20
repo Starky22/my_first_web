@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import { buildHairSalonJsonLd } from "../data/seo";
 import t from "../i18n/cs.json";
 
 interface Props {
@@ -10,6 +11,15 @@ interface Props {
 }
 
 const { title = t.site.title, description = t.site.description } = Astro.props;
+
+const siteUrl = Astro.site
+  ? new URL(Astro.site).origin
+  : undefined;
+const canonicalUrl = siteUrl
+  ? new URL(Astro.url.pathname, siteUrl).href
+  : undefined;
+const ogImageUrl = siteUrl ? `${siteUrl}/og-image.jpg` : undefined;
+const structuredData = buildHairSalonJsonLd(siteUrl);
 ---
 
 <!doctype html>
@@ -17,10 +27,34 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="cs_CZ" />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {ogImageUrl && (
+      <meta property="og:image:alt" content={t.site.ogImageAlt} />
+    )}
+
+    <meta name="twitter:card" content={ogImageUrl ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    {ogImageUrl && (
+      <meta name="twitter:image:alt" content={t.site.ogImageAlt} />
+    )}
+
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png?v=3" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=3" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
     <noscript>
       <style>
         .reveal,
