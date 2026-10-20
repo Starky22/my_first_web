@@ -76,9 +76,9 @@ import t from "../i18n/cs.json";
           </div>
         </div>
         <div
-          class="border-outline-variant/20 text-Inter border-t pt-1 text-center opacity-40"
+          class="border-outline-variant/20 font-Inter border-t pt-1 text-center opacity-40"
         >
-          {t.footer.copyright}
+          {t.footer.copyright.replace("{year}", String(new Date().getFullYear()))}
         </div>
       </div>
     </footer>

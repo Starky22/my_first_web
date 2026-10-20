@@ -25,13 +25,6 @@
   --font-Inter: var(--font-body);
 }
 
-@utility font-headline-md {
-  font-family: var(--font-display);
-  font-size: 32px;
-  line-height: 1.3;
-  font-weight: 600;
-}
-
 @utility font-headline-sm {
   font-family: var(--font-display);
   font-size: 24px;
@@ -39,26 +32,11 @@
   font-weight: 600;
 }
 
-@utility font-body-lg {
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.6;
-  font-weight: 400;
-}
-
 @utility font-body-md {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   font-weight: 400;
-}
-
-@utility font-label-sm {
-  font-family: var(--font-body);
-  font-size: 12px;
-  line-height: 1;
-  letter-spacing: 0.1em;
-  font-weight: 600;
 }
 
 @utility py-stack-lg {
@@ -110,38 +88,6 @@
 #recenze,
 #kontakt {
   scroll-margin-top: max(5.75rem, 18vh);
-}
-
-@keyframes customReveal {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.custom-reveal {
-  animation: customReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes openReveal {
-  0% {
-    clip-path: inset(0 50% 0 50%);
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  100% {
-    clip-path: inset(0 0 0 0);
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.open-reveal {
-  animation: openReveal 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .glass-nav {
@@ -224,10 +170,6 @@
   }
 }
 
-.price-leader {
-  display: none;
-}
-
 #content-damy h3,
 #content-pani h3,
 #content-deti h3 {
@@ -260,9 +202,7 @@ button:focus-visible {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .reveal.active,
-  .open-reveal,
-  .custom-reveal {
+  .reveal.active {
     opacity: 1;
     transform: none;
     clip-path: none;
@@ -274,23 +214,4 @@ button:focus-visible {
   .price-row:focus-within {
     transform: none;
   }
-}
-.hero {
-  background-image: url('/salon-web.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.map-container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.map-container iframe {
-  display: block;
-  width: 100%;
-  height: 400px;
 }

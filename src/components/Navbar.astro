@@ -100,39 +100,44 @@ import t from "../i18n/cs.json";
       const siteNav = navToggle?.closest("nav");
 
       if (navToggle && mobileNav && siteNav && !siteNav.dataset.ready) {
-        siteNav.dataset.ready = "true";
+        const toggle = navToggle;
+        const menu = mobileNav;
+        const nav = siteNav;
+        nav.dataset.ready = "true";
 
-        function setMobileNav(open) {
-          mobileNav.classList.toggle("hidden", !open);
-          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-          navToggle.setAttribute(
+        function setMobileNav(open: boolean) {
+          menu.classList.toggle("hidden", !open);
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          toggle.setAttribute(
             "aria-label",
-            open ? navToggle.dataset.closeLabel : navToggle.dataset.openLabel,
+            open
+              ? toggle.dataset.closeLabel || ""
+              : toggle.dataset.openLabel || "",
           );
           if (navToggleIcon) navToggleIcon.textContent = open ? "close" : "menu";
         }
 
-        navToggle.addEventListener("click", (event) => {
+        toggle.addEventListener("click", (event) => {
           event.stopPropagation();
-          const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+          const isOpen = toggle.getAttribute("aria-expanded") === "true";
           setMobileNav(!isOpen);
         });
 
-        mobileNav.querySelectorAll("a").forEach((link) => {
+        menu.querySelectorAll("a").forEach((link) => {
           link.addEventListener("click", () => setMobileNav(false));
         });
 
         document.addEventListener("click", (event) => {
-          if (!(event.target instanceof Node) || !siteNav.contains(event.target)) {
+          if (!(event.target instanceof Node) || !nav.contains(event.target)) {
             setMobileNav(false);
           }
         });
 
         document.addEventListener("keydown", (event) => {
           if (event.key !== "Escape") return;
-          const menuOpen = navToggle.getAttribute("aria-expanded") === "true";
+          const menuOpen = toggle.getAttribute("aria-expanded") === "true";
           setMobileNav(false);
-          if (menuOpen) navToggle.focus();
+          if (menuOpen) toggle.focus();
         });
 
         window.addEventListener("resize", () => {

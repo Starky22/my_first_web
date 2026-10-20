@@ -147,7 +147,7 @@ const addressCopiedAria = `${t.contact.addressCopied} ${t.contact.address}`;
           try {
             copied = document.execCommand("copy");
           } catch {
-            copied = false;
+            // Clipboard write is unavailable; the caller shows a manual-copy fallback
           }
 
           field.remove();

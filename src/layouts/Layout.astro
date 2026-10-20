@@ -57,9 +57,7 @@ const structuredData = buildHairSalonJsonLd(siteUrl);
 
     <noscript>
       <style>
-        .reveal,
-        .open-reveal,
-        .custom-reveal {
+        .reveal {
           opacity: 1;
           transform: none;
           clip-path: none;
@@ -88,7 +86,7 @@ const structuredData = buildHairSalonJsonLd(siteUrl);
     <Footer />
 
     <script>
-      const reveals = document.querySelectorAll(".reveal, .open-reveal");
+      const reveals = document.querySelectorAll(".reveal");
       const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)",
       ).matches;

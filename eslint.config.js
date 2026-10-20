@@ -11,4 +11,12 @@ export default [
   ...tseslint.configs.recommended,
   ...eslintPluginAstro.configs.recommended,
   eslintConfigPrettier,
+  {
+    files: ["**/*.config.mjs", "**/*.config.js"],
+    languageOptions: {
+      globals: {
+        process: "readonly",
+      },
+    },
+  },
 ];

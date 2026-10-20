@@ -42,15 +42,9 @@ export const lengthHints: Record<LengthHintId, LengthPrices> = {
   },
 };
 
-export const women: PricingCategory = womenData;
-export const men: PricingCategory = menData;
-export const children: PricingCategory = childrenData;
-
-export const pricing = {
-  women,
-  men,
-  children,
-};
+export const women = womenData as PricingCategory;
+export const men = menData as PricingCategory;
+export const children = childrenData as PricingCategory;
 
 export function getLengthHint(item: PricingItem) {
   return item.lengthHint ? lengthHints[item.lengthHint] : undefined;
