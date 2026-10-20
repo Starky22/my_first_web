@@ -48,7 +48,6 @@ const groups = t.pricing.groups;
               aria-label={t.pricing.shortHair}
               data-hair="kratek"
               class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
-              onclick="selectHairLength('kratek')"
             >
               <span class="relative block aspect-[3/4] overflow-hidden">
                 <img
@@ -69,7 +68,6 @@ const groups = t.pricing.groups;
               aria-label={t.pricing.mediumHair}
               data-hair="stredni"
               class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
-              onclick="selectHairLength('stredni')"
             >
               <span class="relative block aspect-[3/4] overflow-hidden">
                 <img
@@ -90,7 +88,6 @@ const groups = t.pricing.groups;
               aria-label={t.pricing.longHair}
               data-hair="dlouhe"
               class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
-              onclick="selectHairLength('dlouhe')"
             >
               <span class="relative block aspect-[3/4] overflow-hidden">
                 <img
@@ -121,7 +118,7 @@ const groups = t.pricing.groups;
               tabindex="0"
               class="tab-btn font-Inter active min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-damy"
-              onclick="switchTab('damy')">{t.pricing.tabLadies}</button
+              data-tab="damy">{t.pricing.tabLadies}</button
             >
             <button
               type="button"
@@ -131,7 +128,7 @@ const groups = t.pricing.groups;
               tabindex="-1"
               class="tab-btn font-Inter min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-pani"
-              onclick="switchTab('pani')">{t.pricing.tabGentlemen}</button
+              data-tab="pani">{t.pricing.tabGentlemen}</button
             >
             <button
               type="button"
@@ -141,7 +138,7 @@ const groups = t.pricing.groups;
               tabindex="-1"
               class="tab-btn font-Inter min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-deti"
-              onclick="switchTab('deti')">{t.pricing.tabChildren}</button
+              data-tab="deti">{t.pricing.tabChildren}</button
             >
           </div>
         </div>
@@ -611,136 +608,153 @@ const groups = t.pricing.groups;
       </div>
     </section>
 
-    <script is:inline>
-      window.switchTab = function (tabName) {
-        document.querySelectorAll(".tab-btn").forEach((btn) => {
-          const isActive = btn.id === "tab-" + tabName;
-          btn.classList.toggle("active", isActive);
-          btn.setAttribute("aria-selected", isActive ? "true" : "false");
-          btn.tabIndex = isActive ? 0 : -1;
-        });
-        document.querySelectorAll(".tab-content").forEach((content) => {
-          content.classList.toggle("hidden", content.id !== "content-" + tabName);
-        });
-      };
+    <script>
+      const pricing = document.getElementById("sluzby");
 
-      const tabList = document.querySelector('[role="tablist"]');
-      if (tabList) {
-        tabList.addEventListener("keydown", (event) => {
-          const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
-          const currentIndex = tabs.indexOf(document.activeElement);
-          if (currentIndex === -1) return;
+      if (pricing && !pricing.dataset.ready) {
+        pricing.dataset.ready = "true";
 
-          let nextIndex = null;
-          if (event.key === "ArrowRight") {
-            nextIndex = (currentIndex + 1) % tabs.length;
-          } else if (event.key === "ArrowLeft") {
-            nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
-          }
-          if (nextIndex === null) return;
+        const tabList = pricing.querySelector('[role="tablist"]');
+        const hairGroup = pricing.querySelector('[role="radiogroup"]');
+        const tooltipTriggers = pricing.querySelectorAll(".tooltip-trigger");
+        let selectedHairLength = null;
 
-          event.preventDefault();
-          const tabName = tabs[nextIndex].id.replace(/^tab-/, "");
-          window.switchTab(tabName);
-          tabs[nextIndex].focus();
-        });
-      }
-
-      const hairGroup = document.querySelector('#sluzby [role="radiogroup"]');
-      let selectedHairLength = null;
-
-      function applyHairPrices() {
-        const key = selectedHairLength || "full";
-        document.querySelectorAll(".js-length-price").forEach((el) => {
-          el.textContent = el.dataset[key] || el.dataset.full;
-        });
-        document.querySelectorAll(".js-length-hint").forEach((el) => {
-          el.textContent = el.dataset[key] || el.dataset.full;
-        });
-      }
-
-      window.selectHairLength = function (length) {
-        selectedHairLength = length;
-        document.querySelectorAll(".hair-option").forEach((btn) => {
-          const isSelected = btn.dataset.hair === length;
-          btn.setAttribute("aria-checked", isSelected ? "true" : "false");
-        });
-        applyHairPrices();
-      };
-
-      const tooltipTriggers = document.querySelectorAll(".tooltip-trigger");
-
-      function placeTooltip(trigger) {
-        const tip = trigger.querySelector(".price-tooltip");
-        if (!tip) return;
-        tip.style.transform = "translateX(-50%)";
-        const rect = tip.getBoundingClientRect();
-        const pad = 12;
-        let shift = 0;
-        if (rect.left < pad) shift += pad - rect.left;
-        if (rect.right + shift > window.innerWidth - pad) {
-          shift -= rect.right + shift - (window.innerWidth - pad);
+        function switchTab(tabName) {
+          pricing.querySelectorAll(".tab-btn").forEach((btn) => {
+            const isActive = btn.dataset.tab === tabName;
+            btn.classList.toggle("active", isActive);
+            btn.setAttribute("aria-selected", isActive ? "true" : "false");
+            btn.tabIndex = isActive ? 0 : -1;
+          });
+          pricing.querySelectorAll(".tab-content").forEach((content) => {
+            content.classList.toggle("hidden", content.id !== "content-" + tabName);
+          });
         }
-        tip.style.transform = `translateX(calc(-50% + ${shift}px))`;
-      }
 
-      function closeTooltips(except) {
-        tooltipTriggers.forEach((btn) => {
-          if (btn !== except) {
-            btn.setAttribute("aria-expanded", "false");
-            if (!except) btn.blur();
+        function applyHairPrices() {
+          const key = selectedHairLength || "full";
+          pricing.querySelectorAll(".js-length-price").forEach((el) => {
+            el.textContent = el.dataset[key] || el.dataset.full;
+          });
+          pricing.querySelectorAll(".js-length-hint").forEach((el) => {
+            el.textContent = el.dataset[key] || el.dataset.full;
+          });
+        }
+
+        function selectHairLength(length) {
+          selectedHairLength = length;
+          pricing.querySelectorAll(".hair-option").forEach((btn) => {
+            const isSelected = btn.dataset.hair === length;
+            btn.setAttribute("aria-checked", isSelected ? "true" : "false");
+          });
+          applyHairPrices();
+        }
+
+        function placeTooltip(trigger) {
+          const tip = trigger.querySelector(".price-tooltip");
+          if (!tip) return;
+          tip.style.transform = "translateX(-50%)";
+          const rect = tip.getBoundingClientRect();
+          const pad = 12;
+          let shift = 0;
+          if (rect.left < pad) shift += pad - rect.left;
+          if (rect.right + shift > window.innerWidth - pad) {
+            shift -= rect.right + shift - (window.innerWidth - pad);
           }
+          tip.style.transform = `translateX(calc(-50% + ${shift}px))`;
+        }
+
+        function closeTooltips(except) {
+          tooltipTriggers.forEach((btn) => {
+            if (btn !== except) {
+              btn.setAttribute("aria-expanded", "false");
+              if (!except) btn.blur();
+            }
+          });
+        }
+
+        pricing.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (btn.dataset.tab) switchTab(btn.dataset.tab);
+          });
         });
-      }
 
-      tooltipTriggers.forEach((btn) => {
-        btn.setAttribute("aria-expanded", "false");
-        const tip = btn.querySelector(".price-tooltip");
-        if (tip) tip.setAttribute("role", "tooltip");
+        pricing.querySelectorAll(".hair-option").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (btn.dataset.hair) selectHairLength(btn.dataset.hair);
+          });
+        });
 
-        btn.addEventListener("click", (event) => {
-          event.stopPropagation();
-          const isOpen = btn.getAttribute("aria-expanded") === "true";
+        if (tabList) {
+          tabList.addEventListener("keydown", (event) => {
+            const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+            const currentIndex = tabs.indexOf(document.activeElement);
+            if (currentIndex === -1) return;
+
+            let nextIndex = null;
+            if (event.key === "ArrowRight") {
+              nextIndex = (currentIndex + 1) % tabs.length;
+            } else if (event.key === "ArrowLeft") {
+              nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+            }
+            if (nextIndex === null) return;
+
+            event.preventDefault();
+            const tabName = tabs[nextIndex].dataset.tab;
+            if (tabName) switchTab(tabName);
+            tabs[nextIndex].focus();
+          });
+        }
+
+        if (hairGroup) {
+          hairGroup.addEventListener("keydown", (event) => {
+            const options = Array.from(hairGroup.querySelectorAll(".hair-option"));
+            const currentIndex = options.indexOf(document.activeElement);
+            if (currentIndex === -1) return;
+
+            let nextIndex = null;
+            if (event.key === "ArrowRight") {
+              nextIndex = (currentIndex + 1) % options.length;
+            } else if (event.key === "ArrowLeft") {
+              nextIndex = (currentIndex - 1 + options.length) % options.length;
+            }
+            if (nextIndex === null) return;
+
+            event.preventDefault();
+            const length = options[nextIndex].dataset.hair;
+            if (length) selectHairLength(length);
+            options[nextIndex].focus();
+          });
+        }
+
+        tooltipTriggers.forEach((btn) => {
+          btn.setAttribute("aria-expanded", "false");
+          const tip = btn.querySelector(".price-tooltip");
+          if (tip) tip.setAttribute("role", "tooltip");
+
+          btn.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const isOpen = btn.getAttribute("aria-expanded") === "true";
+            closeTooltips();
+            if (!isOpen) {
+              btn.setAttribute("aria-expanded", "true");
+              placeTooltip(btn);
+            }
+          });
+        });
+
+        document.addEventListener("click", () => {
           closeTooltips();
-          if (!isOpen) {
-            btn.setAttribute("aria-expanded", "true");
-            placeTooltip(btn);
-          }
         });
-      });
 
-      document.addEventListener("click", () => {
-        closeTooltips();
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeTooltips();
-      });
-
-      window.addEventListener("resize", () => {
-        tooltipTriggers.forEach((btn) => {
-          if (btn.getAttribute("aria-expanded") === "true") placeTooltip(btn);
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeTooltips();
         });
-      });
 
-      if (hairGroup) {
-        hairGroup.addEventListener("keydown", (event) => {
-          const options = Array.from(hairGroup.querySelectorAll(".hair-option"));
-          const currentIndex = options.indexOf(document.activeElement);
-          if (currentIndex === -1) return;
-
-          let nextIndex = null;
-          if (event.key === "ArrowRight") {
-            nextIndex = (currentIndex + 1) % options.length;
-          } else if (event.key === "ArrowLeft") {
-            nextIndex = (currentIndex - 1 + options.length) % options.length;
-          }
-          if (nextIndex === null) return;
-
-          event.preventDefault();
-          const length = options[nextIndex].dataset.hair;
-          window.selectHairLength(length);
-          options[nextIndex].focus();
+        window.addEventListener("resize", () => {
+          tooltipTriggers.forEach((btn) => {
+            if (btn.getAttribute("aria-expanded") === "true") placeTooltip(btn);
+          });
         });
       }
     </script>

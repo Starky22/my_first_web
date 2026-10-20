@@ -89,24 +89,25 @@ import t from "../i18n/cs.json";
       </div>
     </nav>
 
-    <script is:inline>
+    <script>
       const navToggle = document.getElementById("nav-toggle");
       const mobileNav = document.getElementById("mobile-nav");
       const navToggleIcon = document.getElementById("nav-toggle-icon");
-      const siteNav = document.querySelector("nav");
+      const siteNav = navToggle?.closest("nav");
 
-      function setMobileNav(open) {
-        if (!navToggle || !mobileNav) return;
-        mobileNav.classList.toggle("hidden", !open);
-        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
-        navToggle.setAttribute(
-          "aria-label",
-          open ? navToggle.dataset.closeLabel : navToggle.dataset.openLabel,
-        );
-        if (navToggleIcon) navToggleIcon.textContent = open ? "close" : "menu";
-      }
+      if (navToggle && mobileNav && siteNav && !siteNav.dataset.ready) {
+        siteNav.dataset.ready = "true";
 
-      if (navToggle && mobileNav) {
+        function setMobileNav(open) {
+          mobileNav.classList.toggle("hidden", !open);
+          navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+          navToggle.setAttribute(
+            "aria-label",
+            open ? navToggle.dataset.closeLabel : navToggle.dataset.openLabel,
+          );
+          if (navToggleIcon) navToggleIcon.textContent = open ? "close" : "menu";
+        }
+
         navToggle.addEventListener("click", (event) => {
           event.stopPropagation();
           const isOpen = navToggle.getAttribute("aria-expanded") === "true";
@@ -116,24 +117,24 @@ import t from "../i18n/cs.json";
         mobileNav.querySelectorAll("a").forEach((link) => {
           link.addEventListener("click", () => setMobileNav(false));
         });
+
+        document.addEventListener("click", (event) => {
+          if (!(event.target instanceof Node) || !siteNav.contains(event.target)) {
+            setMobileNav(false);
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key !== "Escape") return;
+          const menuOpen = navToggle.getAttribute("aria-expanded") === "true";
+          setMobileNav(false);
+          if (menuOpen) navToggle.focus();
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.matchMedia("(min-width: 768px)").matches) {
+            setMobileNav(false);
+          }
+        });
       }
-
-      document.addEventListener("click", (event) => {
-        if (siteNav && !siteNav.contains(event.target)) {
-          setMobileNav(false);
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape") return;
-        const menuOpen = navToggle?.getAttribute("aria-expanded") === "true";
-        setMobileNav(false);
-        if (menuOpen) navToggle.focus();
-      });
-
-      window.addEventListener("resize", () => {
-        if (window.matchMedia("(min-width: 768px)").matches) {
-          setMobileNav(false);
-        }
-      });
     </script>

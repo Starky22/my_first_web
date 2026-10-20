@@ -52,8 +52,8 @@ import t from "../i18n/cs.json";
     <Contact />
     <Footer />
 
-    <script is:inline>
-      const reveal = () => {
+    <script>
+      function reveal() {
         const reveals = document.querySelectorAll(".reveal, .open-reveal");
         const reduceMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
@@ -72,9 +72,11 @@ import t from "../i18n/cs.json";
             el.classList.add("active");
           }
         });
-      };
-      window.addEventListener("scroll", reveal);
+      }
+
+      window.addEventListener("scroll", reveal, { passive: true });
       window.addEventListener("load", reveal);
+      reveal();
     </script>
   </body>
 </html>

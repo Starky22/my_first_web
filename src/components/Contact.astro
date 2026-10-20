@@ -40,6 +40,10 @@ const addressCopiedAria = `${t.contact.addressCopied} ${t.contact.address}`;
                   type="button"
                   id="copy-phone"
                   aria-label={t.contact.copyPhoneAria}
+                  data-value={t.contact.phone}
+                  data-idle-label={t.contact.copyPhone}
+                  data-copied-label={t.contact.phoneCopied}
+                  data-error={t.contact.copyFailed}
                   class="text-on-surface-variant hover:text-primary inline-flex min-h-11 items-center self-center px-2 text-sm transition-colors duration-300"
                 >
                   <span id="phone-copy-text">{t.contact.copyPhone}</span>
@@ -54,8 +58,10 @@ const addressCopiedAria = `${t.contact.addressCopied} ${t.contact.address}`;
                 type="button"
                 id="copy-address"
                 aria-label={copyAddressAria}
+                data-value={t.contact.address}
                 data-copy-label={copyAddressAria}
                 data-copied-label={addressCopiedAria}
+                data-error={t.contact.copyAddressFailed}
                 class="group flex cursor-pointer items-start gap-4 border-0 bg-transparent p-0 text-left"
               >
                 <span
@@ -91,61 +97,54 @@ const addressCopiedAria = `${t.contact.addressCopied} ${t.contact.address}`;
       </div>
     </section>
 
-    <script define:vars={{
-      phoneNumber: t.contact.phone,
-      addressText: t.contact.address,
-      copyPhoneLabel: t.contact.copyPhone,
-      phoneCopiedLabel: t.contact.phoneCopied,
-      copyFailed: t.contact.copyFailed,
-      copyAddressFailed: t.contact.copyAddressFailed,
-    }}>
-      function setupCopyButton(buttonId, textId, value, idleLabel, copiedLabel) {
-        const button = document.getElementById(buttonId);
-        const label = document.getElementById(textId);
-        if (!button || !label) return;
+    <script>
+      const contact = document.getElementById("kontakt");
 
-        button.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(value);
-            label.textContent = copiedLabel;
-            setTimeout(() => {
-              label.textContent = idleLabel;
-            }, 2000);
-          } catch (error) {
-            console.error(copyFailed, error);
-          }
-        });
-      }
+      if (contact && !contact.dataset.ready) {
+        contact.dataset.ready = "true";
 
-      setupCopyButton(
-        "copy-phone",
-        "phone-copy-text",
-        phoneNumber,
-        copyPhoneLabel,
-        phoneCopiedLabel,
-      );
+        const phoneButton = document.getElementById("copy-phone");
+        const phoneLabel = document.getElementById("phone-copy-text");
+        const addressButton = document.getElementById("copy-address");
 
-      const copyAddress = document.getElementById("copy-address");
-      if (copyAddress) {
-        const addressIcon = copyAddress.querySelector(".material-symbols-outlined");
-        copyAddress.addEventListener("click", async () => {
-          try {
-            await navigator.clipboard.writeText(addressText);
-            if (addressIcon) addressIcon.textContent = "check";
-            copyAddress.setAttribute(
-              "aria-label",
-              copyAddress.dataset.copiedLabel,
-            );
-            setTimeout(() => {
-              if (addressIcon) addressIcon.textContent = "location_on";
-              copyAddress.setAttribute(
+        if (phoneButton && phoneLabel) {
+          phoneButton.addEventListener("click", async () => {
+            try {
+              await navigator.clipboard.writeText(phoneButton.dataset.value || "");
+              phoneLabel.textContent = phoneButton.dataset.copiedLabel || "";
+              setTimeout(() => {
+                phoneLabel.textContent = phoneButton.dataset.idleLabel || "";
+              }, 2000);
+            } catch (error) {
+              console.error(phoneButton.dataset.error, error);
+            }
+          });
+        }
+
+        if (addressButton) {
+          const addressIcon = addressButton.querySelector(
+            ".material-symbols-outlined",
+          );
+
+          addressButton.addEventListener("click", async () => {
+            try {
+              await navigator.clipboard.writeText(addressButton.dataset.value || "");
+              if (addressIcon) addressIcon.textContent = "check";
+              addressButton.setAttribute(
                 "aria-label",
-                copyAddress.dataset.copyLabel,
+                addressButton.dataset.copiedLabel || "",
               );
-            }, 2000);
-          } catch (error) {
-            console.error(copyAddressFailed, error);
-          }
-        });
+              setTimeout(() => {
+                if (addressIcon) addressIcon.textContent = "location_on";
+                addressButton.setAttribute(
+                  "aria-label",
+                  addressButton.dataset.copyLabel || "",
+                );
+              }, 2000);
+            } catch (error) {
+              console.error(addressButton.dataset.error, error);
+            }
+          });
+        }
       }
     </script>
