@@ -176,281 +176,323 @@ import t from "../i18n/cs.json";
       const viewport = document.getElementById("gallery-viewport");
       const prevButton = document.getElementById("gallery-prev");
       const nextButton = document.getElementById("gallery-next");
-
-      if (!track || !viewport || !prevButton || !nextButton) {
-        // Gallery is not on the page
-      } else if (!track.dataset.ready) {
-      track.dataset.ready = "true";
-
-      const originalSlides = Array.from(
-        track.querySelectorAll(".gallery-slide"),
-      );
-
-      let currentIndex = 3;
-      let isAnimating = false;
-      let animationReset = 0;
-
-      // Clone the first 3 and last 3 photos
-      const slidesPerView = 3;
-
-      const firstClones = originalSlides
-        .slice(0, slidesPerView)
-        .map((slide) => slide.cloneNode(true));
-
-      const lastClones = originalSlides
-        .slice(-slidesPerView)
-        .map((slide) => slide.cloneNode(true));
-
-      // Insert clones at the start
-      lastClones.reverse().forEach((slide) => {
-        track.insertBefore(slide, track.firstChild);
-      });
-
-      // Append clones at the end
-      firstClones.forEach((slide) => {
-        track.appendChild(slide);
-      });
-
-      const slides = Array.from(track.querySelectorAll(".gallery-slide"));
-
-      function getSlideWidth() {
-        return slides[0]?.getBoundingClientRect().width || 0;
-      }
-
-      function updateCarousel(animate = true) {
-        const slideWidth = getSlideWidth();
-        if (!slideWidth) return;
-
-        const gap = 24;
-
-        track.style.transition = animate
-          ? "transform 900ms ease-in-out"
-          : "none";
-
-        track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
-      }
-
-      function finishAnimation() {
-        const originalLength = originalSlides.length;
-
-        // Past the last real photo
-        if (currentIndex >= originalLength + slidesPerView) {
-          currentIndex = slidesPerView;
-          updateCarousel(false);
-        }
-
-        // Before the first real photo
-        if (currentIndex < slidesPerView) {
-          currentIndex = originalLength + slidesPerView - 1;
-          updateCarousel(false);
-        }
-
-        isAnimating = false;
-      }
-
-      function goToNext() {
-        if (isAnimating || !getSlideWidth()) return;
-
-        isAnimating = true;
-        currentIndex++;
-        updateCarousel(true);
-        window.clearTimeout(animationReset);
-        animationReset = window.setTimeout(finishAnimation, 1000);
-      }
-
-      function goToPrev() {
-        if (isAnimating || !getSlideWidth()) return;
-
-        isAnimating = true;
-        currentIndex--;
-        updateCarousel(true);
-        window.clearTimeout(animationReset);
-        animationReset = window.setTimeout(finishAnimation, 1000);
-      }
-
-      nextButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        goToNext();
-      });
-      prevButton.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        goToPrev();
-      });
-
-      let pointerStartX = 0;
-      let pointerStartY = 0;
-      let pointerActive = false;
-      let pointerSwiped = false;
-
-      viewport.addEventListener("pointerdown", (event) => {
-        if (event.target.closest("#gallery-prev, #gallery-next")) return;
-        if (event.pointerType === "mouse" && event.button !== 0) return;
-
-        pointerActive = true;
-        pointerSwiped = false;
-        pointerStartX = event.clientX;
-        pointerStartY = event.clientY;
-        stopAutoplay();
-      });
-
-      viewport.addEventListener(
-        "pointermove",
-        (event) => {
-          if (!pointerActive) return;
-
-          const dx = event.clientX - pointerStartX;
-          const dy = event.clientY - pointerStartY;
-
-          if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
-            pointerSwiped = true;
-            if (event.cancelable) event.preventDefault();
-          }
-        },
-        { passive: false },
-      );
-
-      function endPointerSwipe(event) {
-        if (!pointerActive) return;
-        pointerActive = false;
-
-        const dx = event.clientX - pointerStartX;
-        const dy = event.clientY - pointerStartY;
-        if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-          pointerSwiped = true;
-          if (dx < 0) goToNext();
-          else goToPrev();
-        }
-
-        startAutoplay();
-      }
-
-      viewport.addEventListener("pointerup", endPointerSwipe);
-      viewport.addEventListener("pointercancel", endPointerSwipe);
-
-      track.addEventListener("transitionend", (event) => {
-        if (event.target !== track || event.propertyName !== "transform") return;
-        window.clearTimeout(animationReset);
-        finishAnimation();
-      });
-
-      window.addEventListener("resize", () => {
-        updateCarousel(false);
-      });
-
-      // Start on the first real photo
-      updateCarousel(false);
-      requestAnimationFrame(() => updateCarousel(false));
-      window.addEventListener("load", () => updateCarousel(false));
-
-      // Autoplay
       const carousel = document.getElementById("gallery-carousel");
-      const autoplayDelay = 5000;
-      const reducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)",
-      );
-      let autoplayTimer = null;
-
-      function startAutoplay() {
-        if (autoplayTimer || reducedMotion.matches || document.hidden) return;
-
-        autoplayTimer = setInterval(goToNext, autoplayDelay);
-      }
-
-      function stopAutoplay() {
-        clearInterval(autoplayTimer);
-        autoplayTimer = null;
-      }
-
-      carousel.addEventListener("mouseenter", stopAutoplay);
-      carousel.addEventListener("mouseleave", startAutoplay);
-      carousel.addEventListener("focusin", stopAutoplay);
-      carousel.addEventListener("focusout", startAutoplay);
-
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          stopAutoplay();
-        } else {
-          startAutoplay();
-        }
-      });
-
-      reducedMotion.addEventListener("change", () => {
-        if (reducedMotion.matches) {
-          stopAutoplay();
-        } else {
-          startAutoplay();
-        }
-      });
-
-      startAutoplay();
-
-      // Lightbox
       const lightbox = document.getElementById("gallery-lightbox");
       const lightboxImage = document.getElementById("lightbox-image");
       const lightboxClose = document.getElementById("lightbox-close");
-      let lastFocused = null;
 
-      function openLightbox(image) {
-        lastFocused = document.activeElement;
-        lightboxImage.src = image.currentSrc || image.src;
-        lightboxImage.alt = image.alt;
+      if (
+        !track ||
+        !viewport ||
+        !prevButton ||
+        !nextButton ||
+        !carousel ||
+        !lightbox ||
+        !(lightboxImage instanceof HTMLImageElement) ||
+        !lightboxClose
+      ) {
+        // Gallery is not on the page
+      } else if (!track.dataset.ready) {
+        setupGallery(
+          track,
+          viewport,
+          prevButton,
+          nextButton,
+          carousel,
+          lightbox,
+          lightboxImage,
+          lightboxClose,
+        );
+      }
 
-        lightbox.classList.remove("hidden");
-        lightbox.classList.add("flex");
-        // Force a repaint so the opacity transition can run
-        requestAnimationFrame(() => {
-          lightbox.classList.remove("opacity-0");
+      function setupGallery(
+        track: HTMLElement,
+        viewport: HTMLElement,
+        prevButton: HTMLElement,
+        nextButton: HTMLElement,
+        carousel: HTMLElement,
+        lightbox: HTMLElement,
+        lightboxImage: HTMLImageElement,
+        lightboxClose: HTMLElement,
+      ) {
+        track.dataset.ready = "true";
+
+        const originalSlides = Array.from(
+          track.querySelectorAll(".gallery-slide"),
+        );
+
+        let currentIndex = 3;
+        let isAnimating = false;
+        let animationReset = 0;
+
+        // Clone the first 3 and last 3 photos
+        const slidesPerView = 3;
+
+        const firstClones = originalSlides
+          .slice(0, slidesPerView)
+          .map((slide) => slide.cloneNode(true));
+
+        const lastClones = originalSlides
+          .slice(-slidesPerView)
+          .map((slide) => slide.cloneNode(true));
+
+        // Insert clones at the start
+        lastClones.reverse().forEach((slide) => {
+          if (!track) return;
+          track.insertBefore(slide, track.firstChild);
         });
 
-        document.body.style.overflow = "hidden";
-        stopAutoplay();
-        lightboxClose.focus();
-      }
+        // Append clones at the end
+        firstClones.forEach((slide) => {
+          if (!track) return;
+          track.appendChild(slide);
+        });
 
-      function closeLightbox() {
-        lightbox.classList.add("opacity-0");
-        lightbox.classList.remove("flex");
-        lightbox.classList.add("hidden");
-        lightboxImage.src = "";
-        lightboxImage.alt = "";
+        const slides = Array.from(track.querySelectorAll(".gallery-slide"));
 
-        document.body.style.overflow = "";
+        function getSlideWidth() {
+          return slides[0]?.getBoundingClientRect().width || 0;
+        }
+
+        function updateCarousel(animate = true) {
+          if (!track) return;
+
+          const slideWidth = getSlideWidth();
+          if (!slideWidth) return;
+
+          const gap = 24;
+
+          track.style.transition = animate
+            ? "transform 900ms ease-in-out"
+            : "none";
+
+          track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+        }
+
+        function finishAnimation() {
+          const originalLength = originalSlides.length;
+
+          // Past the last real photo
+          if (currentIndex >= originalLength + slidesPerView) {
+            currentIndex = slidesPerView;
+            updateCarousel(false);
+          }
+
+          // Before the first real photo
+          if (currentIndex < slidesPerView) {
+            currentIndex = originalLength + slidesPerView - 1;
+            updateCarousel(false);
+          }
+
+          isAnimating = false;
+        }
+
+        function goToNext() {
+          if (isAnimating || !getSlideWidth()) return;
+
+          isAnimating = true;
+          currentIndex++;
+          updateCarousel(true);
+          window.clearTimeout(animationReset);
+          animationReset = window.setTimeout(finishAnimation, 1000);
+        }
+
+        function goToPrev() {
+          if (isAnimating || !getSlideWidth()) return;
+
+          isAnimating = true;
+          currentIndex--;
+          updateCarousel(true);
+          window.clearTimeout(animationReset);
+          animationReset = window.setTimeout(finishAnimation, 1000);
+        }
+
+        nextButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          goToNext();
+        });
+        prevButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          goToPrev();
+        });
+
+        let pointerStartX = 0;
+        let pointerStartY = 0;
+        let pointerActive = false;
+        let pointerSwiped = false;
+
+        viewport.addEventListener("pointerdown", (event) => {
+          if (!(event.target instanceof Element)) return;
+          if (event.target.closest("#gallery-prev, #gallery-next")) return;
+          if (event.pointerType === "mouse" && event.button !== 0) return;
+
+          pointerActive = true;
+          pointerSwiped = false;
+          pointerStartX = event.clientX;
+          pointerStartY = event.clientY;
+          stopAutoplay();
+        });
+
+        viewport.addEventListener(
+          "pointermove",
+          (event) => {
+            if (!pointerActive) return;
+
+            const dx = event.clientX - pointerStartX;
+            const dy = event.clientY - pointerStartY;
+
+            if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+              pointerSwiped = true;
+              if (event.cancelable) event.preventDefault();
+            }
+          },
+          { passive: false },
+        );
+
+        function endPointerSwipe(event: PointerEvent) {
+          if (!pointerActive) return;
+          pointerActive = false;
+
+          const dx = event.clientX - pointerStartX;
+          const dy = event.clientY - pointerStartY;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+            pointerSwiped = true;
+            if (dx < 0) goToNext();
+            else goToPrev();
+          }
+
+          startAutoplay();
+        }
+
+        viewport.addEventListener("pointerup", endPointerSwipe);
+        viewport.addEventListener("pointercancel", endPointerSwipe);
+
+        track.addEventListener("transitionend", (event) => {
+          if (event.target !== track || event.propertyName !== "transform") return;
+          window.clearTimeout(animationReset);
+          finishAnimation();
+        });
+
+        window.addEventListener("resize", () => {
+          updateCarousel(false);
+        });
+
+        // Start on the first real photo
+        updateCarousel(false);
+        requestAnimationFrame(() => updateCarousel(false));
+        window.addEventListener("load", () => updateCarousel(false));
+
+        // Autoplay
+        const autoplayDelay = 5000;
+        const reducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        );
+        let autoplayTimer: ReturnType<typeof setInterval> | null = null;
+
+        function startAutoplay() {
+          if (autoplayTimer || reducedMotion.matches || document.hidden) return;
+
+          autoplayTimer = setInterval(goToNext, autoplayDelay);
+        }
+
+        function stopAutoplay() {
+          if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+          }
+        }
+
+        carousel.addEventListener("mouseenter", stopAutoplay);
+        carousel.addEventListener("mouseleave", startAutoplay);
+        carousel.addEventListener("focusin", stopAutoplay);
+        carousel.addEventListener("focusout", startAutoplay);
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.hidden) {
+            stopAutoplay();
+          } else {
+            startAutoplay();
+          }
+        });
+
+        reducedMotion.addEventListener("change", () => {
+          if (reducedMotion.matches) {
+            stopAutoplay();
+          } else {
+            startAutoplay();
+          }
+        });
+
         startAutoplay();
 
-        if (lastFocused) {
-          lastFocused.focus();
-          lastFocused = null;
+        let lastFocused: HTMLElement | null = null;
+
+        function openLightbox(image: HTMLImageElement) {
+          lastFocused =
+            document.activeElement instanceof HTMLElement
+              ? document.activeElement
+              : null;
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt;
+
+          lightbox.classList.remove("hidden");
+          lightbox.classList.add("flex");
+          // Force a repaint so the opacity transition can run
+          requestAnimationFrame(() => {
+            lightbox.classList.remove("opacity-0");
+          });
+
+          document.body.style.overflow = "hidden";
+          stopAutoplay();
+          lightboxClose.focus();
         }
-      }
 
-      // Click on any carousel photo, including clones
-      track.addEventListener("click", (event) => {
-        if (pointerSwiped) {
-          pointerSwiped = false;
-          event.preventDefault();
-          return;
+        function closeLightbox() {
+          lightbox.classList.add("opacity-0");
+          lightbox.classList.remove("flex");
+          lightbox.classList.add("hidden");
+          lightboxImage.src = "";
+          lightboxImage.alt = "";
+
+          document.body.style.overflow = "";
+          startAutoplay();
+
+          if (lastFocused) {
+            lastFocused.focus();
+            lastFocused = null;
+          }
         }
 
-        const trigger = event.target.closest(".gallery-trigger");
-        if (!trigger) return;
+        // Click on any carousel photo, including clones
+        track.addEventListener("click", (event) => {
+          if (pointerSwiped) {
+            pointerSwiped = false;
+            event.preventDefault();
+            return;
+          }
 
-        const image = trigger.querySelector("img");
-        if (image) openLightbox(image);
-      });
+          if (!(event.target instanceof Element)) return;
 
-      lightboxClose.addEventListener("click", closeLightbox);
+          const trigger = event.target.closest(".gallery-trigger");
+          if (!trigger) return;
 
-      // Click outside the photo
-      lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) closeLightbox();
-      });
+          const image = trigger.querySelector("img");
+          if (image) openLightbox(image);
+        });
 
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
-          closeLightbox();
-        }
-      });
+        lightboxClose.addEventListener("click", closeLightbox);
+
+        // Click outside the photo
+        lightbox.addEventListener("click", (event) => {
+          if (event.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
+            closeLightbox();
+          }
+        });
       }
     </script>
