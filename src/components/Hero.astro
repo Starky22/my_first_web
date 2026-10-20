@@ -4,45 +4,43 @@ import heroImage from "../assets/images/hero.jpg";
 import t from "../i18n/cs.json";
 ---
 
-    <header
-      class="relative flex h-screen items-center justify-center overflow-hidden"
+<header
+  class="relative flex h-screen items-center justify-center overflow-hidden"
+>
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={heroImage}
+      alt={t.hero.imageAlt}
+      priority
+      widths={[640, 960, 1280, 1717]}
+      sizes="100vw"
+      class="h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/20"></div>
+  </div>
+  <div class="px-gutter relative z-10 flex flex-col items-center text-center">
+    <h1
+      class="font-Inter reveal active mb-12 text-2xl text-white italic drop-shadow-md"
+      style="transition-delay: 400ms;"
     >
-      <div class="absolute inset-0 z-0">
-        <Image
-          src={heroImage}
-          alt={t.hero.imageAlt}
-          priority
-          widths={[640, 960, 1280, 1717]}
-          sizes="100vw"
-          class="h-full w-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black/20"></div>
-      </div>
-      <div
-        class="px-gutter relative z-10 flex flex-col items-center text-center"
+      {t.hero.subtitle}
+    </h1>
+    <div
+      class="reveal active flex flex-col gap-6 sm:flex-row"
+      style="transition-delay: 600ms;"
+    >
+      <a
+        class="bg-primary text-on-primary font-Inter rounded-full px-10 py-4 tracking-widest shadow-xl transition-transform hover:scale-105"
+        href="#kontakt"
       >
-        <h1
-          class="font-Inter reveal active mb-12 text-2xl text-white italic drop-shadow-md"
-          style="transition-delay: 400ms;"
-        >
-          {t.hero.subtitle}
-        </h1>
-        <div
-          class="reveal active flex flex-col gap-6 sm:flex-row"
-          style="transition-delay: 600ms;"
-        >
-          <a
-            class="bg-primary text-on-primary font-Inter rounded-full px-10 py-4 tracking-widest shadow-xl transition-transform hover:scale-105"
-            href="#kontakt"
-          >
-            {t.hero.reservationButton}
-          </a>
-          <a
-            class="text-primary border-primary/20 font-Inter rounded-full border bg-white/90 px-10 py-4 tracking-widest shadow-lg backdrop-blur-sm transition-all hover:bg-white"
-            href="#sluzby"
-          >
-            {t.hero.pricingButton}
-          </a>
-        </div>
-      </div>
-    </header>
+        {t.hero.reservationButton}
+      </a>
+      <a
+        class="text-primary border-primary/20 font-Inter rounded-full border bg-white/90 px-10 py-4 tracking-widest shadow-lg backdrop-blur-sm transition-all hover:bg-white"
+        href="#sluzby"
+      >
+        {t.hero.pricingButton}
+      </a>
+    </div>
+  </div>
+</header>

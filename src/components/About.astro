@@ -4,46 +4,42 @@ import aboutPetra from "../assets/images/about-petra.jpg";
 import t from "../i18n/cs.json";
 ---
 
-    <section
-      class="px-gutter max-w-container-max mx-auto py-20 md:py-28"
-      id="o-nas"
-    >
-      <div class="grid items-center gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16">
-        <div class="reveal relative">
-          <div
-            class="relative z-10 aspect-[4/5] overflow-hidden rounded-xl shadow-2xl"
-          >
-            <Image
-              src={aboutPetra}
-              alt={t.about.imageAlt}
-              loading="lazy"
-              class="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"
-            />
-          </div>
-          <div
-            class="bg-primary-fixed-dim/30 absolute -bottom-6 -left-6 -z-10 h-48 w-48 rounded-full blur-3xl"
-          >
-          </div>
-          <div
-            class="bg-secondary-container/20 absolute -top-6 -right-6 -z-10 h-64 w-64 rounded-full blur-3xl"
-          >
-          </div>
-        </div>
-        <div class="reveal">
-          <span
-            class="text-primary font-Inter mb-5 block tracking-[0.2em] uppercase"
-            >{t.about.eyebrow}</span
-          >
-          <h2 class="font-Inter text-on-surface mb-8 text-3xl">
-            {t.about.title}
-          </h2>
-          <div
-            class="font-Inter text-on-surface-variant space-y-7 leading-relaxed"
-          >
-            {t.about.paragraphs.map((paragraph) => (
-              <p>{paragraph}</p>
-            ))}
-          </div>
-        </div>
+<section
+  class="px-gutter max-w-container-max mx-auto py-20 md:py-28"
+  id="o-nas"
+>
+  <div class="grid items-center gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-16">
+    <div class="reveal relative">
+      <div
+        class="relative z-10 aspect-[4/5] overflow-hidden rounded-xl shadow-2xl"
+      >
+        <Image
+          src={aboutPetra}
+          alt={t.about.imageAlt}
+          loading="lazy"
+          class="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+        />
       </div>
-    </section>
+      <div
+        class="bg-primary-fixed-dim/30 absolute -bottom-6 -left-6 -z-10 h-48 w-48 rounded-full blur-3xl"
+      >
+      </div>
+      <div
+        class="bg-secondary-container/20 absolute -top-6 -right-6 -z-10 h-64 w-64 rounded-full blur-3xl"
+      >
+      </div>
+    </div>
+    <div class="reveal">
+      <span
+        class="text-primary font-Inter mb-5 block tracking-[0.2em] uppercase"
+        >{t.about.eyebrow}</span
+      >
+      <h2 class="font-Inter text-on-surface mb-8 text-3xl">
+        {t.about.title}
+      </h2>
+      <div class="font-Inter text-on-surface-variant space-y-7 leading-relaxed">
+        {t.about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </div>
+</section>

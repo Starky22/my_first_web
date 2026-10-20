@@ -5,226 +5,235 @@ const copyAddressAria = `${t.contact.copyAddress} ${t.contact.address}`;
 const addressCopiedAria = `${t.contact.addressCopied} ${t.contact.address}`;
 ---
 
-    <section
-      class="py-stack-lg px-gutter max-w-container-max mx-auto"
-      id="kontakt"
-    >
-      <div class="gap-stack-md grid lg:grid-cols-2">
-        <div class="reveal">
-          <h2 class="font-Inter text-on-surface mb-8 text-2xl">{t.contact.title}</h2>
-          <div class="mb-12 space-y-8">
-            <div class="flex items-start gap-4">
-              <span
-                class="material-symbols-outlined text-primary bg-primary/10 rounded-xl p-3"
-                >person</span
-              >
-              <div>
-                <p class="text-on-surface font-bold">{t.contact.name}</p>
-                <p class="text-on-surface-variant">{t.contact.role}</p>
-              </div>
-            </div>
-            <div>
-              <div class="flex items-center gap-4">
-                <a
-                  href={`tel:${t.contact.phoneTel}`}
-                  class="group flex items-center gap-4"
-                >
-                  <span
-                    class="material-symbols-outlined text-primary bg-primary/10 group-hover:bg-primary rounded-xl p-3 transition-colors duration-300 group-hover:text-white"
-                  >
-                    phone
-                  </span>
-                  <span id="contact-phone-value" class="text-on-surface font-bold"
-                    >{t.contact.phone}</span
-                  >
-                </a>
-                <button
-                  type="button"
-                  id="copy-phone"
-                  aria-label={t.contact.copyPhoneAria}
-                  data-value={t.contact.phone}
-                  data-idle-label={t.contact.copyPhone}
-                  data-copied-label={t.contact.phoneCopied}
-                  data-error={t.contact.copyFailed}
-                  class="text-on-surface-variant hover:text-primary inline-flex min-h-11 items-center self-center px-2 text-sm transition-colors duration-300"
-                >
-                  <span id="phone-copy-text" aria-live="polite">{t.contact.copyPhone}</span>
-                </button>
-              </div>
-              <p class="text-on-surface-variant mt-2 pl-16">
-                {t.contact.smsNote}
-              </p>
-            </div>
-            <div>
-              <button
-                type="button"
-                id="copy-address"
-                aria-label={copyAddressAria}
-                data-value={t.contact.address}
-                data-copy-label={copyAddressAria}
-                data-copied-label={addressCopiedAria}
-                data-error={t.contact.copyAddressFailed}
-                class="group flex cursor-pointer items-start gap-4 border-0 bg-transparent p-0 text-left"
-              >
-                <span
-                  class="material-symbols-outlined text-primary bg-primary/10 group-hover:bg-primary rounded-xl p-3 transition-colors duration-300 group-hover:text-white"
-                  >location_on</span
-                >
-                <span>
-                  <span
-                    id="contact-address-value"
-                    class="text-on-surface group-hover:text-primary font-bold transition-colors duration-300"
-                    >{t.contact.address}</span
-                  >
-                  <span class="text-on-surface-variant mt-0.5 block">
-                    {t.contact.parking}
-                  </span>
-                </span>
-              </button>
-              <p
-                id="address-copy-status"
-                class="text-on-surface-variant mt-2 text-sm empty:hidden"
-                aria-live="polite"
-              ></p>
-            </div>
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto" id="kontakt">
+  <div class="gap-stack-md grid lg:grid-cols-2">
+    <div class="reveal">
+      <h2 class="font-Inter text-on-surface mb-8 text-2xl">
+        {t.contact.title}
+      </h2>
+      <div class="mb-12 space-y-8">
+        <div class="flex items-start gap-4">
+          <span
+            class="material-symbols-outlined text-primary bg-primary/10 rounded-xl p-3"
+            >person</span
+          >
+          <div>
+            <p class="text-on-surface font-bold">{t.contact.name}</p>
+            <p class="text-on-surface-variant">{t.contact.role}</p>
           </div>
         </div>
-
-        <div
-          class="border-outline-variant/30 group reveal h-72 max-w-full overflow-hidden rounded-2xl border shadow-lg"
-        >
-          <iframe
-            class="h-full w-full max-w-full"
-            src={t.contact.mapEmbed}
-            title={t.contact.mapTitle}
-            style="border:0;"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <div>
+          <div class="flex items-center gap-4">
+            <a
+              href={`tel:${t.contact.phoneTel}`}
+              class="group flex items-center gap-4"
+            >
+              <span
+                class="material-symbols-outlined text-primary bg-primary/10 group-hover:bg-primary rounded-xl p-3 transition-colors duration-300 group-hover:text-white"
+              >
+                phone
+              </span>
+              <span id="contact-phone-value" class="text-on-surface font-bold"
+                >{t.contact.phone}</span
+              >
+            </a>
+            <button
+              type="button"
+              id="copy-phone"
+              aria-label={t.contact.copyPhoneAria}
+              data-value={t.contact.phone}
+              data-idle-label={t.contact.copyPhone}
+              data-copied-label={t.contact.phoneCopied}
+              data-error={t.contact.copyFailed}
+              class="text-on-surface-variant hover:text-primary inline-flex min-h-11 items-center self-center px-2 text-sm transition-colors duration-300"
+            >
+              <span id="phone-copy-text" aria-live="polite"
+                >{t.contact.copyPhone}</span
+              >
+            </button>
+          </div>
+          <p class="text-on-surface-variant mt-2 pl-16">
+            {t.contact.smsNote}
+          </p>
+        </div>
+        <div>
+          <button
+            type="button"
+            id="copy-address"
+            aria-label={copyAddressAria}
+            data-value={t.contact.address}
+            data-copy-label={copyAddressAria}
+            data-copied-label={addressCopiedAria}
+            data-error={t.contact.copyAddressFailed}
+            class="group flex cursor-pointer items-start gap-4 border-0 bg-transparent p-0 text-left"
+          >
+            <span
+              class="material-symbols-outlined text-primary bg-primary/10 group-hover:bg-primary rounded-xl p-3 transition-colors duration-300 group-hover:text-white"
+              >location_on</span
+            >
+            <span>
+              <span
+                id="contact-address-value"
+                class="text-on-surface group-hover:text-primary font-bold transition-colors duration-300"
+                >{t.contact.address}</span
+              >
+              <span class="text-on-surface-variant mt-0.5 block">
+                {t.contact.parking}
+              </span>
+            </span>
+          </button>
+          <p
+            id="address-copy-status"
+            class="text-on-surface-variant mt-2 text-sm empty:hidden"
+            aria-live="polite"
+          >
+          </p>
         </div>
       </div>
-    </section>
+    </div>
 
-    <script>
-      const contact = document.getElementById("kontakt");
+    <div
+      class="border-outline-variant/30 group reveal h-72 max-w-full overflow-hidden rounded-2xl border shadow-lg"
+    >
+      <iframe
+        class="h-full w-full max-w-full"
+        src={t.contact.mapEmbed}
+        title={t.contact.mapTitle}
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      >
+      </iframe>
+    </div>
+  </div>
+</section>
 
-      if (contact && !contact.dataset.ready) {
-        contact.dataset.ready = "true";
+<script>
+  const contact = document.getElementById("kontakt");
 
-        const phoneButton = document.getElementById("copy-phone");
-        const phoneLabel = document.getElementById("phone-copy-text");
-        const phoneValue = document.getElementById("contact-phone-value");
-        const addressButton = document.getElementById("copy-address");
-        const addressValue = document.getElementById("contact-address-value");
-        const addressStatus = document.getElementById("address-copy-status");
+  if (contact && !contact.dataset.ready) {
+    contact.dataset.ready = "true";
 
-        function selectVisibleText(element: HTMLElement | null) {
-          if (!element) return;
-          const selection = window.getSelection();
-          if (!selection) return;
-          const range = document.createRange();
-          range.selectNodeContents(element);
-          selection.removeAllRanges();
-          selection.addRange(range);
-        }
+    const phoneButton = document.getElementById("copy-phone");
+    const phoneLabel = document.getElementById("phone-copy-text");
+    const phoneValue = document.getElementById("contact-phone-value");
+    const addressButton = document.getElementById("copy-address");
+    const addressValue = document.getElementById("contact-address-value");
+    const addressStatus = document.getElementById("address-copy-status");
 
-        function copyWithExecCommand(text: string) {
-          const field = document.createElement("textarea");
-          field.value = text;
-          field.setAttribute("readonly", "");
-          field.setAttribute("aria-hidden", "true");
-          field.tabIndex = -1;
-          field.style.position = "fixed";
-          field.style.left = "-9999px";
-          field.style.top = "0";
-          document.body.append(field);
-          field.focus();
-          field.select();
-          field.setSelectionRange(0, text.length);
+    function selectVisibleText(element: HTMLElement | null) {
+      if (!element) return;
+      const selection = window.getSelection();
+      if (!selection) return;
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
 
-          let copied = false;
-          try {
-            copied = document.execCommand("copy");
-          } catch {
-            // Clipboard write is unavailable; the caller shows a manual-copy fallback
-          }
+    function copyWithExecCommand(text: string) {
+      const field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.setAttribute("aria-hidden", "true");
+      field.tabIndex = -1;
+      field.style.position = "fixed";
+      field.style.left = "-9999px";
+      field.style.top = "0";
+      document.body.append(field);
+      field.focus();
+      field.select();
+      field.setSelectionRange(0, text.length);
 
-          field.remove();
-          return copied;
-        }
+      let copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch {
+        // Clipboard write is unavailable; the caller shows a manual-copy fallback
+      }
 
-        async function copyText(text: string, fallbackEl: HTMLElement | null) {
-          if (window.isSecureContext && navigator.clipboard?.writeText) {
-            try {
-              await navigator.clipboard.writeText(text);
-              return true;
-            } catch {
-              selectVisibleText(fallbackEl);
-              return false;
-            }
-          }
+      field.remove();
+      return copied;
+    }
 
-          // Clipboard API is unavailable on insecure HTTP; try the legacy command only then
-          if (copyWithExecCommand(text)) return true;
-
+    async function copyText(text: string, fallbackEl: HTMLElement | null) {
+      if (window.isSecureContext && navigator.clipboard?.writeText) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch {
           selectVisibleText(fallbackEl);
           return false;
         }
-
-        if (phoneButton && phoneLabel) {
-          phoneButton.addEventListener("click", async () => {
-            const copied = await copyText(
-              phoneButton.dataset.value || "",
-              phoneValue,
-            );
-            phoneLabel.textContent = copied
-              ? phoneButton.dataset.copiedLabel || ""
-              : phoneButton.dataset.error || "";
-
-            window.setTimeout(() => {
-              phoneLabel.textContent = phoneButton.dataset.idleLabel || "";
-            }, copied ? 2000 : 4000);
-          });
-        }
-
-        if (addressButton) {
-          const addressIcon = addressButton.querySelector(
-            ".material-symbols-outlined",
-          );
-
-          addressButton.addEventListener("click", async () => {
-            const copied = await copyText(
-              addressButton.dataset.value || "",
-              addressValue,
-            );
-
-            if (copied) {
-              if (addressIcon) addressIcon.textContent = "check";
-              addressButton.setAttribute(
-                "aria-label",
-                addressButton.dataset.copiedLabel || "",
-              );
-              if (addressStatus) addressStatus.textContent = "";
-            } else {
-              if (addressStatus) {
-                addressStatus.textContent = addressButton.dataset.error || "";
-              }
-              addressButton.setAttribute(
-                "aria-label",
-                addressButton.dataset.error || "",
-              );
-            }
-
-            window.setTimeout(() => {
-              if (addressIcon) addressIcon.textContent = "location_on";
-              addressButton.setAttribute(
-                "aria-label",
-                addressButton.dataset.copyLabel || "",
-              );
-              if (addressStatus) addressStatus.textContent = "";
-            }, copied ? 2000 : 4000);
-          });
-        }
       }
-    </script>
+
+      // Clipboard API is unavailable on insecure HTTP; try the legacy command only then
+      if (copyWithExecCommand(text)) return true;
+
+      selectVisibleText(fallbackEl);
+      return false;
+    }
+
+    if (phoneButton && phoneLabel) {
+      phoneButton.addEventListener("click", async () => {
+        const copied = await copyText(
+          phoneButton.dataset.value || "",
+          phoneValue,
+        );
+        phoneLabel.textContent = copied
+          ? phoneButton.dataset.copiedLabel || ""
+          : phoneButton.dataset.error || "";
+
+        window.setTimeout(
+          () => {
+            phoneLabel.textContent = phoneButton.dataset.idleLabel || "";
+          },
+          copied ? 2000 : 4000,
+        );
+      });
+    }
+
+    if (addressButton) {
+      const addressIcon = addressButton.querySelector(
+        ".material-symbols-outlined",
+      );
+
+      addressButton.addEventListener("click", async () => {
+        const copied = await copyText(
+          addressButton.dataset.value || "",
+          addressValue,
+        );
+
+        if (copied) {
+          if (addressIcon) addressIcon.textContent = "check";
+          addressButton.setAttribute(
+            "aria-label",
+            addressButton.dataset.copiedLabel || "",
+          );
+          if (addressStatus) addressStatus.textContent = "";
+        } else {
+          if (addressStatus) {
+            addressStatus.textContent = addressButton.dataset.error || "";
+          }
+          addressButton.setAttribute(
+            "aria-label",
+            addressButton.dataset.error || "",
+          );
+        }
+
+        window.setTimeout(
+          () => {
+            if (addressIcon) addressIcon.textContent = "location_on";
+            addressButton.setAttribute(
+              "aria-label",
+              addressButton.dataset.copyLabel || "",
+            );
+            if (addressStatus) addressStatus.textContent = "";
+          },
+          copied ? 2000 : 4000,
+        );
+      });
+    }
+  }
+</script>

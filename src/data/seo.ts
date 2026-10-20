@@ -1,9 +1,11 @@
 import t from "../i18n/cs.json";
 import { children, men, women } from "./pricing";
 
-const serviceNames = [...women.groups, ...men.groups, ...children.groups].flatMap(
-  (group) => group.items.map((item) => item.name),
-);
+const serviceNames = [
+  ...women.groups,
+  ...men.groups,
+  ...children.groups,
+].flatMap((group) => group.items.map((item) => item.name));
 
 export function buildHairSalonJsonLd(siteUrl?: string) {
   return {

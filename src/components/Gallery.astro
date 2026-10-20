@@ -14,498 +14,488 @@ const photos = [
 ];
 ---
 
-    <section
-      class="py-stack-lg px-gutter max-w-container-max mx-auto"
-      id="galerie"
+<section class="py-stack-lg px-gutter max-w-container-max mx-auto" id="galerie">
+  <div class="reveal mb-16 text-center">
+    <span class="text-primary font-Inter mb-4 block tracking-[0.2em] uppercase">
+      {t.gallery.eyebrow}
+    </span>
+    <h2 class="font-Inter text-on-surface text-2xl">{t.gallery.title}</h2>
+  </div>
+
+  <!-- Carousel -->
+  <div class="relative" id="gallery-carousel">
+    <!-- Left arrow -->
+    <button
+      id="gallery-prev"
+      type="button"
+      aria-label={t.gallery.previous}
+      class="text-on-surface hover:bg-primary absolute top-1/2 left-0 z-30 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 touch-manipulation items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white"
     >
-      <div class="reveal mb-16 text-center">
-        <span
-          class="text-primary font-Inter mb-4 block tracking-[0.2em] uppercase"
-        >
-          {t.gallery.eyebrow}
-        </span>
-        <h2 class="font-Inter text-on-surface text-2xl">{t.gallery.title}</h2>
-      </div>
-
-      <!-- Carousel -->
-      <div class="relative" id="gallery-carousel">
-        <!-- Left arrow -->
-        <button
-          id="gallery-prev"
-          type="button"
-          aria-label={t.gallery.previous}
-          class="text-on-surface hover:bg-primary absolute top-1/2 left-0 z-30 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation"
-        >
-          <svg
-            aria-hidden="true"
-            class="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            ><line x1="19" x2="5" y1="12" y2="12"></line><polyline
-              points="12 19 5 12 12 5"></polyline></svg
-          >
-        </button>
-
-        <!-- Viewport -->
-        <div class="touch-manipulation overflow-hidden px-1" id="gallery-viewport">
-          <div
-            id="gallery-track"
-            class="flex gap-6 transition-transform duration-500 ease-in-out"
-          >
-            {photos.map((photo) => (
-              <div
-                class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
-              >
-                <button
-                  type="button"
-                  aria-label={`${t.gallery.zoomPhoto}: ${photo.alt}`}
-                  class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    loading="lazy"
-                    decoding="async"
-                    class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <!-- Right arrow -->
-        <button
-          id="gallery-next"
-          type="button"
-          aria-label={t.gallery.next}
-          class="text-on-surface hover:bg-primary absolute top-1/2 right-0 z-30 flex h-12 w-12 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation"
-        >
-          <svg
-            aria-hidden="true"
-            class="h-5 w-5"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-            ><line x1="5" x2="19" y1="12" y2="12"></line><polyline
-              points="12 5 19 12 12 19"></polyline></svg
-          >
-        </button>
-      </div>
-
-      <!-- Lightbox -->
-      <div
-        id="gallery-lightbox"
-        role="dialog"
-        aria-modal="true"
-        aria-label={t.gallery.lightbox}
-        class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 opacity-0 transition-opacity duration-300 sm:p-8"
+      <svg
+        aria-hidden="true"
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        ><line x1="19" x2="5" y1="12" y2="12"></line><polyline
+          points="12 19 5 12 12 5"></polyline></svg
       >
-        <button
-          id="lightbox-close"
-          type="button"
-          aria-label={t.gallery.close}
-          class="text-on-surface hover:bg-primary absolute top-4 right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-2xl leading-none shadow-md transition-all duration-300 hover:text-white sm:top-6 sm:right-6"
-        >
-          ×
-        </button>
-        <img
-          id="lightbox-image"
-          src=""
-          alt=""
-          class="max-h-full max-w-full rounded-xl object-contain shadow-2xl"
-        />
+    </button>
+
+    <!-- Viewport -->
+    <div class="touch-manipulation overflow-hidden px-1" id="gallery-viewport">
+      <div
+        id="gallery-track"
+        class="flex gap-6 transition-transform duration-500 ease-in-out"
+      >
+        {
+          photos.map((photo) => (
+            <div class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]">
+              <button
+                type="button"
+                aria-label={`${t.gallery.zoomPhoto}: ${photo.alt}`}
+                class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </button>
+            </div>
+          ))
+        }
       </div>
-    </section>
+    </div>
 
-    <script>
-      const track = document.getElementById("gallery-track");
-      const viewport = document.getElementById("gallery-viewport");
-      const prevButton = document.getElementById("gallery-prev");
-      const nextButton = document.getElementById("gallery-next");
-      const carousel = document.getElementById("gallery-carousel");
-      const lightbox = document.getElementById("gallery-lightbox");
-      const lightboxImage = document.getElementById("lightbox-image");
-      const lightboxClose = document.getElementById("lightbox-close");
+    <!-- Right arrow -->
+    <button
+      id="gallery-next"
+      type="button"
+      aria-label={t.gallery.next}
+      class="text-on-surface hover:bg-primary absolute top-1/2 right-0 z-30 flex h-12 w-12 translate-x-1/2 -translate-y-1/2 touch-manipulation items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white"
+    >
+      <svg
+        aria-hidden="true"
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        ><line x1="5" x2="19" y1="12" y2="12"></line><polyline
+          points="12 5 19 12 12 19"></polyline></svg
+      >
+    </button>
+  </div>
 
-      if (
-        track &&
-        viewport &&
-        prevButton &&
-        nextButton &&
-        carousel &&
-        lightbox &&
-        lightboxImage instanceof HTMLImageElement &&
-        lightboxClose &&
-        !track.dataset.ready
-      ) {
-        setupGallery(
-          track,
-          viewport,
-          prevButton,
-          nextButton,
-          carousel,
-          lightbox,
-          lightboxImage,
-          lightboxClose,
-        );
-      }
+  <!-- Lightbox -->
+  <div
+    id="gallery-lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label={t.gallery.lightbox}
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 opacity-0 transition-opacity duration-300 sm:p-8"
+  >
+    <button
+      id="lightbox-close"
+      type="button"
+      aria-label={t.gallery.close}
+      class="text-on-surface hover:bg-primary absolute top-4 right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-2xl leading-none shadow-md transition-all duration-300 hover:text-white sm:top-6 sm:right-6"
+    >
+      ×
+    </button>
+    <img
+      id="lightbox-image"
+      src=""
+      alt=""
+      class="max-h-full max-w-full rounded-xl object-contain shadow-2xl"
+    />
+  </div>
+</section>
 
-      function setupGallery(
-        track: HTMLElement,
-        viewport: HTMLElement,
-        prevButton: HTMLElement,
-        nextButton: HTMLElement,
-        carousel: HTMLElement,
-        lightbox: HTMLElement,
-        lightboxImage: HTMLImageElement,
-        lightboxClose: HTMLElement,
-      ) {
-        track.dataset.ready = "true";
+<script>
+  const track = document.getElementById("gallery-track");
+  const viewport = document.getElementById("gallery-viewport");
+  const prevButton = document.getElementById("gallery-prev");
+  const nextButton = document.getElementById("gallery-next");
+  const carousel = document.getElementById("gallery-carousel");
+  const lightbox = document.getElementById("gallery-lightbox");
+  const lightboxImage = document.getElementById("lightbox-image");
+  const lightboxClose = document.getElementById("lightbox-close");
 
-        const originalSlides = Array.from(
-          track.querySelectorAll<HTMLElement>(".gallery-slide"),
-        );
-        if (originalSlides.length === 0) return;
+  if (
+    track &&
+    viewport &&
+    prevButton &&
+    nextButton &&
+    carousel &&
+    lightbox &&
+    lightboxImage instanceof HTMLImageElement &&
+    lightboxClose &&
+    !track.dataset.ready
+  ) {
+    setupGallery(
+      track,
+      viewport,
+      prevButton,
+      nextButton,
+      carousel,
+      lightbox,
+      lightboxImage,
+      lightboxClose,
+    );
+  }
 
-        let currentIndex = 0;
-        let slidesPerView = 0;
-        let isAnimating = false;
-        let animationReset = 0;
-        let resizeFrame = 0;
+  function setupGallery(
+    track: HTMLElement,
+    viewport: HTMLElement,
+    prevButton: HTMLElement,
+    nextButton: HTMLElement,
+    carousel: HTMLElement,
+    lightbox: HTMLElement,
+    lightboxImage: HTMLImageElement,
+    lightboxClose: HTMLElement,
+  ) {
+    track.dataset.ready = "true";
 
-        function getTrackGap() {
-          const gapValue = getComputedStyle(track).columnGap;
-          const parsed = Number.parseFloat(gapValue);
-          return Number.isFinite(parsed) ? parsed : 0;
-        }
+    const originalSlides = Array.from(
+      track.querySelectorAll<HTMLElement>(".gallery-slide"),
+    );
+    if (originalSlides.length === 0) return;
 
-        function getSlideWidth() {
-          return originalSlides[0]?.getBoundingClientRect().width || 0;
-        }
+    let currentIndex = 0;
+    let slidesPerView = 0;
+    let isAnimating = false;
+    let animationReset = 0;
+    let resizeFrame = 0;
 
-        function measureSlidesPerView() {
-          const slideWidth = getSlideWidth();
-          const viewportWidth = viewport.getBoundingClientRect().width;
-          if (!slideWidth || !viewportWidth) return 1;
+    function getTrackGap() {
+      const gapValue = getComputedStyle(track).columnGap;
+      const parsed = Number.parseFloat(gapValue);
+      return Number.isFinite(parsed) ? parsed : 0;
+    }
 
-          const gap = getTrackGap();
-          return Math.max(
-            1,
-            Math.round((viewportWidth + gap) / (slideWidth + gap)),
-          );
-        }
+    function getSlideWidth() {
+      return originalSlides[0]?.getBoundingClientRect().width || 0;
+    }
 
-        function prepareClone(slide: HTMLElement) {
-          const clone = slide.cloneNode(true);
-          if (!(clone instanceof HTMLElement)) return null;
+    function measureSlidesPerView() {
+      const slideWidth = getSlideWidth();
+      const viewportWidth = viewport.getBoundingClientRect().width;
+      if (!slideWidth || !viewportWidth) return 1;
 
-          clone.dataset.clone = "true";
-          clone.setAttribute("aria-hidden", "true");
-          clone.querySelectorAll("[id]").forEach((element) => {
-            element.removeAttribute("id");
-          });
-          clone
-            .querySelectorAll("a, button, input, select, textarea, [tabindex]")
-            .forEach((element) => {
-              if (element instanceof HTMLElement) {
-                element.tabIndex = -1;
-                element.setAttribute("aria-hidden", "true");
-              }
-            });
+      const gap = getTrackGap();
+      return Math.max(
+        1,
+        Math.round((viewportWidth + gap) / (slideWidth + gap)),
+      );
+    }
 
-          return clone;
-        }
+    function prepareClone(slide: HTMLElement) {
+      const clone = slide.cloneNode(true);
+      if (!(clone instanceof HTMLElement)) return null;
 
-        function rebuildClones() {
-          const nextCount = measureSlidesPerView();
-          const originalLength = originalSlides.length;
-          const realIndex =
-            (((currentIndex - slidesPerView) % originalLength) +
-              originalLength) %
-            originalLength;
-
-          track
-            .querySelectorAll(".gallery-slide[data-clone='true']")
-            .forEach((clone) => clone.remove());
-
-          slidesPerView = nextCount;
-
-          const firstClones = originalSlides
-            .slice(0, slidesPerView)
-            .map((slide) => prepareClone(slide))
-            .filter((slide) => slide !== null);
-
-          const lastClones = originalSlides
-            .slice(-slidesPerView)
-            .map((slide) => prepareClone(slide))
-            .filter((slide) => slide !== null);
-
-          lastClones.reverse().forEach((slide) => {
-            track.insertBefore(slide, track.firstChild);
-          });
-          firstClones.forEach((slide) => {
-            track.appendChild(slide);
-          });
-
-          currentIndex = slidesPerView + realIndex;
-        }
-
-        function updateCarousel(animate = true) {
-          const slideWidth = getSlideWidth();
-          if (!slideWidth) return;
-
-          const gap = getTrackGap();
-          track.style.transition = animate
-            ? "transform 900ms ease-in-out"
-            : "none";
-          track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
-        }
-
-        function finishAnimation() {
-          if (!isAnimating) return;
-
-          const originalLength = originalSlides.length;
-
-          if (currentIndex >= originalLength + slidesPerView) {
-            currentIndex = slidesPerView;
-            updateCarousel(false);
+      clone.dataset.clone = "true";
+      clone.setAttribute("aria-hidden", "true");
+      clone.querySelectorAll("[id]").forEach((element) => {
+        element.removeAttribute("id");
+      });
+      clone
+        .querySelectorAll("a, button, input, select, textarea, [tabindex]")
+        .forEach((element) => {
+          if (element instanceof HTMLElement) {
+            element.tabIndex = -1;
+            element.setAttribute("aria-hidden", "true");
           }
-
-          if (currentIndex < slidesPerView) {
-            currentIndex = originalLength + slidesPerView - 1;
-            updateCarousel(false);
-          }
-
-          isAnimating = false;
-        }
-
-        function goToNext() {
-          if (isAnimating || !getSlideWidth()) return;
-
-          isAnimating = true;
-          currentIndex++;
-          updateCarousel(true);
-          window.clearTimeout(animationReset);
-          animationReset = window.setTimeout(finishAnimation, 1000);
-        }
-
-        function goToPrev() {
-          if (isAnimating || !getSlideWidth()) return;
-
-          isAnimating = true;
-          currentIndex--;
-          updateCarousel(true);
-          window.clearTimeout(animationReset);
-          animationReset = window.setTimeout(finishAnimation, 1000);
-        }
-
-        nextButton.addEventListener("click", (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          goToNext();
-        });
-        prevButton.addEventListener("click", (event) => {
-          event.preventDefault();
-          event.stopPropagation();
-          goToPrev();
         });
 
-        let pointerStartX = 0;
-        let pointerStartY = 0;
-        let pointerActive = false;
-        let pointerSwiped = false;
+      return clone;
+    }
 
-        viewport.addEventListener("pointerdown", (event) => {
-          if (!(event.target instanceof Element)) return;
-          if (event.target.closest("#gallery-prev, #gallery-next")) return;
-          if (event.pointerType === "mouse" && event.button !== 0) return;
+    function rebuildClones() {
+      const nextCount = measureSlidesPerView();
+      const originalLength = originalSlides.length;
+      const realIndex =
+        (((currentIndex - slidesPerView) % originalLength) + originalLength) %
+        originalLength;
 
-          pointerActive = true;
-          pointerSwiped = false;
-          pointerStartX = event.clientX;
-          pointerStartY = event.clientY;
-          stopAutoplay();
-        });
+      track
+        .querySelectorAll(".gallery-slide[data-clone='true']")
+        .forEach((clone) => clone.remove());
 
-        viewport.addEventListener(
-          "pointermove",
-          (event) => {
-            if (!pointerActive) return;
+      slidesPerView = nextCount;
 
-            const dx = event.clientX - pointerStartX;
-            const dy = event.clientY - pointerStartY;
+      const firstClones = originalSlides
+        .slice(0, slidesPerView)
+        .map((slide) => prepareClone(slide))
+        .filter((slide) => slide !== null);
 
-            if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
-              pointerSwiped = true;
-              if (event.cancelable) event.preventDefault();
-            }
-          },
-          { passive: false },
-        );
+      const lastClones = originalSlides
+        .slice(-slidesPerView)
+        .map((slide) => prepareClone(slide))
+        .filter((slide) => slide !== null);
 
-        function endPointerSwipe(event: PointerEvent) {
-          if (!pointerActive) return;
-          pointerActive = false;
+      lastClones.reverse().forEach((slide) => {
+        track.insertBefore(slide, track.firstChild);
+      });
+      firstClones.forEach((slide) => {
+        track.appendChild(slide);
+      });
 
-          const dx = event.clientX - pointerStartX;
-          const dy = event.clientY - pointerStartY;
-          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
-            pointerSwiped = true;
-            if (dx < 0) goToNext();
-            else goToPrev();
-          }
+      currentIndex = slidesPerView + realIndex;
+    }
 
-          startAutoplay();
-        }
+    function updateCarousel(animate = true) {
+      const slideWidth = getSlideWidth();
+      if (!slideWidth) return;
 
-        viewport.addEventListener("pointerup", endPointerSwipe);
-        viewport.addEventListener("pointercancel", endPointerSwipe);
+      const gap = getTrackGap();
+      track.style.transition = animate ? "transform 900ms ease-in-out" : "none";
+      track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+    }
 
-        track.addEventListener("transitionend", (event) => {
-          if (event.target !== track) return;
-          if (event.propertyName !== "transform") return;
-          window.clearTimeout(animationReset);
-          finishAnimation();
-        });
+    function finishAnimation() {
+      if (!isAnimating) return;
 
-        function handleResize() {
-          isAnimating = false;
-          window.clearTimeout(animationReset);
+      const originalLength = originalSlides.length;
 
-          const nextCount = measureSlidesPerView();
-          if (nextCount !== slidesPerView) {
-            rebuildClones();
-          }
-          updateCarousel(false);
-        }
-
-        window.addEventListener("resize", () => {
-          window.cancelAnimationFrame(resizeFrame);
-          resizeFrame = window.requestAnimationFrame(handleResize);
-        });
-
-        rebuildClones();
+      if (currentIndex >= originalLength + slidesPerView) {
+        currentIndex = slidesPerView;
         updateCarousel(false);
-        requestAnimationFrame(() => {
-          handleResize();
-        });
-        window.addEventListener("load", handleResize);
-
-        const autoplayDelay = 5000;
-        const reducedMotion = window.matchMedia(
-          "(prefers-reduced-motion: reduce)",
-        );
-        let autoplayTimer: ReturnType<typeof setInterval> | null = null;
-
-        function startAutoplay() {
-          if (autoplayTimer || reducedMotion.matches || document.hidden) return;
-
-          autoplayTimer = setInterval(goToNext, autoplayDelay);
-        }
-
-        function stopAutoplay() {
-          if (autoplayTimer) {
-            clearInterval(autoplayTimer);
-            autoplayTimer = null;
-          }
-        }
-
-        carousel.addEventListener("mouseenter", stopAutoplay);
-        carousel.addEventListener("mouseleave", startAutoplay);
-        carousel.addEventListener("focusin", stopAutoplay);
-        carousel.addEventListener("focusout", startAutoplay);
-
-        document.addEventListener("visibilitychange", () => {
-          if (document.hidden) {
-            stopAutoplay();
-          } else {
-            startAutoplay();
-          }
-        });
-
-        reducedMotion.addEventListener("change", () => {
-          if (reducedMotion.matches) {
-            stopAutoplay();
-          } else {
-            startAutoplay();
-          }
-        });
-
-        startAutoplay();
-
-        let lastFocused: HTMLElement | null = null;
-
-        function openLightbox(image: HTMLImageElement) {
-          lastFocused =
-            document.activeElement instanceof HTMLElement
-              ? document.activeElement
-              : null;
-          lightboxImage.src = image.currentSrc || image.src;
-          lightboxImage.alt = image.alt;
-
-          lightbox.classList.remove("hidden");
-          lightbox.classList.add("flex");
-          requestAnimationFrame(() => {
-            lightbox.classList.remove("opacity-0");
-          });
-
-          document.body.style.overflow = "hidden";
-          stopAutoplay();
-          lightboxClose.focus();
-        }
-
-        function closeLightbox() {
-          lightbox.classList.add("opacity-0");
-          lightbox.classList.remove("flex");
-          lightbox.classList.add("hidden");
-          lightboxImage.src = "";
-          lightboxImage.alt = "";
-
-          document.body.style.overflow = "";
-          startAutoplay();
-
-          if (lastFocused) {
-            lastFocused.focus();
-            lastFocused = null;
-          }
-        }
-
-        track.addEventListener("click", (event) => {
-          if (pointerSwiped) {
-            pointerSwiped = false;
-            event.preventDefault();
-            return;
-          }
-
-          if (!(event.target instanceof Element)) return;
-
-          const trigger = event.target.closest(".gallery-trigger");
-          if (!trigger) return;
-
-          const image = trigger.querySelector("img");
-          if (image) openLightbox(image);
-        });
-
-        lightboxClose.addEventListener("click", closeLightbox);
-
-        lightbox.addEventListener("click", (event) => {
-          if (event.target === lightbox) closeLightbox();
-        });
-
-        document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
-            closeLightbox();
-          }
-        });
       }
-    </script>
+
+      if (currentIndex < slidesPerView) {
+        currentIndex = originalLength + slidesPerView - 1;
+        updateCarousel(false);
+      }
+
+      isAnimating = false;
+    }
+
+    function goToNext() {
+      if (isAnimating || !getSlideWidth()) return;
+
+      isAnimating = true;
+      currentIndex++;
+      updateCarousel(true);
+      window.clearTimeout(animationReset);
+      animationReset = window.setTimeout(finishAnimation, 1000);
+    }
+
+    function goToPrev() {
+      if (isAnimating || !getSlideWidth()) return;
+
+      isAnimating = true;
+      currentIndex--;
+      updateCarousel(true);
+      window.clearTimeout(animationReset);
+      animationReset = window.setTimeout(finishAnimation, 1000);
+    }
+
+    nextButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      goToNext();
+    });
+    prevButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      goToPrev();
+    });
+
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let pointerActive = false;
+    let pointerSwiped = false;
+
+    viewport.addEventListener("pointerdown", (event) => {
+      if (!(event.target instanceof Element)) return;
+      if (event.target.closest("#gallery-prev, #gallery-next")) return;
+      if (event.pointerType === "mouse" && event.button !== 0) return;
+
+      pointerActive = true;
+      pointerSwiped = false;
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      stopAutoplay();
+    });
+
+    viewport.addEventListener(
+      "pointermove",
+      (event) => {
+        if (!pointerActive) return;
+
+        const dx = event.clientX - pointerStartX;
+        const dy = event.clientY - pointerStartY;
+
+        if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy)) {
+          pointerSwiped = true;
+          if (event.cancelable) event.preventDefault();
+        }
+      },
+      { passive: false },
+    );
+
+    function endPointerSwipe(event: PointerEvent) {
+      if (!pointerActive) return;
+      pointerActive = false;
+
+      const dx = event.clientX - pointerStartX;
+      const dy = event.clientY - pointerStartY;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+        pointerSwiped = true;
+        if (dx < 0) goToNext();
+        else goToPrev();
+      }
+
+      startAutoplay();
+    }
+
+    viewport.addEventListener("pointerup", endPointerSwipe);
+    viewport.addEventListener("pointercancel", endPointerSwipe);
+
+    track.addEventListener("transitionend", (event) => {
+      if (event.target !== track) return;
+      if (event.propertyName !== "transform") return;
+      window.clearTimeout(animationReset);
+      finishAnimation();
+    });
+
+    function handleResize() {
+      isAnimating = false;
+      window.clearTimeout(animationReset);
+
+      const nextCount = measureSlidesPerView();
+      if (nextCount !== slidesPerView) {
+        rebuildClones();
+      }
+      updateCarousel(false);
+    }
+
+    window.addEventListener("resize", () => {
+      window.cancelAnimationFrame(resizeFrame);
+      resizeFrame = window.requestAnimationFrame(handleResize);
+    });
+
+    rebuildClones();
+    updateCarousel(false);
+    requestAnimationFrame(() => {
+      handleResize();
+    });
+    window.addEventListener("load", handleResize);
+
+    const autoplayDelay = 5000;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let autoplayTimer: ReturnType<typeof setInterval> | null = null;
+
+    function startAutoplay() {
+      if (autoplayTimer || reducedMotion.matches || document.hidden) return;
+
+      autoplayTimer = setInterval(goToNext, autoplayDelay);
+    }
+
+    function stopAutoplay() {
+      if (autoplayTimer) {
+        clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    }
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+    carousel.addEventListener("focusin", stopAutoplay);
+    carousel.addEventListener("focusout", startAutoplay);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    reducedMotion.addEventListener("change", () => {
+      if (reducedMotion.matches) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    startAutoplay();
+
+    let lastFocused: HTMLElement | null = null;
+
+    function openLightbox(image: HTMLImageElement) {
+      lastFocused =
+        document.activeElement instanceof HTMLElement
+          ? document.activeElement
+          : null;
+      lightboxImage.src = image.currentSrc || image.src;
+      lightboxImage.alt = image.alt;
+
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      requestAnimationFrame(() => {
+        lightbox.classList.remove("opacity-0");
+      });
+
+      document.body.style.overflow = "hidden";
+      stopAutoplay();
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.add("opacity-0");
+      lightbox.classList.remove("flex");
+      lightbox.classList.add("hidden");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+
+      document.body.style.overflow = "";
+      startAutoplay();
+
+      if (lastFocused) {
+        lastFocused.focus();
+        lastFocused = null;
+      }
+    }
+
+    track.addEventListener("click", (event) => {
+      if (pointerSwiped) {
+        pointerSwiped = false;
+        event.preventDefault();
+        return;
+      }
+
+      if (!(event.target instanceof Element)) return;
+
+      const trigger = event.target.closest(".gallery-trigger");
+      if (!trigger) return;
+
+      const image = trigger.querySelector("img");
+      if (image) openLightbox(image);
+    });
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !lightbox.classList.contains("hidden")) {
+        closeLightbox();
+      }
+    });
+  }
+</script>
