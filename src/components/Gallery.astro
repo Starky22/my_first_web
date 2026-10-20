@@ -45,7 +45,7 @@ import t from "../i18n/cs.json";
             id="gallery-track"
             class="flex gap-6 transition-transform duration-500 ease-in-out"
           >
-            <!-- FOTO 1 -->
+            <!-- Photo 1 -->
             <div
               class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
@@ -64,7 +64,7 @@ import t from "../i18n/cs.json";
               </button>
             </div>
 
-            <!-- FOTO 2 -->
+            <!-- Photo 2 -->
             <div
               class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
@@ -83,7 +83,7 @@ import t from "../i18n/cs.json";
               </button>
             </div>
 
-            <!-- FOTO 3 -->
+            <!-- Photo 3 -->
             <div
               class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
@@ -102,7 +102,7 @@ import t from "../i18n/cs.json";
               </button>
             </div>
 
-            <!-- FOTO 4 -->
+            <!-- Photo 4 -->
             <div
               class="gallery-slide w-full flex-shrink-0 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
@@ -178,7 +178,7 @@ import t from "../i18n/cs.json";
       const nextButton = document.getElementById("gallery-next");
 
       if (!track || !viewport || !prevButton || !nextButton) {
-        // Galerie není na stránce
+        // Gallery is not on the page
       } else if (!track.dataset.ready) {
       track.dataset.ready = "true";
 
@@ -190,7 +190,7 @@ import t from "../i18n/cs.json";
       let isAnimating = false;
       let animationReset = 0;
 
-      // Duplikujeme první 3 a poslední 3 fotky
+      // Clone the first 3 and last 3 photos
       const slidesPerView = 3;
 
       const firstClones = originalSlides
@@ -201,12 +201,12 @@ import t from "../i18n/cs.json";
         .slice(-slidesPerView)
         .map((slide) => slide.cloneNode(true));
 
-      // Přidáme kopie na začátek
+      // Insert clones at the start
       lastClones.reverse().forEach((slide) => {
         track.insertBefore(slide, track.firstChild);
       });
 
-      // Přidáme kopie na konec
+      // Append clones at the end
       firstClones.forEach((slide) => {
         track.appendChild(slide);
       });
@@ -233,13 +233,13 @@ import t from "../i18n/cs.json";
       function finishAnimation() {
         const originalLength = originalSlides.length;
 
-        // Jsme za poslední skutečnou fotkou
+        // Past the last real photo
         if (currentIndex >= originalLength + slidesPerView) {
           currentIndex = slidesPerView;
           updateCarousel(false);
         }
 
-        // Jsme před první skutečnou fotkou
+        // Before the first real photo
         if (currentIndex < slidesPerView) {
           currentIndex = originalLength + slidesPerView - 1;
           updateCarousel(false);
@@ -339,12 +339,12 @@ import t from "../i18n/cs.json";
         updateCarousel(false);
       });
 
-      // Začínáme na první skutečné fotce
+      // Start on the first real photo
       updateCarousel(false);
       requestAnimationFrame(() => updateCarousel(false));
       window.addEventListener("load", () => updateCarousel(false));
 
-      // Automatické posouvání
+      // Autoplay
       const carousel = document.getElementById("gallery-carousel");
       const autoplayDelay = 5000;
       const reducedMotion = window.matchMedia(
@@ -399,7 +399,7 @@ import t from "../i18n/cs.json";
 
         lightbox.classList.remove("hidden");
         lightbox.classList.add("flex");
-        // Překreslení, aby se stihl spustit přechod krytí
+        // Force a repaint so the opacity transition can run
         requestAnimationFrame(() => {
           lightbox.classList.remove("opacity-0");
         });
@@ -425,7 +425,7 @@ import t from "../i18n/cs.json";
         }
       }
 
-      // Kliknutí na kteroukoli fotku v carouselu (včetně duplikovaných)
+      // Click on any carousel photo, including clones
       track.addEventListener("click", (event) => {
         if (pointerSwiped) {
           pointerSwiped = false;
@@ -442,7 +442,7 @@ import t from "../i18n/cs.json";
 
       lightboxClose.addEventListener("click", closeLightbox);
 
-      // Kliknutí mimo fotografii
+      // Click outside the photo
       lightbox.addEventListener("click", (event) => {
         if (event.target === lightbox) closeLightbox();
       });

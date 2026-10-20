@@ -1,0 +1,13 @@
+---
+description: All code comments in this project must be written in English
+alwaysApply: true
+---
+
+# English code comments
+
+All comments in source files must be written in English. This includes Astro, JavaScript, TypeScript, CSS, HTML, and any other code files.
+
+- Translate or write comments in English only.
+- Keep visitor-facing website copy in Czech. Do not translate UI strings, JSON values in `src/i18n`, alt texts, or aria labels.
+- Do not add comments unless they explain non-obvious intent.
+- Do not treat README or user documentation as code comments.
