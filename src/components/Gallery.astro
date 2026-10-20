@@ -27,7 +27,7 @@ import t from "../i18n/cs.json";
           id="gallery-prev"
           type="button"
           aria-label={t.gallery.previous}
-          class="text-on-surface hover:bg-primary absolute top-1/2 left-2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation md:left-0 md:-translate-x-1/2"
+          class="text-on-surface hover:bg-primary absolute top-1/2 left-0 z-30 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation"
         >
           <svg
             aria-hidden="true"
@@ -133,7 +133,7 @@ import t from "../i18n/cs.json";
           id="gallery-next"
           type="button"
           aria-label={t.gallery.next}
-          class="text-on-surface hover:bg-primary absolute top-1/2 right-2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation md:right-0 md:translate-x-1/2"
+          class="text-on-surface hover:bg-primary absolute top-1/2 right-0 z-30 flex h-12 w-12 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation"
         >
           <svg
             aria-hidden="true"
@@ -187,17 +187,16 @@ import t from "../i18n/cs.json";
       const lightboxClose = document.getElementById("lightbox-close");
 
       if (
-        !track ||
-        !viewport ||
-        !prevButton ||
-        !nextButton ||
-        !carousel ||
-        !lightbox ||
-        !(lightboxImage instanceof HTMLImageElement) ||
-        !lightboxClose
+        track &&
+        viewport &&
+        prevButton &&
+        nextButton &&
+        carousel &&
+        lightbox &&
+        lightboxImage instanceof HTMLImageElement &&
+        lightboxClose &&
+        !track.dataset.ready
       ) {
-        // Gallery is not on the page
-      } else if (!track.dataset.ready) {
         setupGallery(
           track,
           viewport,
@@ -223,67 +222,114 @@ import t from "../i18n/cs.json";
         track.dataset.ready = "true";
 
         const originalSlides = Array.from(
-          track.querySelectorAll(".gallery-slide"),
+          track.querySelectorAll<HTMLElement>(".gallery-slide"),
         );
+        if (originalSlides.length === 0) return;
 
-        let currentIndex = 3;
+        let currentIndex = 0;
+        let slidesPerView = 0;
         let isAnimating = false;
         let animationReset = 0;
+        let resizeFrame = 0;
 
-        // Clone the first 3 and last 3 photos
-        const slidesPerView = 3;
-
-        const firstClones = originalSlides
-          .slice(0, slidesPerView)
-          .map((slide) => slide.cloneNode(true));
-
-        const lastClones = originalSlides
-          .slice(-slidesPerView)
-          .map((slide) => slide.cloneNode(true));
-
-        // Insert clones at the start
-        lastClones.reverse().forEach((slide) => {
-          if (!track) return;
-          track.insertBefore(slide, track.firstChild);
-        });
-
-        // Append clones at the end
-        firstClones.forEach((slide) => {
-          if (!track) return;
-          track.appendChild(slide);
-        });
-
-        const slides = Array.from(track.querySelectorAll(".gallery-slide"));
+        function getTrackGap() {
+          const gapValue = getComputedStyle(track).columnGap;
+          const parsed = Number.parseFloat(gapValue);
+          return Number.isFinite(parsed) ? parsed : 0;
+        }
 
         function getSlideWidth() {
-          return slides[0]?.getBoundingClientRect().width || 0;
+          return originalSlides[0]?.getBoundingClientRect().width || 0;
+        }
+
+        function measureSlidesPerView() {
+          const slideWidth = getSlideWidth();
+          const viewportWidth = viewport.getBoundingClientRect().width;
+          if (!slideWidth || !viewportWidth) return 1;
+
+          const gap = getTrackGap();
+          return Math.max(
+            1,
+            Math.round((viewportWidth + gap) / (slideWidth + gap)),
+          );
+        }
+
+        function prepareClone(slide: HTMLElement) {
+          const clone = slide.cloneNode(true);
+          if (!(clone instanceof HTMLElement)) return null;
+
+          clone.dataset.clone = "true";
+          clone.setAttribute("aria-hidden", "true");
+          clone.querySelectorAll("[id]").forEach((element) => {
+            element.removeAttribute("id");
+          });
+          clone
+            .querySelectorAll("a, button, input, select, textarea, [tabindex]")
+            .forEach((element) => {
+              if (element instanceof HTMLElement) {
+                element.tabIndex = -1;
+                element.setAttribute("aria-hidden", "true");
+              }
+            });
+
+          return clone;
+        }
+
+        function rebuildClones() {
+          const nextCount = measureSlidesPerView();
+          const originalLength = originalSlides.length;
+          const realIndex =
+            (((currentIndex - slidesPerView) % originalLength) +
+              originalLength) %
+            originalLength;
+
+          track
+            .querySelectorAll(".gallery-slide[data-clone='true']")
+            .forEach((clone) => clone.remove());
+
+          slidesPerView = nextCount;
+
+          const firstClones = originalSlides
+            .slice(0, slidesPerView)
+            .map((slide) => prepareClone(slide))
+            .filter((slide) => slide !== null);
+
+          const lastClones = originalSlides
+            .slice(-slidesPerView)
+            .map((slide) => prepareClone(slide))
+            .filter((slide) => slide !== null);
+
+          lastClones.reverse().forEach((slide) => {
+            track.insertBefore(slide, track.firstChild);
+          });
+          firstClones.forEach((slide) => {
+            track.appendChild(slide);
+          });
+
+          currentIndex = slidesPerView + realIndex;
         }
 
         function updateCarousel(animate = true) {
-          if (!track) return;
-
           const slideWidth = getSlideWidth();
           if (!slideWidth) return;
 
-          const gap = 24;
-
+          const gap = getTrackGap();
           track.style.transition = animate
             ? "transform 900ms ease-in-out"
             : "none";
-
           track.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
         }
 
         function finishAnimation() {
+          if (!isAnimating) return;
+
           const originalLength = originalSlides.length;
 
-          // Past the last real photo
           if (currentIndex >= originalLength + slidesPerView) {
             currentIndex = slidesPerView;
             updateCarousel(false);
           }
 
-          // Before the first real photo
           if (currentIndex < slidesPerView) {
             currentIndex = originalLength + slidesPerView - 1;
             updateCarousel(false);
@@ -375,21 +421,35 @@ import t from "../i18n/cs.json";
         viewport.addEventListener("pointercancel", endPointerSwipe);
 
         track.addEventListener("transitionend", (event) => {
-          if (event.target !== track || event.propertyName !== "transform") return;
+          if (event.target !== track) return;
+          if (event.propertyName !== "transform") return;
           window.clearTimeout(animationReset);
           finishAnimation();
         });
 
-        window.addEventListener("resize", () => {
+        function handleResize() {
+          isAnimating = false;
+          window.clearTimeout(animationReset);
+
+          const nextCount = measureSlidesPerView();
+          if (nextCount !== slidesPerView) {
+            rebuildClones();
+          }
           updateCarousel(false);
+        }
+
+        window.addEventListener("resize", () => {
+          window.cancelAnimationFrame(resizeFrame);
+          resizeFrame = window.requestAnimationFrame(handleResize);
         });
 
-        // Start on the first real photo
+        rebuildClones();
         updateCarousel(false);
-        requestAnimationFrame(() => updateCarousel(false));
-        window.addEventListener("load", () => updateCarousel(false));
+        requestAnimationFrame(() => {
+          handleResize();
+        });
+        window.addEventListener("load", handleResize);
 
-        // Autoplay
         const autoplayDelay = 5000;
         const reducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
@@ -444,7 +504,6 @@ import t from "../i18n/cs.json";
 
           lightbox.classList.remove("hidden");
           lightbox.classList.add("flex");
-          // Force a repaint so the opacity transition can run
           requestAnimationFrame(() => {
             lightbox.classList.remove("opacity-0");
           });
@@ -470,7 +529,6 @@ import t from "../i18n/cs.json";
           }
         }
 
-        // Click on any carousel photo, including clones
         track.addEventListener("click", (event) => {
           if (pointerSwiped) {
             pointerSwiped = false;
@@ -489,7 +547,6 @@ import t from "../i18n/cs.json";
 
         lightboxClose.addEventListener("click", closeLightbox);
 
-        // Click outside the photo
         lightbox.addEventListener("click", (event) => {
           if (event.target === lightbox) closeLightbox();
         });
