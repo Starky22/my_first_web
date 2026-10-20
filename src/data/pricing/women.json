@@ -1,0 +1,229 @@
+{
+  "groups": [
+    {
+      "id": "cutsAndWash",
+      "title": "Střihy a Mytí",
+      "items": [
+        {
+          "id": "wash",
+          "name": "Mytí",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "110 / 120 / 130 Kč",
+            "short": "110 Kč",
+            "medium": "120 Kč",
+            "long": "130 Kč"
+          }
+        },
+        {
+          "id": "cut",
+          "name": "Stříhání (klasické / módní)",
+          "price": "140 / 240-300 Kč"
+        },
+        {
+          "id": "endsCut",
+          "name": "Stříhání konečků",
+          "price": "110 Kč"
+        },
+        {
+          "id": "efilace",
+          "name": "Efilace",
+          "price": "90 Kč",
+          "tooltip": "Speciální technika prostříhávání vlasů pro odlehčení účesu a dodání textury."
+        },
+        {
+          "id": "formalStyle",
+          "name": "Společenský účes",
+          "price": "400 - 1500 Kč"
+        }
+      ]
+    },
+    {
+      "id": "blowDry",
+      "title": "Foukaná a Vodová",
+      "items": [
+        {
+          "id": "blowDry",
+          "name": "Foukaná",
+          "tooltip": "Styling účesu přes kulatý kartáč pro dokonalý tvar a lesk.",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "160 / 180 / 220 Kč",
+            "short": "160 Kč",
+            "medium": "180 Kč",
+            "long": "220 Kč"
+          }
+        },
+        {
+          "id": "set",
+          "name": "Vodová",
+          "tooltip": "Klasická technika tvarování účesu pomocí natáček pro dlouhotrvající efekt.",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "290 / 310 / 410 Kč",
+            "short": "290 Kč",
+            "medium": "310 Kč",
+            "long": "410 Kč"
+          }
+        },
+        {
+          "id": "drying",
+          "name": "Sušení",
+          "price": "220 - 300 Kč"
+        },
+        {
+          "id": "straightening",
+          "name": "Žehlení",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "150 / 170 / 260 Kč",
+            "short": "150 Kč",
+            "medium": "170 Kč",
+            "long": "260 Kč"
+          }
+        },
+        {
+          "id": "curling",
+          "name": "Loknování",
+          "tooltip": "Profesionální tvorba vln a loken pro přirozený objem.",
+          "lengthHint": "curling",
+          "prices": {
+            "full": "260 / 380 Kč",
+            "short": "260 Kč",
+            "medium": "260 Kč",
+            "long": "380 Kč"
+          }
+        }
+      ]
+    },
+    {
+      "id": "color",
+      "title": "Barvení a Melíry",
+      "items": [
+        {
+          "id": "coloring",
+          "name": "Barvení",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "450 / 500 / 670 Kč",
+            "short": "450 Kč",
+            "medium": "500 Kč",
+            "long": "670 Kč"
+          }
+        },
+        {
+          "id": "highlights",
+          "name": "Melír",
+          "tooltip": "Zesvětlení nebo ztmavení vybraných pramenů vlasů pro dosažení plastického vzhledu.",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "480 / 530 / 760 Kč",
+            "short": "480 Kč",
+            "medium": "530 Kč",
+            "long": "760 Kč"
+          }
+        },
+        {
+          "id": "colorHighlights",
+          "name": "Melír barvou",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "400 / 480 / 610 Kč",
+            "short": "400 Kč",
+            "medium": "480 Kč",
+            "long": "610 Kč"
+          }
+        },
+        {
+          "id": "toning",
+          "name": "Tónování / Přeliv",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "390 / 440 / 590 Kč",
+            "short": "390 Kč",
+            "medium": "440 Kč",
+            "long": "590 Kč"
+          }
+        },
+        {
+          "id": "rootTouchUp",
+          "name": "Dobarvení",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "390 / 420 / 480 Kč",
+            "short": "390 Kč",
+            "medium": "420 Kč",
+            "long": "480 Kč"
+          }
+        },
+        {
+          "id": "bleachBath",
+          "name": "Odbarvovací lázeň",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "450 / 550 / 750 Kč",
+            "short": "450 Kč",
+            "medium": "550 Kč",
+            "long": "750 Kč"
+          }
+        },
+        {
+          "id": "ombre",
+          "name": "Ombré",
+          "price": "400 Kč",
+          "tooltip": "Technika barvení, která vytváří plynulý přechod z tmavších kořínků do světlých konečků."
+        },
+        {
+          "id": "balayage",
+          "name": "Balayage",
+          "price": "700 Kč",
+          "tooltip": "Moderní metoda barvení 'volnou rukou', která vytváří přirozený efekt prosluněných vlasů bez ostrých přechodů."
+        }
+      ]
+    },
+    {
+      "id": "treatment",
+      "title": "Preparace a Péče",
+      "items": [
+        {
+          "id": "perm",
+          "name": "Preparace",
+          "tooltip": "Trvalá preparace vlasů pro dosažení vlnitého nebo kudrnatého efektu.",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "420 / 520 / 770 Kč",
+            "short": "420 Kč",
+            "medium": "520 Kč",
+            "long": "770 Kč"
+          }
+        },
+        {
+          "id": "mask",
+          "name": "Regenerační maska (5 min)",
+          "lengthHint": "standard",
+          "prices": {
+            "full": "110 / 120 / 150 Kč",
+            "short": "110 Kč",
+            "medium": "120 Kč",
+            "long": "150 Kč"
+          }
+        },
+        {
+          "id": "wrap",
+          "name": "Zábal",
+          "price": "280 Kč"
+        },
+        {
+          "id": "headMassage",
+          "name": "Masáž hlavy",
+          "price": "150 Kč"
+        },
+        {
+          "id": "scalpCare",
+          "name": "Péče o pokožku",
+          "price": "110 Kč"
+        }
+      ]
+    }
+  ]
+}

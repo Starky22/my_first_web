@@ -1,0 +1,35 @@
+{
+  "groups": [
+    {
+      "id": "gentlemen",
+      "title": "Pánské služby",
+      "items": [
+        {
+          "id": "mensCut",
+          "name": "Stříhání",
+          "price": "160 Kč"
+        },
+        {
+          "id": "buzzCut",
+          "name": "Stříhání dohola",
+          "price": "170 Kč"
+        },
+        {
+          "id": "fashionCut",
+          "name": "Módní střih",
+          "price": "220 - 300 Kč"
+        },
+        {
+          "id": "beard",
+          "name": "Úprava vousů",
+          "price": "160 Kč"
+        },
+        {
+          "id": "headMassage",
+          "name": "Masáž hlavy",
+          "price": "150 Kč"
+        }
+      ]
+    }
+  ]
+}

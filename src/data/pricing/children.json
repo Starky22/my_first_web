@@ -1,0 +1,15 @@
+{
+  "groups": [
+    {
+      "id": "children",
+      "title": "Dětské střihy",
+      "items": [
+        {
+          "id": "kidsCut",
+          "name": "Stříhání dětí",
+          "price": "100 Kč"
+        }
+      ]
+    }
+  ]
+}
