@@ -1,19 +1,28 @@
+---
+import t from "../i18n/cs.json";
+
+const hint = t.pricing.lengthHint;
+const curlHint = t.pricing.curlingHint;
+const items = t.pricing.items;
+const groups = t.pricing.groups;
+---
+
     <section class="py-stack-lg bg-surface-container-low" id="sluzby">
       <div class="max-w-container-max px-gutter mx-auto">
         <div class="reveal active mb-16 text-center">
           <span
             class="text-primary font-Inter mb-4 block tracking-[0.2em] uppercase"
-            >Služby & Ceník</span
+            >{t.pricing.eyebrow}</span
           >
           <h2 class="font-Inter text-on-surface text-3xl">
-            Péče, kterou si zasloužíte
+            {t.pricing.title}
           </h2>
         </div>
 
         <div
           class="mb-12"
           role="radiogroup"
-          aria-label="Délka vlasů"
+          aria-label={t.pricing.hairLengthAria}
           aria-labelledby="hair-length-heading"
         >
           <div class="mb-6 text-center md:mb-8">
@@ -21,13 +30,12 @@
               id="hair-length-heading"
               class="font-Inter text-on-surface mb-3 text-xl md:text-2xl"
             >
-              Jakou máte délku vlasů?
+              {t.pricing.hairLengthTitle}
             </h3>
             <p
               class="font-Inter text-on-surface-variant mx-auto max-w-xl text-sm leading-relaxed md:text-base"
             >
-              Vyberte si délku svých vlasů a zobrazíme vám odpovídající ceny
-              služeb.
+              {t.pricing.hairLengthDescription}
             </p>
           </div>
           <div
@@ -37,7 +45,7 @@
               type="button"
               role="radio"
               aria-checked="false"
-              aria-label="Krátké vlasy"
+              aria-label={t.pricing.shortHair}
               data-hair="kratek"
               class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
               onclick="selectHairLength('kratek')"
@@ -51,14 +59,14 @@
               </span>
               <span
                 class="font-Inter text-on-surface block px-1 py-2 text-center text-xs leading-tight font-medium sm:text-sm"
-                >Krátké vlasy</span
+                >{t.pricing.shortHair}</span
               >
             </button>
             <button
               type="button"
               role="radio"
               aria-checked="false"
-              aria-label="Středně dlouhé vlasy"
+              aria-label={t.pricing.mediumHair}
               data-hair="stredni"
               class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
               onclick="selectHairLength('stredni')"
@@ -72,14 +80,14 @@
               </span>
               <span
                 class="font-Inter text-on-surface block px-1 py-2 text-center text-xs leading-tight font-medium sm:text-sm"
-                >Středně dlouhé vlasy</span
+                >{t.pricing.mediumHair}</span
               >
             </button>
             <button
               type="button"
               role="radio"
               aria-checked="false"
-              aria-label="Dlouhé vlasy"
+              aria-label={t.pricing.longHair}
               data-hair="dlouhe"
               class="hair-option overflow-hidden rounded-2xl bg-white shadow-sm"
               onclick="selectHairLength('dlouhe')"
@@ -93,7 +101,7 @@
               </span>
               <span
                 class="font-Inter text-on-surface block px-1 py-2 text-center text-xs leading-tight font-medium sm:text-sm"
-                >Dlouhé vlasy</span
+                >{t.pricing.longHair}</span
               >
             </button>
           </div>
@@ -103,7 +111,7 @@
           <div
             class="border-outline-variant/30 inline-flex max-w-full rounded-full border bg-white/50 p-1"
             role="tablist"
-            aria-label="Kategorie ceníku"
+            aria-label={t.pricing.categoryAria}
           >
             <button
               type="button"
@@ -113,7 +121,7 @@
               tabindex="0"
               class="tab-btn font-Inter active min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-damy"
-              onclick="switchTab('damy')">Dámy</button
+              onclick="switchTab('damy')">{t.pricing.tabLadies}</button
             >
             <button
               type="button"
@@ -123,7 +131,7 @@
               tabindex="-1"
               class="tab-btn font-Inter min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-pani"
-              onclick="switchTab('pani')">Páni</button
+              onclick="switchTab('pani')">{t.pricing.tabGentlemen}</button
             >
             <button
               type="button"
@@ -133,7 +141,7 @@
               tabindex="-1"
               class="tab-btn font-Inter min-h-11 rounded-full px-4 py-2 tracking-widest uppercase transition-all sm:px-8"
               id="tab-deti"
-              onclick="switchTab('deti')">Děti</button
+              onclick="switchTab('deti')">{t.pricing.tabChildren}</button
             >
           </div>
         </div>
@@ -149,39 +157,39 @@
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
               >
-                Střihy a Mytí
+                {groups.cutsAndWash}
               </h3>
               <div class="space-y-4">
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Mytí <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span></p><span
+                  <p class="font-bold">{items.wash.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span></p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="110 / 120 / 130 Kč"
-                    data-kratek="110 Kč"
-                    data-stredni="120 Kč"
-                    data-dlouhe="130 Kč"
-                    >110 / 120 / 130 Kč</span>
+                    data-full={items.wash.full}
+                    data-kratek={items.wash.short}
+                    data-stredni={items.wash.medium}
+                    data-dlouhe={items.wash.long}
+                    >{items.wash.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Stříhání (klasické / módní)</p><span
+                  <p class="font-bold">{items.cut.name}</p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >140 / 240-300 Kč</span>
+                    >{items.cut.price}</span>
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Stříhání konečků</p><span
+                  <p class="font-bold">{items.endsCut.name}</p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >110 Kč</span>
+                    >{items.endsCut.price}</span>
                 </div>
                 <div
                   class="price-row"
@@ -190,25 +198,24 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Efilace<span
+                    {items.efilace.name}<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Speciální technika prostříhávání vlasů pro odlehčení
-                      účesu a dodání textury.</span>
+                      >{items.efilace.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >90 Kč</span>
+                    >{items.efilace.price}</span>
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Společenský účes</p><span
+                  <p class="font-bold">{items.formalStyle.name}</p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >400 - 1500 Kč</span>
+                    >{items.formalStyle.price}</span>
                 </div>
               </div>
             </div>
@@ -216,7 +223,7 @@
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
               >
-                Foukaná a Vodová
+                {groups.blowDry}
               </h3>
               <div class="space-y-4">
                 <div
@@ -226,20 +233,19 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Foukaná <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
+                    {items.blowDry.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Styling účesu přes kulatý kartáč pro dokonalý tvar a
-                      lesk.</span>
+                      >{items.blowDry.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="160 / 180 / 220 Kč"
-                    data-kratek="160 Kč"
-                    data-stredni="180 Kč"
-                    data-dlouhe="220 Kč"
-                    >160 / 180 / 220 Kč</span>
+                    data-full={items.blowDry.full}
+                    data-kratek={items.blowDry.short}
+                    data-stredni={items.blowDry.medium}
+                    data-dlouhe={items.blowDry.long}
+                    >{items.blowDry.full}</span>
                 </div>
                 <div
                   class="price-row"
@@ -248,42 +254,41 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Vodová <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
+                    {items.set.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Klasická technika tvarování účesu pomocí natáček pro
-                      dlouhotrvající efekt.</span>
+                      >{items.set.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="290 / 310 / 410 Kč"
-                    data-kratek="290 Kč"
-                    data-stredni="310 Kč"
-                    data-dlouhe="410 Kč"
-                    >290 / 310 / 410 Kč</span>
+                    data-full={items.set.full}
+                    data-kratek={items.set.short}
+                    data-stredni={items.set.medium}
+                    data-dlouhe={items.set.long}
+                    >{items.set.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Sušení</p><span
+                  <p class="font-bold">{items.drying.name}</p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >220 - 300 Kč</span>
+                    >{items.drying.price}</span>
                 </div>
                 <div
                   class="price-row"
                 >
                   <p class="font-bold">
-                    Žehlení <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span>
+                    {items.straightening.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span>
                   </p><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="150 / 170 / 260 Kč"
-                    data-kratek="150 Kč"
-                    data-stredni="170 Kč"
-                    data-dlouhe="260 Kč"
-                    >150 / 170 / 260 Kč</span>
+                    data-full={items.straightening.full}
+                    data-kratek={items.straightening.short}
+                    data-stredni={items.straightening.medium}
+                    data-dlouhe={items.straightening.long}
+                    >{items.straightening.full}</span>
                 </div>
                 <div
                   class="price-row"
@@ -292,19 +297,19 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Loknování <span class="js-length-hint" data-full="(krátké - střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké - střední / dlouhé)</span><span
+                    {items.curling.name} <span class="js-length-hint" data-full={curlHint.full} data-kratek={curlHint.short} data-stredni={curlHint.medium} data-dlouhe={curlHint.long}>{curlHint.full}</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Profesionální tvorba vln a loken pro přirozený objem.</span>
+                      >{items.curling.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="260 / 380 Kč"
-                    data-kratek="260 Kč"
-                    data-stredni="260 Kč"
-                    data-dlouhe="380 Kč"
-                    >260 / 380 Kč</span>
+                    data-full={items.curling.full}
+                    data-kratek={items.curling.short}
+                    data-stredni={items.curling.medium}
+                    data-dlouhe={items.curling.long}
+                    >{items.curling.full}</span>
                 </div>
               </div>
             </div>
@@ -312,21 +317,21 @@
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
               >
-                Barvení a Melíry
+                {groups.color}
               </h3>
               <div class="space-y-4">
                 <div
                   class="price-row"
                 >
                   <p class="font-bold">
-                    Barvení <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span>
+                    {items.coloring.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span>
                   </p><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="450 / 500 / 670 Kč"
-                    data-kratek="450 Kč"
-                    data-stredni="500 Kč"
-                    data-dlouhe="670 Kč"
-                    >450 / 500 / 670 Kč</span>
+                    data-full={items.coloring.full}
+                    data-kratek={items.coloring.short}
+                    data-stredni={items.coloring.medium}
+                    data-dlouhe={items.coloring.long}
+                    >{items.coloring.full}</span>
                 </div>
                 <div
                   class="price-row"
@@ -335,72 +340,71 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Melír <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
+                    {items.highlights.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Zesvětlení nebo ztmavení vybraných pramenů vlasů pro
-                      dosažení plastického vzhledu.</span>
+                      >{items.highlights.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="480 / 530 / 760 Kč"
-                    data-kratek="480 Kč"
-                    data-stredni="530 Kč"
-                    data-dlouhe="760 Kč"
-                    >480 / 530 / 760 Kč</span>
+                    data-full={items.highlights.full}
+                    data-kratek={items.highlights.short}
+                    data-stredni={items.highlights.medium}
+                    data-dlouhe={items.highlights.long}
+                    >{items.highlights.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
                   <p class="font-bold">
-                    Melír barvou <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span>
+                    {items.colorHighlights.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span>
                   </p><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="400 / 480 / 610 Kč"
-                    data-kratek="400 Kč"
-                    data-stredni="480 Kč"
-                    data-dlouhe="610 Kč"
-                    >400 / 480 / 610 Kč</span>
+                    data-full={items.colorHighlights.full}
+                    data-kratek={items.colorHighlights.short}
+                    data-stredni={items.colorHighlights.medium}
+                    data-dlouhe={items.colorHighlights.long}
+                    >{items.colorHighlights.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
                   <p class="font-bold">
-                    Tónování / Přeliv <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span>
+                    {items.toning.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span>
                   </p><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="390 / 440 / 590 Kč"
-                    data-kratek="390 Kč"
-                    data-stredni="440 Kč"
-                    data-dlouhe="590 Kč"
-                    >390 / 440 / 590 Kč</span>
+                    data-full={items.toning.full}
+                    data-kratek={items.toning.short}
+                    data-stredni={items.toning.medium}
+                    data-dlouhe={items.toning.long}
+                    >{items.toning.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
                   <p class="font-bold">
-                    Dobarvení <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span>
+                    {items.rootTouchUp.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span>
                   </p><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="390 / 420 / 480 Kč"
-                    data-kratek="390 Kč"
-                    data-stredni="420 Kč"
-                    data-dlouhe="480 Kč"
-                    >390 / 420 / 480 Kč</span>
+                    data-full={items.rootTouchUp.full}
+                    data-kratek={items.rootTouchUp.short}
+                    data-stredni={items.rootTouchUp.medium}
+                    data-dlouhe={items.rootTouchUp.long}
+                    >{items.rootTouchUp.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
                   <p class="font-bold">
-                    Odbarvovací lázeň <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span>
+                    {items.bleachBath.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span>
                   </p><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="450 / 550 / 750 Kč"
-                    data-kratek="450 Kč"
-                    data-stredni="550 Kč"
-                    data-dlouhe="750 Kč"
-                    >450 / 550 / 750 Kč</span>
+                    data-full={items.bleachBath.full}
+                    data-kratek={items.bleachBath.short}
+                    data-stredni={items.bleachBath.medium}
+                    data-dlouhe={items.bleachBath.long}
+                    >{items.bleachBath.full}</span>
                 </div>
                 <div
                   class="price-row"
@@ -409,16 +413,15 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Ombré<span
+                    {items.ombre.name}<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Technika barvení, která vytváří plynulý přechod z
-                      tmavších kořínků do světlých konečků.</span>
+                      >{items.ombre.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >400 Kč</span>
+                    >{items.ombre.price}</span>
                 </div>
                 <div
                   class="price-row"
@@ -427,16 +430,15 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Balayage<span
+                    {items.balayage.name}<span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Moderní metoda barvení 'volnou rukou', která vytváří
-                      přirozený efekt prosluněných vlasů bez ostrých přechodů.</span>
+                      >{items.balayage.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >700 Kč</span>
+                    >{items.balayage.price}</span>
                 </div>
               </div>
             </div>
@@ -444,7 +446,7 @@
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
               >
-                Preparace a Péče
+                {groups.treatment}
               </h3>
               <div class="space-y-4">
                 <div
@@ -454,60 +456,59 @@
                     type="button"
                     class="tooltip-trigger group relative min-h-11 cursor-help border-0 bg-transparent p-0 text-left font-[inherit] font-bold text-inherit"
                   >
-                    Preparace <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span><span
+                    {items.perm.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span><span
                       class="text-primary/50 material-symbols-outlined ml-1 align-middle text-[16px]"
                       >info</span
                     ><span
                       class="price-tooltip bg-surface-container-highest text-on-surface border-outline-variant/30 pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 w-64 max-w-[calc(100vw-2rem)] rounded-xl border p-3 text-xs font-normal shadow-xl transition-opacity"
-                      >Trvalá preparace vlasů pro dosažení vlnitého nebo
-                      kudrnatého efektu.</span>
+                      >{items.perm.tooltip}</span>
                   </button><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="420 / 520 / 770 Kč"
-                    data-kratek="420 Kč"
-                    data-stredni="520 Kč"
-                    data-dlouhe="770 Kč"
-                    >420 / 520 / 770 Kč</span>
+                    data-full={items.perm.full}
+                    data-kratek={items.perm.short}
+                    data-stredni={items.perm.medium}
+                    data-dlouhe={items.perm.long}
+                    >{items.perm.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
                   <p class="font-bold">
-                    Regenerační maska (5 min) <span class="js-length-hint" data-full="(krátké / střední / dlouhé)" data-kratek="(krátké)" data-stredni="(střední)" data-dlouhe="(dlouhé)">(krátké / střední / dlouhé)</span>
+                    {items.mask.name} <span class="js-length-hint" data-full={hint.full} data-kratek={hint.short} data-stredni={hint.medium} data-dlouhe={hint.long}>{hint.full}</span>
                   </p><span class="price-leader" aria-hidden="true"></span><span
                     class="js-length-price text-primary shrink-0 font-bold whitespace-nowrap"
-                    data-full="110 / 120 / 150 Kč"
-                    data-kratek="110 Kč"
-                    data-stredni="120 Kč"
-                    data-dlouhe="150 Kč"
-                    >110 / 120 / 150 Kč</span>
+                    data-full={items.mask.full}
+                    data-kratek={items.mask.short}
+                    data-stredni={items.mask.medium}
+                    data-dlouhe={items.mask.long}
+                    >{items.mask.full}</span>
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Zábal</p><span
+                  <p class="font-bold">{items.wrap.name}</p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >280 Kč</span>
+                    >{items.wrap.price}</span>
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Masáž hlavy</p><span
+                  <p class="font-bold">{items.headMassage.name}</p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >150 Kč</span>
+                    >{items.headMassage.price}</span>
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Péče o pokožku</p><span
+                  <p class="font-bold">{items.scalpCare.name}</p><span
                     class="price-leader"
                     aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >110 Kč</span>
+                    >{items.scalpCare.price}</span>
                 </div>
               </div>
             </div>
@@ -523,52 +524,52 @@
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
               >
-                Pánské služby
+                {groups.gentlemen}
               </h3>
               <div class="space-y-4">
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Stříhání</p>
+                  <p class="font-bold">{items.mensCut.name}</p>
                   <span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >160 Kč</span
+                    >{items.mensCut.price}</span
                   >
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Stříhání dohola</p>
+                  <p class="font-bold">{items.buzzCut.name}</p>
                   <span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >170 Kč</span
+                    >{items.buzzCut.price}</span
                   >
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Módní střih</p>
+                  <p class="font-bold">{items.fashionCut.name}</p>
                   <span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >220 - 300 Kč</span
+                    >{items.fashionCut.price}</span
                   >
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Úprava vousů</p>
+                  <p class="font-bold">{items.beard.name}</p>
                   <span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >160 Kč</span
+                    >{items.beard.price}</span
                   >
                 </div>
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Masáž hlavy</p>
+                  <p class="font-bold">{items.headMassage.name}</p>
                   <span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >150 Kč</span
+                    >{items.headMassage.price}</span
                   >
                 </div>
               </div>
@@ -585,16 +586,16 @@
               <h3
                 class="font-Inter text-primary border-primary/20 mb-6 border-b pb-2 text-2xl"
               >
-                Dětské střihy
+                {groups.children}
               </h3>
               <div class="space-y-4">
                 <div
                   class="price-row"
                 >
-                  <p class="font-bold">Stříhání dětí</p>
+                  <p class="font-bold">{items.kidsCut.name}</p>
                   <span class="price-leader" aria-hidden="true"></span><span
                     class="text-primary shrink-0 font-bold whitespace-nowrap"
-                    >100 Kč</span
+                    >{items.kidsCut.price}</span
                   >
                 </div>
               </div>
@@ -604,8 +605,7 @@
 
         <div class="reveal active mt-16 text-center">
           <p class="text-on-surface-variant font-Inter mb-6 italic">
-            Ceny jsou orientační a odvíjejí se od délky, hustoty vlasů a
-            spotřeby materiálu.
+            {t.pricing.disclaimer}
           </p>
         </div>
       </div>
@@ -646,7 +646,7 @@
         });
       }
 
-      const hairGroup = document.querySelector('[aria-label="Délka vlasů"]');
+      const hairGroup = document.querySelector('#sluzby [role="radiogroup"]');
       let selectedHairLength = null;
 
       function applyHairPrices() {

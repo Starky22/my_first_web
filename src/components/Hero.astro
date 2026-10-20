@@ -1,5 +1,6 @@
 ---
 import salonHero from "../assets/salon.jpg?url";
+import t from "../i18n/cs.json";
 ---
 
     <header
@@ -7,7 +8,7 @@ import salonHero from "../assets/salon.jpg?url";
     >
       <div class="absolute inset-0 z-0">
         <img
-          alt="Interiér salónu"
+          alt={t.hero.imageAlt}
           class="h-full w-full object-cover"
           src={salonHero}
         />
@@ -20,7 +21,7 @@ import salonHero from "../assets/salon.jpg?url";
           class="font-Inter reveal active mb-12 text-2xl text-white italic drop-shadow-md"
           style="transition-delay: 400ms;"
         >
-          Vaše vlasy, moje péče
+          {t.hero.subtitle}
         </p>
         <div
           class="reveal active flex flex-col gap-6 sm:flex-row"
@@ -30,13 +31,13 @@ import salonHero from "../assets/salon.jpg?url";
             class="bg-primary text-on-primary font-Inter rounded-full px-10 py-4 tracking-widest shadow-xl transition-transform hover:scale-105"
             href="#kontakt"
           >
-            REZERVOVAT TERMÍN
+            {t.hero.reservationButton}
           </a>
           <a
             class="text-primary border-primary/20 font-Inter rounded-full border bg-white/90 px-10 py-4 tracking-widest shadow-lg backdrop-blur-sm transition-all hover:bg-white"
             href="#sluzby"
           >
-            PROHLÉDNOUT CENÍK
+            {t.hero.pricingButton}
           </a>
         </div>
       </div>

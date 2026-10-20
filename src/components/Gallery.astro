@@ -1,3 +1,7 @@
+---
+import t from "../i18n/cs.json";
+---
+
     <section
       class="py-stack-lg px-gutter max-w-container-max mx-auto"
       id="galerie"
@@ -6,9 +10,9 @@
         <span
           class="text-primary font-Inter mb-4 block tracking-[0.2em] uppercase"
         >
-          Moje práce
+          {t.gallery.eyebrow}
         </span>
-        <h2 class="font-Inter text-on-surface text-2xl">Inspirujte se</h2>
+        <h2 class="font-Inter text-on-surface text-2xl">{t.gallery.title}</h2>
       </div>
 
       <!-- Carousel -->
@@ -17,7 +21,7 @@
         <button
           id="gallery-prev"
           type="button"
-          aria-label="Předchozí fotografie"
+          aria-label={t.gallery.previous}
           class="text-on-surface hover:bg-primary absolute top-1/2 left-2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation md:left-0 md:-translate-x-1/2"
         >
           <svg
@@ -47,12 +51,12 @@
             >
               <button
                 type="button"
-                aria-label="Zvětšit fotografii: Ukázka účesu 1"
+                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[0]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVrUypYXNOcXD19NdhKRM2YPCftq5m5q0fKlTNzllmFAbZHAJtCaYehT8b6i62hmNBurgnDu4u0cqmsEqYFObUU2Tr2anWsJmbKDsHWAc-0d7yqiOUP00jQGpjbeohO2QMod4pkYpJZaf-bpIqmKVAXAgNQzy_-cxLPCggR7ychdvdjDIf-ujk7j8We7gpJFEvN5D1q6acBc6CbBlVSu6uTPUo6JYFC8T21lcwjt-kieNIBveSUsl5yyl8rk4BwnY-aPE=w945"
-                  alt="Ukázka účesu 1"
+                  alt={t.gallery.photos[0]}
                   loading="lazy"
                   decoding="async"
                   class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -66,12 +70,12 @@
             >
               <button
                 type="button"
-                aria-label="Zvětšit fotografii: Ukázka účesu 2"
+                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[1]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRwAiCaim7lXHsTzVeDrDttssC0NlONFVCIR5Vp6xLbpUCIQEBueW9GcVPEaT1Tmr-bEon4nj9KJoZJOXc22zdRQzD2Qe9dlqZeZ-tbZKxnvXWi1GI5Dzm2-IIZadXbN1dmNfrTi8O5ihDtMQUC4hbhJjlgSLNpWsGncbNN_eDeBLKcP5UQmeudYXv4mTvQJiyTeYOp9m_cLyeRYZtk64klpcVM4NRIK0wBFbfMmOBDeppaQnNeZoKT8CYzqAYya-eMy8=w945"
-                  alt="Ukázka účesu 2"
+                  alt={t.gallery.photos[1]}
                   loading="lazy"
                   decoding="async"
                   class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -85,12 +89,12 @@
             >
               <button
                 type="button"
-                aria-label="Zvětšit fotografii: Ukázka účesu 3"
+                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[2]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWsvhcPI2a3DydZ0t2-l_tREwYFHpt4NFSzd5ELUBOvJrvsrWQSmCFCptNqe32AOw8tr1HIip3tyAWhc11s8Nq8IFU-bwVVna5MYOYoYj2tTkPfD4TsdRL2VhDkqEOyMH2aZ2e_sKjVOWlKqwEg5_zcRKM77gl2y7hxeYX9fc092HmKWqgAfDeXeKOQSuFskPL5RrTafFm58uWTlYWusyRuopWbILtzsB4b3SuDzV4lDym2CsKUmyv8Oc3znG3UCZEel0=w945"
-                  alt="Ukázka účesu 3"
+                  alt={t.gallery.photos[2]}
                   loading="lazy"
                   decoding="async"
                   class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -104,12 +108,12 @@
             >
               <button
                 type="button"
-                aria-label="Zvětšit fotografii: Ukázka účesu 4"
+                aria-label={`${t.gallery.zoomPhoto}: ${t.gallery.photos[3]}`}
                 class="gallery-trigger group relative block w-full cursor-zoom-in overflow-hidden rounded-xl border-0 bg-transparent p-0"
               >
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWBw4PxsFHgp8_ruenvL7_lsyXaLIMXN9fQpieda3P6n_Fd74tKcKgYed-CrAm2SzmT8iCaI2RxQjTK4qf82tDT1keN3TjXw82LwG8cg_NlunwFNiXFPCAtlq1AYkmstICdbhWBlmXtY7-E40pBzOS2RAkNZm09NpD6KFG4Kij4NrDfwBIilagEd5br2jEsv6yoaEEXwPyJYhkYYvAUzq4vBX5OPkm-slu1_v2AwOJCDrAWC1nn0_-W2XYI2WkXtmyGjw=w945"
-                  alt="Ukázka účesu 4"
+                  alt={t.gallery.photos[3]}
                   loading="lazy"
                   decoding="async"
                   class="pointer-events-none aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -123,7 +127,7 @@
         <button
           id="gallery-next"
           type="button"
-          aria-label="Další fotografie"
+          aria-label={t.gallery.next}
           class="text-on-surface hover:bg-primary absolute top-1/2 right-2 z-30 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-md transition-all duration-300 hover:text-white touch-manipulation md:right-0 md:translate-x-1/2"
         >
           <svg
@@ -147,13 +151,13 @@
         id="gallery-lightbox"
         role="dialog"
         aria-modal="true"
-        aria-label="Zvětšená fotografie"
+        aria-label={t.gallery.lightbox}
         class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 opacity-0 transition-opacity duration-300 sm:p-8"
       >
         <button
           id="lightbox-close"
           type="button"
-          aria-label="Zavřít fotografii"
+          aria-label={t.gallery.close}
           class="text-on-surface hover:bg-primary absolute top-4 right-4 z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white/90 text-2xl leading-none shadow-md transition-all duration-300 hover:text-white sm:top-6 sm:right-6"
         >
           ×

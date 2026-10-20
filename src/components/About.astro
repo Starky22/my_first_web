@@ -1,3 +1,7 @@
+---
+import t from "../i18n/cs.json";
+---
+
     <section
       class="px-gutter max-w-container-max mx-auto py-20 md:py-28"
       id="o-nas"
@@ -9,7 +13,7 @@
           >
             <img
               src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRBg3XIWUoLvXjOcWo4Qk3ZjoYxcAfZeD9aoH4pq84X52FbCKdIRQxT_EZvQ8qBPZYVRanXmWWl93Zz87BBOULcYg3qdAnEanN1Z8WQnAOdIKktCEqpe-j6XMuBvE7Yeu20y7W6KLItNX5kCeIZRYn7QOjqjlE7xNp7Lz3jDalyFaWK4GTYj5NTaW0RLcl0cBbUEum7SlauFB6StG4GMre_YGLG3CvUCkd75m_ChK0zkcOXL86R6xtrQ"
-              alt="Petra Kavková - majitelka salónu"
+              alt={t.about.imageAlt}
               class="h-full w-full object-cover transition-transform duration-500 ease-in-out hover:scale-110"
             />
           </div>
@@ -25,30 +29,17 @@
         <div class="reveal active">
           <span
             class="text-primary font-Inter mb-5 block tracking-[0.2em] uppercase"
-            >Příběh elegance</span
+            >{t.about.eyebrow}</span
           >
           <h2 class="font-Inter text-on-surface mb-8 text-3xl">
-            O mně a mém salónu
+            {t.about.title}
           </h2>
           <div
             class="font-Inter text-on-surface-variant space-y-7 leading-relaxed"
           >
-            <div class="">
-              Lorem ipsum dolor sit amet. At ipsum accusantium sed ipsam
-              nesciunt At molestiae quod. Est possimus molestiae est voluptatum
-              eveniet vel rerum omnis sit optio assumenda et ipsam maiores ad
-              accusantium nihil qui consequatur quis.
-            </div>
-            <div class="">
-              Sit nostrum eveniet qui impedit magnam est officia voluptas ut
-              quia internos est inventore molestiae est fuga minus! Ut neque
-              reiciendis eum ducimus quae est dolor iste sed dolorum pariatur.
-            </div>
-            <div class="">
-              Ut error quaerat in iusto possimus a inventore molestias. Est
-              saepe quas cum minus sequi ab placeat temporibus aut totam nihil
-              sed iusto deleniti.
-            </div>
+            {t.about.paragraphs.map((paragraph) => (
+              <div class="">{paragraph}</div>
+            ))}
           </div>
         </div>
       </div>

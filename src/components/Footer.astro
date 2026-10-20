@@ -1,3 +1,7 @@
+---
+import t from "../i18n/cs.json";
+---
+
     <footer class="bg-surface-container-highest py-stack-md">
       <div class="max-w-container-max px-gutter mx-auto">
         <div
@@ -9,21 +13,21 @@
               href="#"
             >
               <img
-                alt="Logo"
+                alt={t.footer.logoAlt}
                 class="h-17 w-17 scale-110 object-contain opacity-70"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1pYNkVrumGXcnG3Kms4rFIhsT5kG6saj7xoUtZ63DrJjAv5G4hMklzhM-FdvH-nPSCr6hnLcUsIUtqe379i5Q_mJbewCsJPswSdtFvLt1WXZ068eVZLqM0gDgwz94XGCoAwM-y8OXiUwrR28V2YmInJlJGL5xNHZr6BwYttHBjTfipW8egmPyLLQUsGlndOvGaNtKPnImzoKALFtVtLIENmcDjin1TTgCyyYtXSL4oO9M7ikSELh5bWQd_zEwFvg2VQ"
               />
               <span class="font-Inter text-xl tracking-tight"
-                >Kadeřnictví Petra</span
+                >{t.site.name}</span
               >
             </a>
             <p class="font-Inter mt-2 opacity-60">
-              Prémiová péče o vaše vlasy v srdci Bochoře
+              {t.footer.tagline}
             </p>
           </div>
           <div class="flex items-center gap-4 opacity-70">
             <a
-              aria-label="Instagram – otevře se v nové kartě"
+              aria-label={t.footer.instagramAria}
               class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
               href="https://www.instagram.com/pe_tra2514?dlrf=dmV5a3lrazZrczg2"
               target="_blank"
@@ -46,7 +50,7 @@
               ></a
             >
             <a
-              aria-label="Facebook – otevře se v nové kartě"
+              aria-label={t.footer.facebookAria}
               class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
               href="https://www.facebook.com/petra.kavkova.3?locale=cs_CZ"
               target="_blank"
@@ -71,7 +75,7 @@
         <div
           class="border-outline-variant/20 text-Inter border-t pt-1 text-center opacity-40"
         >
-          © 2026 Kadeřnictví Petra. Všechna práva vyhrazena.
+          {t.footer.copyright}
         </div>
       </div>
     </footer>
