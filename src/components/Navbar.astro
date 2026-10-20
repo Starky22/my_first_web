@@ -11,7 +11,7 @@ import t from "../i18n/cs.json";
     class="max-w-container-max mx-auto flex items-center justify-between gap-2"
   >
     <a
-      class="font-headline-sm text-primary group flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2 md:flex-none"
+      class="font-headline-sm text-primary group flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2 lg:flex-none"
       href="#"
     >
       <Image
@@ -22,12 +22,12 @@ import t from "../i18n/cs.json";
         class="h-14 w-14 shrink-0 scale-110 object-contain transition-transform group-hover:scale-125 sm:h-17 sm:w-17"
       />
       <span
-        class="text-sm leading-tight tracking-tight sm:text-xl sm:whitespace-nowrap md:text-3xl"
+        class="text-sm leading-tight tracking-tight sm:text-xl sm:whitespace-nowrap lg:text-3xl"
         >{t.site.name}</span
       >
     </a>
     <div
-      class="font-Inter hidden items-center gap-8 tracking-wider uppercase md:flex"
+      class="font-Inter hidden items-center gap-8 tracking-wider uppercase lg:flex"
     >
       <a
         class="text-on-surface-variant hover:text-primary transition-colors"
@@ -48,7 +48,7 @@ import t from "../i18n/cs.json";
     </div>
     <div class="flex shrink-0 items-center gap-1 sm:gap-2">
       <a
-        class="bg-primary text-on-primary font-Inter hover:bg-primary/90 inline-flex min-h-11 items-center rounded-full px-3 py-2 text-xs shadow-md transition-all sm:px-4 sm:text-sm md:px-6 md:text-base"
+        class="bg-primary text-on-primary font-Inter hover:bg-primary/90 inline-flex min-h-11 items-center rounded-full px-3 py-2 text-xs shadow-md transition-all sm:px-4 sm:text-sm lg:px-6 lg:text-base"
         href="#kontakt"
       >
         {t.navbar.reservation}
@@ -56,7 +56,7 @@ import t from "../i18n/cs.json";
       <button
         type="button"
         id="nav-toggle"
-        class="text-primary hover:bg-primary/10 inline-flex h-11 w-11 items-center justify-center rounded-full md:hidden"
+        class="text-primary hover:bg-primary/10 inline-flex h-11 w-11 items-center justify-center rounded-full lg:hidden"
         aria-expanded="false"
         aria-controls="mobile-nav"
         aria-label={t.navbar.openMenu}
@@ -69,7 +69,7 @@ import t from "../i18n/cs.json";
   </div>
   <div
     id="mobile-nav"
-    class="border-outline-variant/20 hidden border-t md:hidden"
+    class="border-outline-variant/20 hidden border-t lg:hidden"
   >
     <div class="font-Inter flex flex-col gap-1 py-3 tracking-wider uppercase">
       <a
@@ -138,7 +138,7 @@ import t from "../i18n/cs.json";
     });
 
     window.addEventListener("resize", () => {
-      if (window.matchMedia("(min-width: 768px)").matches) {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
         setMobileNav(false);
       }
     });
