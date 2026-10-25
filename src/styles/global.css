@@ -87,7 +87,7 @@
 #galerie,
 #recenze,
 #kontakt {
-  scroll-margin-top: max(5.75rem, 18vh);
+  scroll-margin-top: var(--nav-offset, 5rem);
 }
 
 .glass-nav {
