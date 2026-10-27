@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import logo from "../assets/images/logo.png";
 import t from "../i18n/cs.json";
+
+const instagramUrl = t.footer.instagramUrl;
 ---
 
 <footer class="bg-surface-container-highest py-stack-md">
@@ -27,30 +29,56 @@ import t from "../i18n/cs.json";
         </p>
       </div>
       <div class="flex items-center gap-4 opacity-70">
-        <a
-          aria-label={t.footer.instagramAria}
-          class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
-          href={t.footer.instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          ><svg
-            fill="none"
-            height="30"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            width="30"
-            xmlns="http://www.w3.org/2000/svg"
-            ><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path
-              d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
-              x1="17.5"
-              x2="17.51"
-              y1="6.5"
-              y2="6.5"></line></svg
-          ></a
-        >
+        {
+          instagramUrl ? (
+            <a
+              aria-label={t.footer.instagramAria}
+              class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
+              href={instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              ><svg
+                fill="none"
+                height="30"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                ><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
+                  x1="17.5"
+                  x2="17.51"
+                  y1="6.5"
+                  y2="6.5"></line></svg
+              ></a
+            >
+          ) : (
+            <span
+              aria-label="Instagram"
+              class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"
+              ><svg
+                fill="none"
+                height="30"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                ><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line
+                  x1="17.5"
+                  x2="17.51"
+                  y1="6.5"
+                  y2="6.5"></line></svg
+              ></span
+            >
+          )
+        }
         <a
           aria-label={t.footer.facebookAria}
           class="text-primary inline-flex h-11 w-11 items-center justify-center transition-transform hover:scale-110"

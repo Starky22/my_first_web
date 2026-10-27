@@ -26,7 +26,7 @@ export function buildHairSalonJsonLd(siteUrl?: string) {
       latitude: 49.425772,
       longitude: 17.422879,
     },
-    sameAs: [t.footer.instagramUrl, t.footer.facebookUrl],
+    sameAs: [t.footer.instagramUrl, t.footer.facebookUrl].filter(Boolean),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: t.pricing.eyebrow,
